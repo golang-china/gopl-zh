@@ -5,3 +5,4 @@
 镜像列表：
 
 - http://docs.ruanjiadeng.com/gopl-zh/
+- http://shifei.me/gopl-zh/
