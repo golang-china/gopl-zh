@@ -9,6 +9,7 @@
 常见缩写:
 
 - gopl: 《The Go Programming Language》, http://gopl.io/
+- gopl-zh: gopl 的中文版本，http://bitbucket.org/golang-china/gopl-zh
 - D&K: gopl的作者 Alan A. A. Donovan · Brian W. Kernighan
 
 镜像列表：
