@@ -5,6 +5,7 @@
 //
 // Go圣经中文版.
 //
+// 项目主页: https://github.com/golang-china/gopl-zh
 // 项目主页: https://bitbucket.org/golang-china/gopl-zh
 //
 // 原版官网: http://gopl.io
