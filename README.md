@@ -19,3 +19,4 @@
 - http://shifei.me/gopl-zh/
 - http://2goo.info/media/html/gopl-zh-gh-pages/
 - http://docs.plhwin.com/gopl-zh/
+- https://docs.hacknode.org/gopl-zh/
