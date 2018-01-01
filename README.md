@@ -20,3 +20,9 @@
 - http://2goo.info/media/html/gopl-zh-gh-pages/
 - http://docs.plhwin.com/gopl-zh/
 - https://docs.hacknode.org/gopl-zh/
+
+----
+
+开源图书推荐:
+
+- [《Go语言高级编程》](https://github.com/chai2010/advanced-go-programming-book)(开发中...)
