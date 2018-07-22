@@ -25,4 +25,4 @@
 
 开源图书推荐:
 
-- [《Go语言高级编程》](https://github.com/chai2010/advanced-go-programming-book)(开发中...)
+- [《Go语言高级编程》](https://github.com/chai2010/advanced-go-programming-book): https://github.com/chai2010/advanced-go-programming-book
