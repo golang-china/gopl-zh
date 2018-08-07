@@ -21,6 +21,7 @@
 
 - https://github.com/gopl-zh/gopl-zh.github.com
 - https://docs.hacknode.org/gopl-zh/
+- https://books.studygolang.com/gopl-zh/
 - https://wizardforcel.gitbooks.io/gopl-zh/
 
 ----
