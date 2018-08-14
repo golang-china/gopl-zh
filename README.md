@@ -6,6 +6,12 @@
 
 - https://github.com/golang-china/gopl-zh
 
+译者信息：
+
+- 译者：柴树杉，Github [@chai2010](https://github.com/chai2010)，Twitter [@chaishushan](https://twitter.com/chaishushan)
+- 译者：cch123, https://github.com/cch123
+- 译者：CrazySssst
+- 译者：foreversmart <njutree@gmail.com>
 
 ## 关注微信公众号(Go高级编程/golang-china)
 
