@@ -13,17 +13,19 @@
 - 译者：CrazySssst
 - 译者：foreversmart <njutree@gmail.com>
 
+## 加入微信群
+
+![](https://chai2010.cn/static-images/weixin-golang.jpg)
+
+## 关注微信公众号(Go高级编程/golang-china)
+
+![](https://chai2010.cn/advanced-go-programming-book/weixin-guanggu-coder-logo.png)
 
 ## 开发者头条号
 
 https://toutiao.io/subjects/318517
 
 ![](https://raw.githubusercontent.com/chai2010/advanced-go-programming-book/master/toutiao-318517-small.jpg)
-
-
-## 关注微信公众号(Go高级编程/golang-china)
-
-![](weixin-golang-china.jpg)
 
 ## 常见缩写
 
