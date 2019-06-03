@@ -17,9 +17,10 @@
 
 ![](https://chai2010.cn/static-images/weixin-golang.jpg)
 
-## 关注微信公众号(Go高级编程/golang-china)
+## 关注微信公众号(光谷码农/guanggu-coder)
 
 ![](https://chai2010.cn/advanced-go-programming-book/weixin-guanggu-coder-logo.png)
+
 
 ## 开发者头条号
 
