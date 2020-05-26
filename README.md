@@ -55,3 +55,4 @@ https://toutiao.io/subjects/318517
 ## 开源图书推荐
 
 - [《Go语言高级编程》](https://github.com/chai2010/advanced-go-programming-book): https://github.com/chai2010/advanced-go-programming-book
+- [《Go语法树入门》](https://github.com/chai2010/go-ast-book): https://github.com/chai2010/go-ast-book
