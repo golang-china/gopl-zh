@@ -56,3 +56,4 @@ https://toutiao.io/subjects/318517
 
 - [《Go语言高级编程》](https://github.com/chai2010/advanced-go-programming-book): https://github.com/chai2010/advanced-go-programming-book
 - [《Go语法树入门》](https://github.com/chai2010/go-ast-book): https://github.com/chai2010/go-ast-book
+- [《µGo语言实现——从头开发一个迷你Go语言编译器》](https://github.com/chai2010/ugo-compiler-book): https://github.com/chai2010/ugo-compiler-book
