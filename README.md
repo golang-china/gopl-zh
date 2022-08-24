@@ -1,7 +1,8 @@
 # Go语言圣经中文版
 
-- *QQ群：102319854（中国最早的Go语言QQ群）*
 - 直播公告：每周四晚7点，微信视频号“光谷码农”：跟着柴大一起重读[《Go语言圣经》](https://github.com/golang-china/gopl-zh)，欢迎参与！
+- *KusonStack一站式可编程配置技术栈(Go): https://github.com/KusionStack/kusion*
+- *KCL 配置编程语言(Rust): https://github.com/KusionStack/KCLVM*
 - *凹语言™: https://github.com/wa-lang/wa*
 
 ----
@@ -27,12 +28,6 @@
 
 加入微信群: 公众号底部菜单扫码进入
 
-## 开发者头条号
-
-https://toutiao.io/subjects/318517
-
-![](https://raw.githubusercontent.com/chai2010/advanced-go-programming-book/master/toutiao-318517-small.jpg)
-
 ## 常见缩写
 
 - gopl: 《The Go Programming Language》, http://gopl.io/
@@ -41,10 +36,11 @@ https://toutiao.io/subjects/318517
 
 ## 镜像列表
 
-- https://github.com/gopl-zh/gopl-zh.github.com
-- https://docs.hacknode.org/gopl-zh/
-- https://books.studygolang.com/gopl-zh/
-- https://wizardforcel.gitbooks.io/gopl-zh/
+- https://gopl-zh.github.io
+- https://golang-china.github.io/gopl-zh
+- https://docs.hacknode.org/gopl-zh
+- https://books.studygolang.com/gopl-zh
+- https://wizardforcel.gitbooks.io/gopl-zh
 
 ----
 
