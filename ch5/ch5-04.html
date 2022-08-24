@@ -1,0 +1,363 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>错误 - Go语言圣经</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="&lt;The Go Programming Language&gt;中文版">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+                <link rel="stylesheet" href="../style.css">
+        
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Go语言圣经</a></li><li class="chapter-item expanded affix "><a href="../preface.html">前言</a></li><li class="chapter-item expanded "><a href="../ch1/ch1.html"><strong aria-hidden="true">1.</strong> 入门</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch1/ch1-01.html"><strong aria-hidden="true">1.1.</strong> Hello, World</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-02.html"><strong aria-hidden="true">1.2.</strong> 命令行参数</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-03.html"><strong aria-hidden="true">1.3.</strong> 查找重复的行</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-04.html"><strong aria-hidden="true">1.4.</strong> GIF动画</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-05.html"><strong aria-hidden="true">1.5.</strong> 获取URL</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-06.html"><strong aria-hidden="true">1.6.</strong> 并发获取多个URL</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-07.html"><strong aria-hidden="true">1.7.</strong> Web服务</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-08.html"><strong aria-hidden="true">1.8.</strong> 本章要点</a></li></ol></li><li class="chapter-item expanded "><a href="../ch2/ch2.html"><strong aria-hidden="true">2.</strong> 程序结构</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch2/ch2-01.html"><strong aria-hidden="true">2.1.</strong> 命名</a></li><li class="chapter-item expanded "><a href="../ch2/ch2-02.html"><strong aria-hidden="true">2.2.</strong> 声明</a></li><li class="chapter-item expanded "><a href="../ch2/ch2-03.html"><strong aria-hidden="true">2.3.</strong> 变量</a></li><li class="chapter-item expanded "><a href="../ch2/ch2-04.html"><strong aria-hidden="true">2.4.</strong> 赋值</a></li><li class="chapter-item expanded "><a href="../ch2/ch2-05.html"><strong aria-hidden="true">2.5.</strong> 类型</a></li><li class="chapter-item expanded "><a href="../ch2/ch2-06.html"><strong aria-hidden="true">2.6.</strong> 包和文件</a></li><li class="chapter-item expanded "><a href="../ch2/ch2-07.html"><strong aria-hidden="true">2.7.</strong> 作用域</a></li></ol></li><li class="chapter-item expanded "><a href="../ch3/ch3.html"><strong aria-hidden="true">3.</strong> 基础数据类型</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch3/ch3-01.html"><strong aria-hidden="true">3.1.</strong> 整型</a></li><li class="chapter-item expanded "><a href="../ch3/ch3-02.html"><strong aria-hidden="true">3.2.</strong> 浮点数</a></li><li class="chapter-item expanded "><a href="../ch3/ch3-03.html"><strong aria-hidden="true">3.3.</strong> 复数</a></li><li class="chapter-item expanded "><a href="../ch3/ch3-04.html"><strong aria-hidden="true">3.4.</strong> 布尔型</a></li><li class="chapter-item expanded "><a href="../ch3/ch3-05.html"><strong aria-hidden="true">3.5.</strong> 字符串</a></li><li class="chapter-item expanded "><a href="../ch3/ch3-06.html"><strong aria-hidden="true">3.6.</strong> 常量</a></li></ol></li><li class="chapter-item expanded "><a href="../ch4/ch4.html"><strong aria-hidden="true">4.</strong> 复合数据类型</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch4/ch4-01.html"><strong aria-hidden="true">4.1.</strong> 数组</a></li><li class="chapter-item expanded "><a href="../ch4/ch4-02.html"><strong aria-hidden="true">4.2.</strong> Slice</a></li><li class="chapter-item expanded "><a href="../ch4/ch4-03.html"><strong aria-hidden="true">4.3.</strong> Map</a></li><li class="chapter-item expanded "><a href="../ch4/ch4-04.html"><strong aria-hidden="true">4.4.</strong> 结构体</a></li><li class="chapter-item expanded "><a href="../ch4/ch4-05.html"><strong aria-hidden="true">4.5.</strong> JSON</a></li><li class="chapter-item expanded "><a href="../ch4/ch4-06.html"><strong aria-hidden="true">4.6.</strong> 文本和HTML模板</a></li></ol></li><li class="chapter-item expanded "><a href="../ch5/ch5.html"><strong aria-hidden="true">5.</strong> 函数</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch5/ch5-01.html"><strong aria-hidden="true">5.1.</strong> 函数声明</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-02.html"><strong aria-hidden="true">5.2.</strong> 递归</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-03.html"><strong aria-hidden="true">5.3.</strong> 多返回值</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-04.html" class="active"><strong aria-hidden="true">5.4.</strong> 错误</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-05.html"><strong aria-hidden="true">5.5.</strong> 函数值</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-06.html"><strong aria-hidden="true">5.6.</strong> 匿名函数</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-07.html"><strong aria-hidden="true">5.7.</strong> 可变参数</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-08.html"><strong aria-hidden="true">5.8.</strong> Deferred函数</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-09.html"><strong aria-hidden="true">5.9.</strong> Panic异常</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-10.html"><strong aria-hidden="true">5.10.</strong> Recover捕获异常</a></li></ol></li><li class="chapter-item expanded "><a href="../ch6/ch6.html"><strong aria-hidden="true">6.</strong> 方法</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch6/ch6-01.html"><strong aria-hidden="true">6.1.</strong> 方法声明</a></li><li class="chapter-item expanded "><a href="../ch6/ch6-02.html"><strong aria-hidden="true">6.2.</strong> 基于指针对象的方法</a></li><li class="chapter-item expanded "><a href="../ch6/ch6-03.html"><strong aria-hidden="true">6.3.</strong> 通过嵌入结构体来扩展类型</a></li><li class="chapter-item expanded "><a href="../ch6/ch6-04.html"><strong aria-hidden="true">6.4.</strong> 方法值和方法表达式</a></li><li class="chapter-item expanded "><a href="../ch6/ch6-05.html"><strong aria-hidden="true">6.5.</strong> 示例: Bit数组</a></li><li class="chapter-item expanded "><a href="../ch6/ch6-06.html"><strong aria-hidden="true">6.6.</strong> 封装</a></li></ol></li><li class="chapter-item expanded "><a href="../ch7/ch7.html"><strong aria-hidden="true">7.</strong> 接口</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch7/ch7-01.html"><strong aria-hidden="true">7.1.</strong> 接口是合约</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-02.html"><strong aria-hidden="true">7.2.</strong> 接口类型</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-03.html"><strong aria-hidden="true">7.3.</strong> 实现接口的条件</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-04.html"><strong aria-hidden="true">7.4.</strong> flag.Value接口</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-05.html"><strong aria-hidden="true">7.5.</strong> 接口值</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-06.html"><strong aria-hidden="true">7.6.</strong> sort.Interface接口</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-07.html"><strong aria-hidden="true">7.7.</strong> http.Handler接口</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-08.html"><strong aria-hidden="true">7.8.</strong> error接口</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-09.html"><strong aria-hidden="true">7.9.</strong> 示例: 表达式求值</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-10.html"><strong aria-hidden="true">7.10.</strong> 类型断言</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-11.html"><strong aria-hidden="true">7.11.</strong> 基于类型断言识别错误类型</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-12.html"><strong aria-hidden="true">7.12.</strong> 通过类型断言查询接口</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-13.html"><strong aria-hidden="true">7.13.</strong> 类型分支</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-14.html"><strong aria-hidden="true">7.14.</strong> 示例: 基于标记的XML解码</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-15.html"><strong aria-hidden="true">7.15.</strong> 补充几点</a></li></ol></li><li class="chapter-item expanded "><a href="../ch8/ch8.html"><strong aria-hidden="true">8.</strong> Goroutines和Channels</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch8/ch8-01.html"><strong aria-hidden="true">8.1.</strong> Goroutines</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-02.html"><strong aria-hidden="true">8.2.</strong> 示例: 并发的Clock服务</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-03.html"><strong aria-hidden="true">8.3.</strong> 示例: 并发的Echo服务</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-04.html"><strong aria-hidden="true">8.4.</strong> Channels</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-05.html"><strong aria-hidden="true">8.5.</strong> 并发的循环</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-06.html"><strong aria-hidden="true">8.6.</strong> 示例: 并发的Web爬虫</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-07.html"><strong aria-hidden="true">8.7.</strong> 基于select的多路复用</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-09.html"><strong aria-hidden="true">8.8.</strong> 并发的退出</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-10.html"><strong aria-hidden="true">8.9.</strong> 示例: 聊天服务</a></li></ol></li><li class="chapter-item expanded "><a href="../ch9/ch9.html"><strong aria-hidden="true">9.</strong> 基于共享变量的并发</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch9/ch9-01.html"><strong aria-hidden="true">9.1.</strong> 竞争条件</a></li><li class="chapter-item expanded "><a href="../ch9/ch9-02.html"><strong aria-hidden="true">9.2.</strong> sync.Mutex互斥锁</a></li><li class="chapter-item expanded "><a href="../ch9/ch9-03.html"><strong aria-hidden="true">9.3.</strong> sync.RWMutex读写锁</a></li><li class="chapter-item expanded "><a href="../ch9/ch9-04.html"><strong aria-hidden="true">9.4.</strong> 内存同步</a></li><li class="chapter-item expanded "><a href="../ch9/ch9-06.html"><strong aria-hidden="true">9.5.</strong> 竞争条件检测</a></li><li class="chapter-item expanded "><a href="../ch9/ch9-07.html"><strong aria-hidden="true">9.6.</strong> 示例: 并发的非阻塞缓存</a></li><li class="chapter-item expanded "><a href="../ch9/ch9-08.html"><strong aria-hidden="true">9.7.</strong> Goroutines和线程</a></li></ol></li><li class="chapter-item expanded "><a href="../ch10/ch10.html"><strong aria-hidden="true">10.</strong> 包和工具</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch10/ch10-01.html"><strong aria-hidden="true">10.1.</strong> 包简介</a></li><li class="chapter-item expanded "><a href="../ch10/ch10-02.html"><strong aria-hidden="true">10.2.</strong> 导入路径</a></li><li class="chapter-item expanded "><a href="../ch10/ch10-03.html"><strong aria-hidden="true">10.3.</strong> 包声明</a></li><li class="chapter-item expanded "><a href="../ch10/ch10-04.html"><strong aria-hidden="true">10.4.</strong> 导入声明</a></li><li class="chapter-item expanded "><a href="../ch10/ch10-05.html"><strong aria-hidden="true">10.5.</strong> 包的匿名导入</a></li><li class="chapter-item expanded "><a href="../ch10/ch10-06.html"><strong aria-hidden="true">10.6.</strong> 包和命名</a></li><li class="chapter-item expanded "><a href="../ch10/ch10-07.html"><strong aria-hidden="true">10.7.</strong> 工具</a></li></ol></li><li class="chapter-item expanded "><a href="../ch11/ch11.html"><strong aria-hidden="true">11.</strong> 测试</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch11/ch11-01.html"><strong aria-hidden="true">11.1.</strong> go test</a></li><li class="chapter-item expanded "><a href="../ch11/ch11-02.html"><strong aria-hidden="true">11.2.</strong> 测试函数</a></li><li class="chapter-item expanded "><a href="../ch11/ch11-03.html"><strong aria-hidden="true">11.3.</strong> 测试覆盖率</a></li><li class="chapter-item expanded "><a href="../ch11/ch11-04.html"><strong aria-hidden="true">11.4.</strong> 基准测试</a></li><li class="chapter-item expanded "><a href="../ch11/ch11-05.html"><strong aria-hidden="true">11.5.</strong> 剖析</a></li><li class="chapter-item expanded "><a href="../ch11/ch11-06.html"><strong aria-hidden="true">11.6.</strong> 示例函数</a></li></ol></li><li class="chapter-item expanded "><a href="../ch12/ch12.html"><strong aria-hidden="true">12.</strong> 反射</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch12/ch12-01.html"><strong aria-hidden="true">12.1.</strong> 为何需要反射?</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-02.html"><strong aria-hidden="true">12.2.</strong> reflect.Type和reflect.Value</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-03.html"><strong aria-hidden="true">12.3.</strong> Display递归打印</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-04.html"><strong aria-hidden="true">12.4.</strong> 示例: 编码S表达式</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-05.html"><strong aria-hidden="true">12.5.</strong> 通过reflect.Value修改值</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-06.html"><strong aria-hidden="true">12.6.</strong> 示例: 解码S表达式</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-08.html"><strong aria-hidden="true">12.7.</strong> 显示一个类型的方法集</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-09.html"><strong aria-hidden="true">12.8.</strong> 几点忠告</a></li></ol></li><li class="chapter-item expanded "><a href="../ch13/ch13.html"><strong aria-hidden="true">13.</strong> 底层编程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch13/ch13-01.html"><strong aria-hidden="true">13.1.</strong> unsafe.Sizeof, Alignof 和 Offsetof</a></li><li class="chapter-item expanded "><a href="../ch13/ch13-02.html"><strong aria-hidden="true">13.2.</strong> unsafe.Pointer</a></li><li class="chapter-item expanded "><a href="../ch13/ch13-03.html"><strong aria-hidden="true">13.3.</strong> 示例: 深度相等判断</a></li><li class="chapter-item expanded "><a href="../ch13/ch13-04.html"><strong aria-hidden="true">13.4.</strong> 通过cgo调用C代码</a></li><li class="chapter-item expanded "><a href="../ch13/ch13-05.html"><strong aria-hidden="true">13.5.</strong> 几点忠告</a></li></ol></li><li class="chapter-item expanded "><a href="../appendix/appendix.html"><strong aria-hidden="true">14.</strong> 附录</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../appendix/appendix-a-errata.html"><strong aria-hidden="true">14.1.</strong> 附录A：原文勘误</a></li><li class="chapter-item expanded "><a href="../appendix/appendix-b-author.html"><strong aria-hidden="true">14.2.</strong> 附录B：作者译者</a></li><li class="chapter-item expanded "><a href="../appendix/appendix-c-cpoyright.html"><strong aria-hidden="true">14.3.</strong> 附录C：译文授权</a></li><li class="chapter-item expanded "><a href="../appendix/appendix-d-translations.html"><strong aria-hidden="true">14.4.</strong> 附录D：其它语言</a></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">Go语言圣经</h1>
+
+                    <div class="right-buttons">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        <a href="https://github.com/gopl-zh/gopl-zh.github.com" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                                                                        <a href="https://github.com/gopl-zh/gopl-zh.github.com/edit/master/./ch5/ch5-04.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <!-- Page table of contents -->
+                    <div class="sidetoc"><nav class="pagetoc"></nav></div>
+                    <main>
+                        <!-- 头部 -->
+                        <ul dir="auto">
+                        <li><em>KusonStack一站式可编程配置技术栈(Go): <a href="https://github.com/KusionStack/kusion">https://github.com/KusionStack/kusion</a></em></li>
+                        <li><em>KCL 配置编程语言(Rust): <a href="https://github.com/KusionStack/KCLVM">https://github.com/KusionStack/KCLVM</a></em></li>
+						<li><em>凹语言™: <a href="https://github.com/wa-lang/wa">https://github.com/wa-lang/wa</a></em></li>
+                        </ul>
+                        <hr>
+
+                        <h2 id="54-错误"><a class="header" href="#54-错误">5.4. 错误</a></h2>
+<p>在Go中有一部分函数总是能成功的运行。比如strings.Contains和strconv.FormatBool函数，对各种可能的输入都做了良好的处理，使得运行时几乎不会失败，除非遇到灾难性的、不可预料的情况，比如运行时的内存溢出。导致这种错误的原因很复杂，难以处理，从错误中恢复的可能性也很低。</p>
+<p>还有一部分函数只要输入的参数满足一定条件，也能保证运行成功。比如time.Date函数，该函数将年月日等参数构造成time.Time对象，除非最后一个参数（时区）是nil。这种情况下会引发panic异常。panic是来自被调用函数的信号，表示发生了某个已知的bug。一个良好的程序永远不应该发生panic异常。</p>
+<p>对于大部分函数而言，永远无法确保能否成功运行。这是因为错误的原因超出了程序员的控制。举个例子，任何进行I/O操作的函数都会面临出现错误的可能，只有没有经验的程序员才会相信读写操作不会失败，即使是简单的读写。因此，当本该可信的操作出乎意料的失败后，我们必须弄清楚导致失败的原因。</p>
+<p>在Go的错误处理中，错误是软件包API和应用程序用户界面的一个重要组成部分，程序运行失败仅被认为是几个预期的结果之一。</p>
+<p>对于那些将运行失败看作是预期结果的函数，它们会返回一个额外的返回值，通常是最后一个，来传递错误信息。如果导致失败的原因只有一个，额外的返回值可以是一个布尔值，通常被命名为ok。比如，cache.Lookup失败的唯一原因是key不存在，那么代码可以按照下面的方式组织：</p>
+<pre><code class="language-Go">value, ok := cache.Lookup(key)
+if !ok {
+	// ...cache[key] does not exist…
+}
+</code></pre>
+<p>通常，导致失败的原因不止一种，尤其是对I/O操作而言，用户需要了解更多的错误信息。因此，额外的返回值不再是简单的布尔类型，而是error类型。</p>
+<p>内置的error是接口类型。我们将在第七章了解接口类型的含义，以及它对错误处理的影响。现在我们只需要明白error类型可能是nil或者non-nil。nil意味着函数运行成功，non-nil表示失败。对于non-nil的error类型，我们可以通过调用error的Error函数或者输出函数获得字符串类型的错误信息。</p>
+<pre><code class="language-Go">fmt.Println(err)
+fmt.Printf(&quot;%v&quot;, err)
+</code></pre>
+<p>通常，当函数返回non-nil的error时，其他的返回值是未定义的（undefined），这些未定义的返回值应该被忽略。然而，有少部分函数在发生错误时，仍然会返回一些有用的返回值。比如，当读取文件发生错误时，Read函数会返回可以读取的字节数以及错误信息。对于这种情况，正确的处理方式应该是先处理这些不完整的数据，再处理错误。因此对函数的返回值要有清晰的说明，以便于其他人使用。</p>
+<p>在Go中，函数运行失败时会返回错误信息，这些错误信息被认为是一种预期的值而非异常（exception），这使得Go有别于那些将函数运行失败看作是异常的语言。虽然Go有各种异常机制，但这些机制仅被使用在处理那些未被预料到的错误，即bug，而不是那些在健壮程序中应该被避免的程序错误。对于Go的异常机制我们将在5.9介绍。</p>
+<p>Go这样设计的原因是由于对于某个应该在控制流程中处理的错误而言，将这个错误以异常的形式抛出会混乱对错误的描述，这通常会导致一些糟糕的后果。当某个程序错误被当作异常处理后，这个错误会将堆栈跟踪信息返回给终端用户，这些信息复杂且无用，无法帮助定位错误。</p>
+<p>正因此，Go使用控制流机制（如if和return）处理错误，这使得编码人员能更多的关注错误处理。</p>
+<h3 id="541-错误处理策略"><a class="header" href="#541-错误处理策略">5.4.1. 错误处理策略</a></h3>
+<p>当一次函数调用返回错误时，调用者应该选择合适的方式处理错误。根据情况的不同，有很多处理方式，让我们来看看常用的五种方式。</p>
+<p>首先，也是最常用的方式是传播错误。这意味着函数中某个子程序的失败，会变成该函数的失败。下面，我们以5.3节的findLinks函数作为例子。如果findLinks对http.Get的调用失败，findLinks会直接将这个HTTP错误返回给调用者：</p>
+<pre><code class="language-Go">resp, err := http.Get(url)
+if err != nil{
+	return nil, err
+}
+</code></pre>
+<p>当对html.Parse的调用失败时，findLinks不会直接返回html.Parse的错误，因为缺少两条重要信息：1、发生错误时的解析器（html parser）；2、发生错误的url。因此，findLinks构造了一个新的错误信息，既包含了这两项，也包括了底层的解析出错的信息。</p>
+<pre><code class="language-Go">doc, err := html.Parse(resp.Body)
+resp.Body.Close()
+if err != nil {
+	return nil, fmt.Errorf(&quot;parsing %s as HTML: %v&quot;, url,err)
+}
+</code></pre>
+<p>fmt.Errorf函数使用fmt.Sprintf格式化错误信息并返回。我们使用该函数添加额外的前缀上下文信息到原始错误信息。当错误最终由main函数处理时，错误信息应提供清晰的从原因到后果的因果链，就像美国宇航局事故调查时做的那样：</p>
+<pre><code>genesis: crashed: no parachute: G-switch failed: bad relay orientation
+</code></pre>
+<p>由于错误信息经常是以链式组合在一起的，所以错误信息中应避免大写和换行符。最终的错误信息可能很长，我们可以通过类似grep的工具处理错误信息（译者注：grep是一种文本搜索工具）。</p>
+<p>编写错误信息时，我们要确保错误信息对问题细节的描述是详尽的。尤其是要注意错误信息表达的一致性，即相同的函数或同包内的同一组函数返回的错误在构成和处理方式上是相似的。</p>
+<p>以os包为例，os包确保文件操作（如os.Open、Read、Write、Close）返回的每个错误的描述不仅仅包含错误的原因（如无权限，文件目录不存在）也包含文件名，这样调用者在构造新的错误信息时无需再添加这些信息。</p>
+<p>一般而言，被调用函数f(x)会将调用信息和参数信息作为发生错误时的上下文放在错误信息中并返回给调用者，调用者需要添加一些错误信息中不包含的信息，比如添加url到html.Parse返回的错误中。</p>
+<p>让我们来看看处理错误的第二种策略。如果错误的发生是偶然性的，或由不可预知的问题导致的。一个明智的选择是重新尝试失败的操作。在重试时，我们需要限制重试的时间间隔或重试的次数，防止无限制的重试。</p>
+<p><u><i>gopl.io/ch5/wait</i></u></p>
+<pre><code class="language-Go">// WaitForServer attempts to contact the server of a URL.
+// It tries for one minute using exponential back-off.
+// It reports an error if all attempts fail.
+func WaitForServer(url string) error {
+	const timeout = 1 * time.Minute
+	deadline := time.Now().Add(timeout)
+	for tries := 0; time.Now().Before(deadline); tries++ {
+		_, err := http.Head(url)
+		if err == nil {
+			return nil // success
+		}
+		log.Printf(&quot;server not responding (%s);retrying…&quot;, err)
+		time.Sleep(time.Second &lt;&lt; uint(tries)) // exponential back-off
+	}
+	return fmt.Errorf(&quot;server %s failed to respond after %s&quot;, url, timeout)
+}
+</code></pre>
+<p>如果错误发生后，程序无法继续运行，我们就可以采用第三种策略：输出错误信息并结束程序。需要注意的是，这种策略只应在main中执行。对库函数而言，应仅向上传播错误，除非该错误意味着程序内部包含不一致性，即遇到了bug，才能在库函数中结束程序。</p>
+<pre><code class="language-Go">// (In function main.)
+if err := WaitForServer(url); err != nil {
+	fmt.Fprintf(os.Stderr, &quot;Site is down: %v\n&quot;, err)
+	os.Exit(1)
+}
+</code></pre>
+<p>调用log.Fatalf可以更简洁的代码达到与上文相同的效果。log中的所有函数，都默认会在错误信息之前输出时间信息。</p>
+<pre><code class="language-Go">if err := WaitForServer(url); err != nil {
+	log.Fatalf(&quot;Site is down: %v\n&quot;, err)
+}
+</code></pre>
+<p>长时间运行的服务器常采用默认的时间格式，而交互式工具很少采用包含如此多信息的格式。</p>
+<pre><code>2006/01/02 15:04:05 Site is down: no such domain:
+bad.gopl.io
+</code></pre>
+<p>我们可以设置log的前缀信息屏蔽时间信息，一般而言，前缀信息会被设置成命令名。</p>
+<pre><code class="language-Go">log.SetPrefix(&quot;wait: &quot;)
+log.SetFlags(0)
+</code></pre>
+<p>第四种策略：有时，我们只需要输出错误信息就足够了，不需要中断程序的运行。我们可以通过log包提供函数</p>
+<pre><code class="language-Go">if err := Ping(); err != nil {
+	log.Printf(&quot;ping failed: %v; networking disabled&quot;,err)
+}
+</code></pre>
+<p>或者标准错误流输出错误信息。</p>
+<pre><code class="language-Go">if err := Ping(); err != nil {
+	fmt.Fprintf(os.Stderr, &quot;ping failed: %v; networking disabled\n&quot;, err)
+}
+</code></pre>
+<p>log包中的所有函数会为没有换行符的字符串增加换行符。</p>
+<p>第五种，也是最后一种策略：我们可以直接忽略掉错误。</p>
+<pre><code class="language-Go">dir, err := ioutil.TempDir(&quot;&quot;, &quot;scratch&quot;)
+if err != nil {
+	return fmt.Errorf(&quot;failed to create temp dir: %v&quot;,err)
+}
+// ...use temp dir…
+os.RemoveAll(dir) // ignore errors; $TMPDIR is cleaned periodically
+</code></pre>
+<p>尽管os.RemoveAll会失败，但上面的例子并没有做错误处理。这是因为操作系统会定期的清理临时目录。正因如此，虽然程序没有处理错误，但程序的逻辑不会因此受到影响。我们应该在每次函数调用后，都养成考虑错误处理的习惯，当你决定忽略某个错误时，你应该清晰地写下你的意图。</p>
+<p>在Go中，错误处理有一套独特的编码风格。检查某个子函数是否失败后，我们通常将处理失败的逻辑代码放在处理成功的代码之前。如果某个错误会导致函数返回，那么成功时的逻辑代码不应放在else语句块中，而应直接放在函数体中。Go中大部分函数的代码结构几乎相同，首先是一系列的初始检查，防止错误发生，之后是函数的实际逻辑。</p>
+<h3 id="542-文件结尾错误eof"><a class="header" href="#542-文件结尾错误eof">5.4.2. 文件结尾错误（EOF）</a></h3>
+<p>函数经常会返回多种错误，这对终端用户来说可能会很有趣，但对程序而言，这使得情况变得复杂。很多时候，程序必须根据错误类型，作出不同的响应。让我们考虑这样一个例子：从文件中读取n个字节。如果n等于文件的长度，读取过程的任何错误都表示失败。如果n小于文件的长度，调用者会重复的读取固定大小的数据直到文件结束。这会导致调用者必须分别处理由文件结束引起的各种错误。基于这样的原因，io包保证任何由文件结束引起的读取失败都返回同一个错误——io.EOF，该错误在io包中定义：</p>
+<pre><code class="language-Go">package io
+
+import &quot;errors&quot;
+
+// EOF is the error returned by Read when no more input is available.
+var EOF = errors.New(&quot;EOF&quot;)
+</code></pre>
+<p>调用者只需通过简单的比较，就可以检测出这个错误。下面的例子展示了如何从标准输入中读取字符，以及判断文件结束。（4.3的chartcount程序展示了更加复杂的代码）</p>
+<pre><code class="language-Go">in := bufio.NewReader(os.Stdin)
+for {
+	r, _, err := in.ReadRune()
+	if err == io.EOF {
+		break // finished reading
+	}
+	if err != nil {
+		return fmt.Errorf(&quot;read failed:%v&quot;, err)
+	}
+	// ...use r…
+}
+</code></pre>
+<p>因为文件结束这种错误不需要更多的描述，所以io.EOF有固定的错误信息——“EOF”。对于其他错误，我们可能需要在错误信息中描述错误的类型和数量，这使得我们不能像io.EOF一样采用固定的错误信息。在7.11节中，我们会提出更系统的方法区分某些固定的错误值。</p>
+
+
+                        <!-- 公众号 -->
+                        <hr>
+                        <table>
+                            <tr>
+                            <td>
+                            <img width="222px" src="https://chai2010.cn/advanced-go-programming-book/css.png">
+                            </td>
+                            <td>
+                            <img width="222px" src="https://chai2010.cn/advanced-go-programming-book/cch.png">
+                            </td>
+                            </tr>
+                        </table>
+
+                        <div id="giscus-container"></div>
+                        <footer class="page-footer">
+                            <span>© 2015-2016 | <a href="https://github.com/gopl-zh"> Go语言圣经中文版</a>, 仅学习交流使用</span>
+                        </footer>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../ch5/ch5-03.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="../ch5/ch5-05.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../ch5/ch5-03.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="../ch5/ch5-05.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript" charset="utf-8">
+        var pagePath = "ch5/ch5-04.md"
+        </script>
+
+
+        <!-- Custom JS scripts -->
+                <script type="text/javascript" src="../js/custom.js"></script>
+                <script type="text/javascript" src="../js/bigPicture.js"></script>
+        
+        
+    </body>
+</html>

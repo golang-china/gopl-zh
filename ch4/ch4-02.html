@@ -1,0 +1,483 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Slice - Go语言圣经</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="&lt;The Go Programming Language&gt;中文版">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+                <link rel="stylesheet" href="../style.css">
+        
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Go语言圣经</a></li><li class="chapter-item expanded affix "><a href="../preface.html">前言</a></li><li class="chapter-item expanded "><a href="../ch1/ch1.html"><strong aria-hidden="true">1.</strong> 入门</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch1/ch1-01.html"><strong aria-hidden="true">1.1.</strong> Hello, World</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-02.html"><strong aria-hidden="true">1.2.</strong> 命令行参数</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-03.html"><strong aria-hidden="true">1.3.</strong> 查找重复的行</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-04.html"><strong aria-hidden="true">1.4.</strong> GIF动画</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-05.html"><strong aria-hidden="true">1.5.</strong> 获取URL</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-06.html"><strong aria-hidden="true">1.6.</strong> 并发获取多个URL</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-07.html"><strong aria-hidden="true">1.7.</strong> Web服务</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-08.html"><strong aria-hidden="true">1.8.</strong> 本章要点</a></li></ol></li><li class="chapter-item expanded "><a href="../ch2/ch2.html"><strong aria-hidden="true">2.</strong> 程序结构</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch2/ch2-01.html"><strong aria-hidden="true">2.1.</strong> 命名</a></li><li class="chapter-item expanded "><a href="../ch2/ch2-02.html"><strong aria-hidden="true">2.2.</strong> 声明</a></li><li class="chapter-item expanded "><a href="../ch2/ch2-03.html"><strong aria-hidden="true">2.3.</strong> 变量</a></li><li class="chapter-item expanded "><a href="../ch2/ch2-04.html"><strong aria-hidden="true">2.4.</strong> 赋值</a></li><li class="chapter-item expanded "><a href="../ch2/ch2-05.html"><strong aria-hidden="true">2.5.</strong> 类型</a></li><li class="chapter-item expanded "><a href="../ch2/ch2-06.html"><strong aria-hidden="true">2.6.</strong> 包和文件</a></li><li class="chapter-item expanded "><a href="../ch2/ch2-07.html"><strong aria-hidden="true">2.7.</strong> 作用域</a></li></ol></li><li class="chapter-item expanded "><a href="../ch3/ch3.html"><strong aria-hidden="true">3.</strong> 基础数据类型</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch3/ch3-01.html"><strong aria-hidden="true">3.1.</strong> 整型</a></li><li class="chapter-item expanded "><a href="../ch3/ch3-02.html"><strong aria-hidden="true">3.2.</strong> 浮点数</a></li><li class="chapter-item expanded "><a href="../ch3/ch3-03.html"><strong aria-hidden="true">3.3.</strong> 复数</a></li><li class="chapter-item expanded "><a href="../ch3/ch3-04.html"><strong aria-hidden="true">3.4.</strong> 布尔型</a></li><li class="chapter-item expanded "><a href="../ch3/ch3-05.html"><strong aria-hidden="true">3.5.</strong> 字符串</a></li><li class="chapter-item expanded "><a href="../ch3/ch3-06.html"><strong aria-hidden="true">3.6.</strong> 常量</a></li></ol></li><li class="chapter-item expanded "><a href="../ch4/ch4.html"><strong aria-hidden="true">4.</strong> 复合数据类型</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch4/ch4-01.html"><strong aria-hidden="true">4.1.</strong> 数组</a></li><li class="chapter-item expanded "><a href="../ch4/ch4-02.html" class="active"><strong aria-hidden="true">4.2.</strong> Slice</a></li><li class="chapter-item expanded "><a href="../ch4/ch4-03.html"><strong aria-hidden="true">4.3.</strong> Map</a></li><li class="chapter-item expanded "><a href="../ch4/ch4-04.html"><strong aria-hidden="true">4.4.</strong> 结构体</a></li><li class="chapter-item expanded "><a href="../ch4/ch4-05.html"><strong aria-hidden="true">4.5.</strong> JSON</a></li><li class="chapter-item expanded "><a href="../ch4/ch4-06.html"><strong aria-hidden="true">4.6.</strong> 文本和HTML模板</a></li></ol></li><li class="chapter-item expanded "><a href="../ch5/ch5.html"><strong aria-hidden="true">5.</strong> 函数</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch5/ch5-01.html"><strong aria-hidden="true">5.1.</strong> 函数声明</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-02.html"><strong aria-hidden="true">5.2.</strong> 递归</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-03.html"><strong aria-hidden="true">5.3.</strong> 多返回值</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-04.html"><strong aria-hidden="true">5.4.</strong> 错误</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-05.html"><strong aria-hidden="true">5.5.</strong> 函数值</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-06.html"><strong aria-hidden="true">5.6.</strong> 匿名函数</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-07.html"><strong aria-hidden="true">5.7.</strong> 可变参数</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-08.html"><strong aria-hidden="true">5.8.</strong> Deferred函数</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-09.html"><strong aria-hidden="true">5.9.</strong> Panic异常</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-10.html"><strong aria-hidden="true">5.10.</strong> Recover捕获异常</a></li></ol></li><li class="chapter-item expanded "><a href="../ch6/ch6.html"><strong aria-hidden="true">6.</strong> 方法</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch6/ch6-01.html"><strong aria-hidden="true">6.1.</strong> 方法声明</a></li><li class="chapter-item expanded "><a href="../ch6/ch6-02.html"><strong aria-hidden="true">6.2.</strong> 基于指针对象的方法</a></li><li class="chapter-item expanded "><a href="../ch6/ch6-03.html"><strong aria-hidden="true">6.3.</strong> 通过嵌入结构体来扩展类型</a></li><li class="chapter-item expanded "><a href="../ch6/ch6-04.html"><strong aria-hidden="true">6.4.</strong> 方法值和方法表达式</a></li><li class="chapter-item expanded "><a href="../ch6/ch6-05.html"><strong aria-hidden="true">6.5.</strong> 示例: Bit数组</a></li><li class="chapter-item expanded "><a href="../ch6/ch6-06.html"><strong aria-hidden="true">6.6.</strong> 封装</a></li></ol></li><li class="chapter-item expanded "><a href="../ch7/ch7.html"><strong aria-hidden="true">7.</strong> 接口</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch7/ch7-01.html"><strong aria-hidden="true">7.1.</strong> 接口是合约</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-02.html"><strong aria-hidden="true">7.2.</strong> 接口类型</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-03.html"><strong aria-hidden="true">7.3.</strong> 实现接口的条件</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-04.html"><strong aria-hidden="true">7.4.</strong> flag.Value接口</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-05.html"><strong aria-hidden="true">7.5.</strong> 接口值</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-06.html"><strong aria-hidden="true">7.6.</strong> sort.Interface接口</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-07.html"><strong aria-hidden="true">7.7.</strong> http.Handler接口</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-08.html"><strong aria-hidden="true">7.8.</strong> error接口</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-09.html"><strong aria-hidden="true">7.9.</strong> 示例: 表达式求值</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-10.html"><strong aria-hidden="true">7.10.</strong> 类型断言</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-11.html"><strong aria-hidden="true">7.11.</strong> 基于类型断言识别错误类型</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-12.html"><strong aria-hidden="true">7.12.</strong> 通过类型断言查询接口</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-13.html"><strong aria-hidden="true">7.13.</strong> 类型分支</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-14.html"><strong aria-hidden="true">7.14.</strong> 示例: 基于标记的XML解码</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-15.html"><strong aria-hidden="true">7.15.</strong> 补充几点</a></li></ol></li><li class="chapter-item expanded "><a href="../ch8/ch8.html"><strong aria-hidden="true">8.</strong> Goroutines和Channels</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch8/ch8-01.html"><strong aria-hidden="true">8.1.</strong> Goroutines</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-02.html"><strong aria-hidden="true">8.2.</strong> 示例: 并发的Clock服务</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-03.html"><strong aria-hidden="true">8.3.</strong> 示例: 并发的Echo服务</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-04.html"><strong aria-hidden="true">8.4.</strong> Channels</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-05.html"><strong aria-hidden="true">8.5.</strong> 并发的循环</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-06.html"><strong aria-hidden="true">8.6.</strong> 示例: 并发的Web爬虫</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-07.html"><strong aria-hidden="true">8.7.</strong> 基于select的多路复用</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-09.html"><strong aria-hidden="true">8.8.</strong> 并发的退出</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-10.html"><strong aria-hidden="true">8.9.</strong> 示例: 聊天服务</a></li></ol></li><li class="chapter-item expanded "><a href="../ch9/ch9.html"><strong aria-hidden="true">9.</strong> 基于共享变量的并发</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch9/ch9-01.html"><strong aria-hidden="true">9.1.</strong> 竞争条件</a></li><li class="chapter-item expanded "><a href="../ch9/ch9-02.html"><strong aria-hidden="true">9.2.</strong> sync.Mutex互斥锁</a></li><li class="chapter-item expanded "><a href="../ch9/ch9-03.html"><strong aria-hidden="true">9.3.</strong> sync.RWMutex读写锁</a></li><li class="chapter-item expanded "><a href="../ch9/ch9-04.html"><strong aria-hidden="true">9.4.</strong> 内存同步</a></li><li class="chapter-item expanded "><a href="../ch9/ch9-06.html"><strong aria-hidden="true">9.5.</strong> 竞争条件检测</a></li><li class="chapter-item expanded "><a href="../ch9/ch9-07.html"><strong aria-hidden="true">9.6.</strong> 示例: 并发的非阻塞缓存</a></li><li class="chapter-item expanded "><a href="../ch9/ch9-08.html"><strong aria-hidden="true">9.7.</strong> Goroutines和线程</a></li></ol></li><li class="chapter-item expanded "><a href="../ch10/ch10.html"><strong aria-hidden="true">10.</strong> 包和工具</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch10/ch10-01.html"><strong aria-hidden="true">10.1.</strong> 包简介</a></li><li class="chapter-item expanded "><a href="../ch10/ch10-02.html"><strong aria-hidden="true">10.2.</strong> 导入路径</a></li><li class="chapter-item expanded "><a href="../ch10/ch10-03.html"><strong aria-hidden="true">10.3.</strong> 包声明</a></li><li class="chapter-item expanded "><a href="../ch10/ch10-04.html"><strong aria-hidden="true">10.4.</strong> 导入声明</a></li><li class="chapter-item expanded "><a href="../ch10/ch10-05.html"><strong aria-hidden="true">10.5.</strong> 包的匿名导入</a></li><li class="chapter-item expanded "><a href="../ch10/ch10-06.html"><strong aria-hidden="true">10.6.</strong> 包和命名</a></li><li class="chapter-item expanded "><a href="../ch10/ch10-07.html"><strong aria-hidden="true">10.7.</strong> 工具</a></li></ol></li><li class="chapter-item expanded "><a href="../ch11/ch11.html"><strong aria-hidden="true">11.</strong> 测试</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch11/ch11-01.html"><strong aria-hidden="true">11.1.</strong> go test</a></li><li class="chapter-item expanded "><a href="../ch11/ch11-02.html"><strong aria-hidden="true">11.2.</strong> 测试函数</a></li><li class="chapter-item expanded "><a href="../ch11/ch11-03.html"><strong aria-hidden="true">11.3.</strong> 测试覆盖率</a></li><li class="chapter-item expanded "><a href="../ch11/ch11-04.html"><strong aria-hidden="true">11.4.</strong> 基准测试</a></li><li class="chapter-item expanded "><a href="../ch11/ch11-05.html"><strong aria-hidden="true">11.5.</strong> 剖析</a></li><li class="chapter-item expanded "><a href="../ch11/ch11-06.html"><strong aria-hidden="true">11.6.</strong> 示例函数</a></li></ol></li><li class="chapter-item expanded "><a href="../ch12/ch12.html"><strong aria-hidden="true">12.</strong> 反射</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch12/ch12-01.html"><strong aria-hidden="true">12.1.</strong> 为何需要反射?</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-02.html"><strong aria-hidden="true">12.2.</strong> reflect.Type和reflect.Value</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-03.html"><strong aria-hidden="true">12.3.</strong> Display递归打印</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-04.html"><strong aria-hidden="true">12.4.</strong> 示例: 编码S表达式</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-05.html"><strong aria-hidden="true">12.5.</strong> 通过reflect.Value修改值</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-06.html"><strong aria-hidden="true">12.6.</strong> 示例: 解码S表达式</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-08.html"><strong aria-hidden="true">12.7.</strong> 显示一个类型的方法集</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-09.html"><strong aria-hidden="true">12.8.</strong> 几点忠告</a></li></ol></li><li class="chapter-item expanded "><a href="../ch13/ch13.html"><strong aria-hidden="true">13.</strong> 底层编程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch13/ch13-01.html"><strong aria-hidden="true">13.1.</strong> unsafe.Sizeof, Alignof 和 Offsetof</a></li><li class="chapter-item expanded "><a href="../ch13/ch13-02.html"><strong aria-hidden="true">13.2.</strong> unsafe.Pointer</a></li><li class="chapter-item expanded "><a href="../ch13/ch13-03.html"><strong aria-hidden="true">13.3.</strong> 示例: 深度相等判断</a></li><li class="chapter-item expanded "><a href="../ch13/ch13-04.html"><strong aria-hidden="true">13.4.</strong> 通过cgo调用C代码</a></li><li class="chapter-item expanded "><a href="../ch13/ch13-05.html"><strong aria-hidden="true">13.5.</strong> 几点忠告</a></li></ol></li><li class="chapter-item expanded "><a href="../appendix/appendix.html"><strong aria-hidden="true">14.</strong> 附录</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../appendix/appendix-a-errata.html"><strong aria-hidden="true">14.1.</strong> 附录A：原文勘误</a></li><li class="chapter-item expanded "><a href="../appendix/appendix-b-author.html"><strong aria-hidden="true">14.2.</strong> 附录B：作者译者</a></li><li class="chapter-item expanded "><a href="../appendix/appendix-c-cpoyright.html"><strong aria-hidden="true">14.3.</strong> 附录C：译文授权</a></li><li class="chapter-item expanded "><a href="../appendix/appendix-d-translations.html"><strong aria-hidden="true">14.4.</strong> 附录D：其它语言</a></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">Go语言圣经</h1>
+
+                    <div class="right-buttons">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        <a href="https://github.com/gopl-zh/gopl-zh.github.com" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                                                                        <a href="https://github.com/gopl-zh/gopl-zh.github.com/edit/master/./ch4/ch4-02.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <!-- Page table of contents -->
+                    <div class="sidetoc"><nav class="pagetoc"></nav></div>
+                    <main>
+                        <!-- 头部 -->
+                        <ul dir="auto">
+                        <li><em>KusonStack一站式可编程配置技术栈(Go): <a href="https://github.com/KusionStack/kusion">https://github.com/KusionStack/kusion</a></em></li>
+                        <li><em>KCL 配置编程语言(Rust): <a href="https://github.com/KusionStack/KCLVM">https://github.com/KusionStack/KCLVM</a></em></li>
+						<li><em>凹语言™: <a href="https://github.com/wa-lang/wa">https://github.com/wa-lang/wa</a></em></li>
+                        </ul>
+                        <hr>
+
+                        <h2 id="42-slice"><a class="header" href="#42-slice">4.2. Slice</a></h2>
+<p>Slice（切片）代表变长的序列，序列中每个元素都有相同的类型。一个slice类型一般写作[]T，其中T代表slice中元素的类型；slice的语法和数组很像，只是没有固定长度而已。</p>
+<p>数组和slice之间有着紧密的联系。一个slice是一个轻量级的数据结构，提供了访问数组子序列（或者全部）元素的功能，而且slice的底层确实引用一个数组对象。一个slice由三个部分构成：指针、长度和容量。指针指向第一个slice元素对应的底层数组元素的地址，要注意的是slice的第一个元素并不一定就是数组的第一个元素。长度对应slice中元素的数目；长度不能超过容量，容量一般是从slice的开始位置到底层数据的结尾位置。内置的len和cap函数分别返回slice的长度和容量。</p>
+<p>多个slice之间可以共享底层的数据，并且引用的数组部分区间可能重叠。图4.1显示了表示一年中每个月份名字的字符串数组，还有重叠引用了该数组的两个slice。数组这样定义</p>
+<pre><code class="language-Go">months := [...]string{1: &quot;January&quot;, /* ... */, 12: &quot;December&quot;}
+</code></pre>
+<p>因此一月份是months[1]，十二月份是months[12]。通常，数组的第一个元素从索引0开始，但是月份一般是从1开始的，因此我们声明数组时直接跳过第0个元素，第0个元素会被自动初始化为空字符串。</p>
+<p>slice的切片操作s[i:j]，其中0 ≤ i≤ j≤ cap(s)，用于创建一个新的slice，引用s的从第i个元素开始到第j-1个元素的子序列。新的slice将只有j-i个元素。如果i位置的索引被省略的话将使用0代替，如果j位置的索引被省略的话将使用len(s)代替。因此，months[1:13]切片操作将引用全部有效的月份，和months[1:]操作等价；months[:]切片操作则是引用整个数组。让我们分别定义表示第二季度和北方夏天月份的slice，它们有重叠部分：</p>
+<p><img src="../images/ch4-01.png" alt="" /></p>
+<pre><code class="language-Go">Q2 := months[4:7]
+summer := months[6:9]
+fmt.Println(Q2)     // [&quot;April&quot; &quot;May&quot; &quot;June&quot;]
+fmt.Println(summer) // [&quot;June&quot; &quot;July&quot; &quot;August&quot;]
+</code></pre>
+<p>两个slice都包含了六月份，下面的代码是一个包含相同月份的测试（性能较低）：</p>
+<pre><code class="language-Go">for _, s := range summer {
+	for _, q := range Q2 {
+		if s == q {
+			fmt.Printf(&quot;%s appears in both\n&quot;, s)
+		}
+	}
+}
+</code></pre>
+<p>如果切片操作超出cap(s)的上限将导致一个panic异常，但是超出len(s)则是意味着扩展了slice，因为新slice的长度会变大：</p>
+<pre><code class="language-Go">fmt.Println(summer[:20]) // panic: out of range
+
+endlessSummer := summer[:5] // extend a slice (within capacity)
+fmt.Println(endlessSummer)  // &quot;[June July August September October]&quot;
+</code></pre>
+<p>另外，字符串的切片操作和[]byte字节类型切片的切片操作是类似的。都写作x[m:n]，并且都是返回一个原始字节序列的子序列，底层都是共享之前的底层数组，因此这种操作都是常量时间复杂度。x[m:n]切片操作对于字符串则生成一个新字符串，如果x是[]byte的话则生成一个新的[]byte。</p>
+<p>因为slice值包含指向第一个slice元素的指针，因此向函数传递slice将允许在函数内部修改底层数组的元素。换句话说，复制一个slice只是对底层的数组创建了一个新的slice别名（§2.3.2）。下面的reverse函数在原内存空间将[]int类型的slice反转，而且它可以用于任意长度的slice。</p>
+<p><u><i>gopl.io/ch4/rev</i></u></p>
+<pre><code class="language-Go">// reverse reverses a slice of ints in place.
+func reverse(s []int) {
+	for i, j := 0, len(s)-1; i &lt; j; i, j = i+1, j-1 {
+		s[i], s[j] = s[j], s[i]
+	}
+}
+</code></pre>
+<p>这里我们反转数组的应用：</p>
+<pre><code class="language-Go">a := [...]int{0, 1, 2, 3, 4, 5}
+reverse(a[:])
+fmt.Println(a) // &quot;[5 4 3 2 1 0]&quot;
+</code></pre>
+<p>一种将slice元素循环向左旋转n个元素的方法是三次调用reverse反转函数，第一次是反转开头的n个元素，然后是反转剩下的元素，最后是反转整个slice的元素。（如果是向右循环旋转，则将第三个函数调用移到第一个调用位置就可以了。）</p>
+<pre><code class="language-Go">s := []int{0, 1, 2, 3, 4, 5}
+// Rotate s left by two positions.
+reverse(s[:2])
+reverse(s[2:])
+reverse(s)
+fmt.Println(s) // &quot;[2 3 4 5 0 1]&quot;
+</code></pre>
+<p>要注意的是slice类型的变量s和数组类型的变量a的初始化语法的差异。slice和数组的字面值语法很类似，它们都是用花括弧包含一系列的初始化元素，但是对于slice并没有指明序列的长度。这会隐式地创建一个合适大小的数组，然后slice的指针指向底层的数组。就像数组字面值一样，slice的字面值也可以按顺序指定初始化值序列，或者是通过索引和元素值指定，或者用两种风格的混合语法初始化。</p>
+<p>和数组不同的是，slice之间不能比较，因此我们不能使用==操作符来判断两个slice是否含有全部相等元素。不过标准库提供了高度优化的bytes.Equal函数来判断两个字节型slice是否相等（[]byte），但是对于其他类型的slice，我们必须自己展开每个元素进行比较：</p>
+<pre><code class="language-Go">func equal(x, y []string) bool {
+	if len(x) != len(y) {
+		return false
+	}
+	for i := range x {
+		if x[i] != y[i] {
+			return false
+		}
+	}
+	return true
+}
+</code></pre>
+<p>上面关于两个slice的深度相等测试，运行的时间并不比支持==操作的数组或字符串更多，但是为何slice不直接支持比较运算符呢？这方面有两个原因。第一个原因，一个slice的元素是间接引用的，一个slice甚至可以包含自身（译注：当slice声明为[]interface{}时，slice的元素可以是自身）。虽然有很多办法处理这种情形，但是没有一个是简单有效的。</p>
+<p>第二个原因，因为slice的元素是间接引用的，一个固定的slice值（译注：指slice本身的值，不是元素的值）在不同的时刻可能包含不同的元素，因为底层数组的元素可能会被修改。而例如Go语言中map的key只做简单的浅拷贝，它要求key在整个生命周期内保持不变性（译注：例如slice扩容，就会导致其本身的值/地址变化）。而用深度相等判断的话，显然在map的key这种场合不合适。对于像指针或chan之类的引用类型，==相等测试可以判断两个是否是引用相同的对象。一个针对slice的浅相等测试的==操作符可能是有一定用处的，也能临时解决map类型的key问题，但是slice和数组不同的相等测试行为会让人困惑。因此，安全的做法是直接禁止slice之间的比较操作。</p>
+<p>slice唯一合法的比较操作是和nil比较，例如：</p>
+<pre><code class="language-Go">if summer == nil { /* ... */ }
+</code></pre>
+<p>一个零值的slice等于nil。一个nil值的slice并没有底层数组。一个nil值的slice的长度和容量都是0，但是也有非nil值的slice的长度和容量也是0的，例如[]int{}或make([]int, 3)[3:]。与任意类型的nil值一样，我们可以用[]int(nil)类型转换表达式来生成一个对应类型slice的nil值。</p>
+<pre><code class="language-Go">var s []int    // len(s) == 0, s == nil
+s = nil        // len(s) == 0, s == nil
+s = []int(nil) // len(s) == 0, s == nil
+s = []int{}    // len(s) == 0, s != nil
+</code></pre>
+<p>如果你需要测试一个slice是否是空的，使用len(s) == 0来判断，而不应该用s == nil来判断。除了和nil相等比较外，一个nil值的slice的行为和其它任意0长度的slice一样；例如reverse(nil)也是安全的。除了文档已经明确说明的地方，所有的Go语言函数应该以相同的方式对待nil值的slice和0长度的slice。</p>
+<p>内置的make函数创建一个指定元素类型、长度和容量的slice。容量部分可以省略，在这种情况下，容量将等于长度。</p>
+<pre><code class="language-Go">make([]T, len)
+make([]T, len, cap) // same as make([]T, cap)[:len]
+</code></pre>
+<p>在底层，make创建了一个匿名的数组变量，然后返回一个slice；只有通过返回的slice才能引用底层匿名的数组变量。在第一种语句中，slice是整个数组的view。在第二个语句中，slice只引用了底层数组的前len个元素，但是容量将包含整个的数组。额外的元素是留给未来的增长用的。</p>
+<h3 id="421-append函数"><a class="header" href="#421-append函数">4.2.1. append函数</a></h3>
+<p>内置的append函数用于向slice追加元素：</p>
+<pre><code class="language-Go">var runes []rune
+for _, r := range &quot;Hello, 世界&quot; {
+	runes = append(runes, r)
+}
+fmt.Printf(&quot;%q\n&quot;, runes) // &quot;['H' 'e' 'l' 'l' 'o' ',' ' ' '世' '界']&quot;
+</code></pre>
+<p>在循环中使用append函数构建一个由九个rune字符构成的slice，当然对应这个特殊的问题我们可以通过Go语言内置的[]rune(&quot;Hello, 世界&quot;)转换操作完成。</p>
+<p>append函数对于理解slice底层是如何工作的非常重要，所以让我们仔细查看究竟是发生了什么。下面是第一个版本的appendInt函数，专门用于处理[]int类型的slice：</p>
+<p><u><i>gopl.io/ch4/append</i></u></p>
+<pre><code class="language-Go">func appendInt(x []int, y int) []int {
+	var z []int
+	zlen := len(x) + 1
+	if zlen &lt;= cap(x) {
+		// There is room to grow.  Extend the slice.
+		z = x[:zlen]
+	} else {
+		// There is insufficient space.  Allocate a new array.
+		// Grow by doubling, for amortized linear complexity.
+		zcap := zlen
+		if zcap &lt; 2*len(x) {
+			zcap = 2 * len(x)
+		}
+		z = make([]int, zlen, zcap)
+		copy(z, x) // a built-in function; see text
+	}
+	z[len(x)] = y
+	return z
+}
+</code></pre>
+<p>每次调用appendInt函数，必须先检测slice底层数组是否有足够的容量来保存新添加的元素。如果有足够空间的话，直接扩展slice（依然在原有的底层数组之上），将新添加的y元素复制到新扩展的空间，并返回slice。因此，输入的x和输出的z共享相同的底层数组。</p>
+<p>如果没有足够的增长空间的话，appendInt函数则会先分配一个足够大的slice用于保存新的结果，先将输入的x复制到新的空间，然后添加y元素。结果z和输入的x引用的将是不同的底层数组。</p>
+<p>虽然通过循环复制元素更直接，不过内置的copy函数可以方便地将一个slice复制另一个相同类型的slice。copy函数的第一个参数是要复制的目标slice，第二个参数是源slice，目标和源的位置顺序和<code>dst = src</code>赋值语句是一致的。两个slice可以共享同一个底层数组，甚至有重叠也没有问题。copy函数将返回成功复制的元素的个数（我们这里没有用到），等于两个slice中较小的长度，所以我们不用担心覆盖会超出目标slice的范围。</p>
+<p>为了提高内存使用效率，新分配的数组一般略大于保存x和y所需要的最低大小。通过在每次扩展数组时直接将长度翻倍从而避免了多次内存分配，也确保了添加单个元素操作的平均时间是一个常数时间。这个程序演示了效果：</p>
+<pre><code class="language-Go">func main() {
+	var x, y []int
+	for i := 0; i &lt; 10; i++ {
+		y = appendInt(x, i)
+		fmt.Printf(&quot;%d cap=%d\t%v\n&quot;, i, cap(y), y)
+		x = y
+	}
+}
+</code></pre>
+<p>每一次容量的变化都会导致重新分配内存和copy操作：</p>
+<pre><code>0  cap=1    [0]
+1  cap=2    [0 1]
+2  cap=4    [0 1 2]
+3  cap=4    [0 1 2 3]
+4  cap=8    [0 1 2 3 4]
+5  cap=8    [0 1 2 3 4 5]
+6  cap=8    [0 1 2 3 4 5 6]
+7  cap=8    [0 1 2 3 4 5 6 7]
+8  cap=16   [0 1 2 3 4 5 6 7 8]
+9  cap=16   [0 1 2 3 4 5 6 7 8 9]
+</code></pre>
+<p>让我们仔细查看i=3次的迭代。当时x包含了[0 1 2]三个元素，但是容量是4，因此可以简单将新的元素添加到末尾，不需要新的内存分配。然后新的y的长度和容量都是4，并且和x引用着相同的底层数组，如图4.2所示。</p>
+<p><img src="../images/ch4-02.png" alt="" /></p>
+<p>在下一次迭代时i=4，现在没有新的空余的空间了，因此appendInt函数分配一个容量为8的底层数组，将x的4个元素[0 1 2 3]复制到新空间的开头，然后添加新的元素i，新元素的值是4。新的y的长度是5，容量是8；后面有3个空闲的位置，三次迭代都不需要分配新的空间。当前迭代中，y和x是对应不同底层数组的view。这次操作如图4.3所示。</p>
+<p><img src="../images/ch4-03.png" alt="" /></p>
+<p>内置的append函数可能使用比appendInt更复杂的内存扩展策略。因此，通常我们并不知道append调用是否导致了内存的重新分配，因此我们也不能确认新的slice和原始的slice是否引用的是相同的底层数组空间。同样，我们不能确认在原先的slice上的操作是否会影响到新的slice。因此，通常是将append返回的结果直接赋值给输入的slice变量：</p>
+<pre><code class="language-Go">runes = append(runes, r)
+</code></pre>
+<p>更新slice变量不仅对调用append函数是必要的，实际上对应任何可能导致长度、容量或底层数组变化的操作都是必要的。要正确地使用slice，需要记住尽管底层数组的元素是间接访问的，但是slice对应结构体本身的指针、长度和容量部分是直接访问的。要更新这些信息需要像上面例子那样一个显式的赋值操作。从这个角度看，slice并不是一个纯粹的引用类型，它实际上是一个类似下面结构体的聚合类型：</p>
+<pre><code class="language-Go">type IntSlice struct {
+	ptr      *int
+	len, cap int
+}
+</code></pre>
+<p>我们的appendInt函数每次只能向slice追加一个元素，但是内置的append函数则可以追加多个元素，甚至追加一个slice。</p>
+<pre><code class="language-Go">var x []int
+x = append(x, 1)
+x = append(x, 2, 3)
+x = append(x, 4, 5, 6)
+x = append(x, x...) // append the slice x
+fmt.Println(x)      // &quot;[1 2 3 4 5 6 1 2 3 4 5 6]&quot;
+</code></pre>
+<p>通过下面的小修改，我们可以达到append函数类似的功能。其中在appendInt函数参数中的最后的“...”省略号表示接收变长的参数为slice。我们将在5.7节详细解释这个特性。</p>
+<pre><code class="language-Go">func appendInt(x []int, y ...int) []int {
+	var z []int
+	zlen := len(x) + len(y)
+	// ...expand z to at least zlen...
+	copy(z[len(x):], y)
+	return z
+}
+</code></pre>
+<p>为了避免重复，和前面相同的代码并没有显示。</p>
+<h3 id="422-slice内存技巧"><a class="header" href="#422-slice内存技巧">4.2.2. Slice内存技巧</a></h3>
+<p>让我们看看更多的例子，比如旋转slice、反转slice或在slice原有内存空间修改元素。给定一个字符串列表，下面的nonempty函数将在原有slice内存空间之上返回不包含空字符串的列表：</p>
+<p><u><i>gopl.io/ch4/nonempty</i></u></p>
+<pre><code class="language-Go">// Nonempty is an example of an in-place slice algorithm.
+package main
+
+import &quot;fmt&quot;
+
+// nonempty returns a slice holding only the non-empty strings.
+// The underlying array is modified during the call.
+func nonempty(strings []string) []string {
+	i := 0
+	for _, s := range strings {
+		if s != &quot;&quot; {
+			strings[i] = s
+			i++
+		}
+	}
+	return strings[:i]
+}
+</code></pre>
+<p>比较微妙的地方是，输入的slice和输出的slice共享一个底层数组。这可以避免分配另一个数组，不过原来的数据将可能会被覆盖，正如下面两个打印语句看到的那样：</p>
+<pre><code class="language-Go">data := []string{&quot;one&quot;, &quot;&quot;, &quot;three&quot;}
+fmt.Printf(&quot;%q\n&quot;, nonempty(data)) // `[&quot;one&quot; &quot;three&quot;]`
+fmt.Printf(&quot;%q\n&quot;, data)           // `[&quot;one&quot; &quot;three&quot; &quot;three&quot;]`
+</code></pre>
+<p>因此我们通常会这样使用nonempty函数：<code>data = nonempty(data)</code>。</p>
+<p>nonempty函数也可以使用append函数实现：</p>
+<pre><code class="language-Go">func nonempty2(strings []string) []string {
+	out := strings[:0] // zero-length slice of original
+	for _, s := range strings {
+		if s != &quot;&quot; {
+			out = append(out, s)
+		}
+	}
+	return out
+}
+</code></pre>
+<p>无论如何实现，以这种方式重用一个slice一般都要求最多为每个输入值产生一个输出值，事实上很多这类算法都是用来过滤或合并序列中相邻的元素。这种slice用法是比较复杂的技巧，虽然使用到了slice的一些技巧，但是对于某些场合是比较清晰和有效的。</p>
+<p>一个slice可以用来模拟一个stack。最初给定的空slice对应一个空的stack，然后可以使用append函数将新的值压入stack：</p>
+<pre><code class="language-Go">stack = append(stack, v) // push v
+</code></pre>
+<p>stack的顶部位置对应slice的最后一个元素：</p>
+<pre><code class="language-Go">top := stack[len(stack)-1] // top of stack
+</code></pre>
+<p>通过收缩stack可以弹出栈顶的元素</p>
+<pre><code class="language-Go">stack = stack[:len(stack)-1] // pop
+</code></pre>
+<p>要删除slice中间的某个元素并保存原有的元素顺序，可以通过内置的copy函数将后面的子slice向前依次移动一位完成：</p>
+<pre><code class="language-Go">func remove(slice []int, i int) []int {
+	copy(slice[i:], slice[i+1:])
+	return slice[:len(slice)-1]
+}
+
+func main() {
+	s := []int{5, 6, 7, 8, 9}
+	fmt.Println(remove(s, 2)) // &quot;[5 6 8 9]&quot;
+}
+</code></pre>
+<p>如果删除元素后不用保持原来顺序的话，我们可以简单的用最后一个元素覆盖被删除的元素：</p>
+<pre><code class="language-Go">func remove(slice []int, i int) []int {
+	slice[i] = slice[len(slice)-1]
+	return slice[:len(slice)-1]
+}
+
+func main() {
+	s := []int{5, 6, 7, 8, 9}
+	fmt.Println(remove(s, 2)) // &quot;[5 6 9 8]
+}
+</code></pre>
+<p><strong>练习 4.3：</strong> 重写reverse函数，使用数组指针代替slice。</p>
+<p><strong>练习 4.4：</strong> 编写一个rotate函数，通过一次循环完成旋转。</p>
+<p><strong>练习 4.5：</strong> 写一个函数在原地完成消除[]string中相邻重复的字符串的操作。</p>
+<p><strong>练习 4.6：</strong> 编写一个函数，原地将一个UTF-8编码的[]byte类型的slice中相邻的空格（参考unicode.IsSpace）替换成一个空格返回</p>
+<p><strong>练习 4.7：</strong> 修改reverse函数用于原地反转UTF-8编码的[]byte。是否可以不用分配额外的内存？</p>
+
+
+                        <!-- 公众号 -->
+                        <hr>
+                        <table>
+                            <tr>
+                            <td>
+                            <img width="222px" src="https://chai2010.cn/advanced-go-programming-book/css.png">
+                            </td>
+                            <td>
+                            <img width="222px" src="https://chai2010.cn/advanced-go-programming-book/cch.png">
+                            </td>
+                            </tr>
+                        </table>
+
+                        <div id="giscus-container"></div>
+                        <footer class="page-footer">
+                            <span>© 2015-2016 | <a href="https://github.com/gopl-zh"> Go语言圣经中文版</a>, 仅学习交流使用</span>
+                        </footer>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../ch4/ch4-01.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="../ch4/ch4-03.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../ch4/ch4-01.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="../ch4/ch4-03.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript" charset="utf-8">
+        var pagePath = "ch4/ch4-02.md"
+        </script>
+
+
+        <!-- Custom JS scripts -->
+                <script type="text/javascript" src="../js/custom.js"></script>
+                <script type="text/javascript" src="../js/bigPicture.js"></script>
+        
+        
+    </body>
+</html>

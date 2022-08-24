@@ -1,0 +1,20 @@
+# https://giscus.app
+# https://github.com/badboy/mdbook-mermaid
+
+[book]
+title = "Go语言圣经"
+authors = ["译者:", "chai2010", "Xargin", "CrazySssst", "foreversmart"]
+description = "<The Go Programming Language>中文版"
+language = "zh"
+multilingual = false
+src = "."
+
+[build]
+build-dir = "book"
+
+[output.html]
+additional-css = ["style.css"]
+additional-js = ["js/custom.js", "js/bigPicture.js"]
+git-repository-url = "https://github.com/gopl-zh/gopl-zh.github.com"
+edit-url-template = "https://github.com/gopl-zh/gopl-zh.github.com/edit/master/{path}"
+git-repository-icon = "fa-github"

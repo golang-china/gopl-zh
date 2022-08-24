@@ -1,0 +1,523 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>示例: 并发的非阻塞缓存 - Go语言圣经</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="&lt;The Go Programming Language&gt;中文版">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+                <link rel="stylesheet" href="../style.css">
+        
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Go语言圣经</a></li><li class="chapter-item expanded affix "><a href="../preface.html">前言</a></li><li class="chapter-item expanded "><a href="../ch1/ch1.html"><strong aria-hidden="true">1.</strong> 入门</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch1/ch1-01.html"><strong aria-hidden="true">1.1.</strong> Hello, World</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-02.html"><strong aria-hidden="true">1.2.</strong> 命令行参数</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-03.html"><strong aria-hidden="true">1.3.</strong> 查找重复的行</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-04.html"><strong aria-hidden="true">1.4.</strong> GIF动画</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-05.html"><strong aria-hidden="true">1.5.</strong> 获取URL</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-06.html"><strong aria-hidden="true">1.6.</strong> 并发获取多个URL</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-07.html"><strong aria-hidden="true">1.7.</strong> Web服务</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-08.html"><strong aria-hidden="true">1.8.</strong> 本章要点</a></li></ol></li><li class="chapter-item expanded "><a href="../ch2/ch2.html"><strong aria-hidden="true">2.</strong> 程序结构</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch2/ch2-01.html"><strong aria-hidden="true">2.1.</strong> 命名</a></li><li class="chapter-item expanded "><a href="../ch2/ch2-02.html"><strong aria-hidden="true">2.2.</strong> 声明</a></li><li class="chapter-item expanded "><a href="../ch2/ch2-03.html"><strong aria-hidden="true">2.3.</strong> 变量</a></li><li class="chapter-item expanded "><a href="../ch2/ch2-04.html"><strong aria-hidden="true">2.4.</strong> 赋值</a></li><li class="chapter-item expanded "><a href="../ch2/ch2-05.html"><strong aria-hidden="true">2.5.</strong> 类型</a></li><li class="chapter-item expanded "><a href="../ch2/ch2-06.html"><strong aria-hidden="true">2.6.</strong> 包和文件</a></li><li class="chapter-item expanded "><a href="../ch2/ch2-07.html"><strong aria-hidden="true">2.7.</strong> 作用域</a></li></ol></li><li class="chapter-item expanded "><a href="../ch3/ch3.html"><strong aria-hidden="true">3.</strong> 基础数据类型</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch3/ch3-01.html"><strong aria-hidden="true">3.1.</strong> 整型</a></li><li class="chapter-item expanded "><a href="../ch3/ch3-02.html"><strong aria-hidden="true">3.2.</strong> 浮点数</a></li><li class="chapter-item expanded "><a href="../ch3/ch3-03.html"><strong aria-hidden="true">3.3.</strong> 复数</a></li><li class="chapter-item expanded "><a href="../ch3/ch3-04.html"><strong aria-hidden="true">3.4.</strong> 布尔型</a></li><li class="chapter-item expanded "><a href="../ch3/ch3-05.html"><strong aria-hidden="true">3.5.</strong> 字符串</a></li><li class="chapter-item expanded "><a href="../ch3/ch3-06.html"><strong aria-hidden="true">3.6.</strong> 常量</a></li></ol></li><li class="chapter-item expanded "><a href="../ch4/ch4.html"><strong aria-hidden="true">4.</strong> 复合数据类型</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch4/ch4-01.html"><strong aria-hidden="true">4.1.</strong> 数组</a></li><li class="chapter-item expanded "><a href="../ch4/ch4-02.html"><strong aria-hidden="true">4.2.</strong> Slice</a></li><li class="chapter-item expanded "><a href="../ch4/ch4-03.html"><strong aria-hidden="true">4.3.</strong> Map</a></li><li class="chapter-item expanded "><a href="../ch4/ch4-04.html"><strong aria-hidden="true">4.4.</strong> 结构体</a></li><li class="chapter-item expanded "><a href="../ch4/ch4-05.html"><strong aria-hidden="true">4.5.</strong> JSON</a></li><li class="chapter-item expanded "><a href="../ch4/ch4-06.html"><strong aria-hidden="true">4.6.</strong> 文本和HTML模板</a></li></ol></li><li class="chapter-item expanded "><a href="../ch5/ch5.html"><strong aria-hidden="true">5.</strong> 函数</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch5/ch5-01.html"><strong aria-hidden="true">5.1.</strong> 函数声明</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-02.html"><strong aria-hidden="true">5.2.</strong> 递归</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-03.html"><strong aria-hidden="true">5.3.</strong> 多返回值</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-04.html"><strong aria-hidden="true">5.4.</strong> 错误</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-05.html"><strong aria-hidden="true">5.5.</strong> 函数值</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-06.html"><strong aria-hidden="true">5.6.</strong> 匿名函数</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-07.html"><strong aria-hidden="true">5.7.</strong> 可变参数</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-08.html"><strong aria-hidden="true">5.8.</strong> Deferred函数</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-09.html"><strong aria-hidden="true">5.9.</strong> Panic异常</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-10.html"><strong aria-hidden="true">5.10.</strong> Recover捕获异常</a></li></ol></li><li class="chapter-item expanded "><a href="../ch6/ch6.html"><strong aria-hidden="true">6.</strong> 方法</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch6/ch6-01.html"><strong aria-hidden="true">6.1.</strong> 方法声明</a></li><li class="chapter-item expanded "><a href="../ch6/ch6-02.html"><strong aria-hidden="true">6.2.</strong> 基于指针对象的方法</a></li><li class="chapter-item expanded "><a href="../ch6/ch6-03.html"><strong aria-hidden="true">6.3.</strong> 通过嵌入结构体来扩展类型</a></li><li class="chapter-item expanded "><a href="../ch6/ch6-04.html"><strong aria-hidden="true">6.4.</strong> 方法值和方法表达式</a></li><li class="chapter-item expanded "><a href="../ch6/ch6-05.html"><strong aria-hidden="true">6.5.</strong> 示例: Bit数组</a></li><li class="chapter-item expanded "><a href="../ch6/ch6-06.html"><strong aria-hidden="true">6.6.</strong> 封装</a></li></ol></li><li class="chapter-item expanded "><a href="../ch7/ch7.html"><strong aria-hidden="true">7.</strong> 接口</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch7/ch7-01.html"><strong aria-hidden="true">7.1.</strong> 接口是合约</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-02.html"><strong aria-hidden="true">7.2.</strong> 接口类型</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-03.html"><strong aria-hidden="true">7.3.</strong> 实现接口的条件</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-04.html"><strong aria-hidden="true">7.4.</strong> flag.Value接口</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-05.html"><strong aria-hidden="true">7.5.</strong> 接口值</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-06.html"><strong aria-hidden="true">7.6.</strong> sort.Interface接口</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-07.html"><strong aria-hidden="true">7.7.</strong> http.Handler接口</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-08.html"><strong aria-hidden="true">7.8.</strong> error接口</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-09.html"><strong aria-hidden="true">7.9.</strong> 示例: 表达式求值</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-10.html"><strong aria-hidden="true">7.10.</strong> 类型断言</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-11.html"><strong aria-hidden="true">7.11.</strong> 基于类型断言识别错误类型</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-12.html"><strong aria-hidden="true">7.12.</strong> 通过类型断言查询接口</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-13.html"><strong aria-hidden="true">7.13.</strong> 类型分支</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-14.html"><strong aria-hidden="true">7.14.</strong> 示例: 基于标记的XML解码</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-15.html"><strong aria-hidden="true">7.15.</strong> 补充几点</a></li></ol></li><li class="chapter-item expanded "><a href="../ch8/ch8.html"><strong aria-hidden="true">8.</strong> Goroutines和Channels</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch8/ch8-01.html"><strong aria-hidden="true">8.1.</strong> Goroutines</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-02.html"><strong aria-hidden="true">8.2.</strong> 示例: 并发的Clock服务</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-03.html"><strong aria-hidden="true">8.3.</strong> 示例: 并发的Echo服务</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-04.html"><strong aria-hidden="true">8.4.</strong> Channels</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-05.html"><strong aria-hidden="true">8.5.</strong> 并发的循环</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-06.html"><strong aria-hidden="true">8.6.</strong> 示例: 并发的Web爬虫</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-07.html"><strong aria-hidden="true">8.7.</strong> 基于select的多路复用</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-09.html"><strong aria-hidden="true">8.8.</strong> 并发的退出</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-10.html"><strong aria-hidden="true">8.9.</strong> 示例: 聊天服务</a></li></ol></li><li class="chapter-item expanded "><a href="../ch9/ch9.html"><strong aria-hidden="true">9.</strong> 基于共享变量的并发</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch9/ch9-01.html"><strong aria-hidden="true">9.1.</strong> 竞争条件</a></li><li class="chapter-item expanded "><a href="../ch9/ch9-02.html"><strong aria-hidden="true">9.2.</strong> sync.Mutex互斥锁</a></li><li class="chapter-item expanded "><a href="../ch9/ch9-03.html"><strong aria-hidden="true">9.3.</strong> sync.RWMutex读写锁</a></li><li class="chapter-item expanded "><a href="../ch9/ch9-04.html"><strong aria-hidden="true">9.4.</strong> 内存同步</a></li><li class="chapter-item expanded "><a href="../ch9/ch9-06.html"><strong aria-hidden="true">9.5.</strong> 竞争条件检测</a></li><li class="chapter-item expanded "><a href="../ch9/ch9-07.html" class="active"><strong aria-hidden="true">9.6.</strong> 示例: 并发的非阻塞缓存</a></li><li class="chapter-item expanded "><a href="../ch9/ch9-08.html"><strong aria-hidden="true">9.7.</strong> Goroutines和线程</a></li></ol></li><li class="chapter-item expanded "><a href="../ch10/ch10.html"><strong aria-hidden="true">10.</strong> 包和工具</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch10/ch10-01.html"><strong aria-hidden="true">10.1.</strong> 包简介</a></li><li class="chapter-item expanded "><a href="../ch10/ch10-02.html"><strong aria-hidden="true">10.2.</strong> 导入路径</a></li><li class="chapter-item expanded "><a href="../ch10/ch10-03.html"><strong aria-hidden="true">10.3.</strong> 包声明</a></li><li class="chapter-item expanded "><a href="../ch10/ch10-04.html"><strong aria-hidden="true">10.4.</strong> 导入声明</a></li><li class="chapter-item expanded "><a href="../ch10/ch10-05.html"><strong aria-hidden="true">10.5.</strong> 包的匿名导入</a></li><li class="chapter-item expanded "><a href="../ch10/ch10-06.html"><strong aria-hidden="true">10.6.</strong> 包和命名</a></li><li class="chapter-item expanded "><a href="../ch10/ch10-07.html"><strong aria-hidden="true">10.7.</strong> 工具</a></li></ol></li><li class="chapter-item expanded "><a href="../ch11/ch11.html"><strong aria-hidden="true">11.</strong> 测试</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch11/ch11-01.html"><strong aria-hidden="true">11.1.</strong> go test</a></li><li class="chapter-item expanded "><a href="../ch11/ch11-02.html"><strong aria-hidden="true">11.2.</strong> 测试函数</a></li><li class="chapter-item expanded "><a href="../ch11/ch11-03.html"><strong aria-hidden="true">11.3.</strong> 测试覆盖率</a></li><li class="chapter-item expanded "><a href="../ch11/ch11-04.html"><strong aria-hidden="true">11.4.</strong> 基准测试</a></li><li class="chapter-item expanded "><a href="../ch11/ch11-05.html"><strong aria-hidden="true">11.5.</strong> 剖析</a></li><li class="chapter-item expanded "><a href="../ch11/ch11-06.html"><strong aria-hidden="true">11.6.</strong> 示例函数</a></li></ol></li><li class="chapter-item expanded "><a href="../ch12/ch12.html"><strong aria-hidden="true">12.</strong> 反射</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch12/ch12-01.html"><strong aria-hidden="true">12.1.</strong> 为何需要反射?</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-02.html"><strong aria-hidden="true">12.2.</strong> reflect.Type和reflect.Value</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-03.html"><strong aria-hidden="true">12.3.</strong> Display递归打印</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-04.html"><strong aria-hidden="true">12.4.</strong> 示例: 编码S表达式</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-05.html"><strong aria-hidden="true">12.5.</strong> 通过reflect.Value修改值</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-06.html"><strong aria-hidden="true">12.6.</strong> 示例: 解码S表达式</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-08.html"><strong aria-hidden="true">12.7.</strong> 显示一个类型的方法集</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-09.html"><strong aria-hidden="true">12.8.</strong> 几点忠告</a></li></ol></li><li class="chapter-item expanded "><a href="../ch13/ch13.html"><strong aria-hidden="true">13.</strong> 底层编程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch13/ch13-01.html"><strong aria-hidden="true">13.1.</strong> unsafe.Sizeof, Alignof 和 Offsetof</a></li><li class="chapter-item expanded "><a href="../ch13/ch13-02.html"><strong aria-hidden="true">13.2.</strong> unsafe.Pointer</a></li><li class="chapter-item expanded "><a href="../ch13/ch13-03.html"><strong aria-hidden="true">13.3.</strong> 示例: 深度相等判断</a></li><li class="chapter-item expanded "><a href="../ch13/ch13-04.html"><strong aria-hidden="true">13.4.</strong> 通过cgo调用C代码</a></li><li class="chapter-item expanded "><a href="../ch13/ch13-05.html"><strong aria-hidden="true">13.5.</strong> 几点忠告</a></li></ol></li><li class="chapter-item expanded "><a href="../appendix/appendix.html"><strong aria-hidden="true">14.</strong> 附录</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../appendix/appendix-a-errata.html"><strong aria-hidden="true">14.1.</strong> 附录A：原文勘误</a></li><li class="chapter-item expanded "><a href="../appendix/appendix-b-author.html"><strong aria-hidden="true">14.2.</strong> 附录B：作者译者</a></li><li class="chapter-item expanded "><a href="../appendix/appendix-c-cpoyright.html"><strong aria-hidden="true">14.3.</strong> 附录C：译文授权</a></li><li class="chapter-item expanded "><a href="../appendix/appendix-d-translations.html"><strong aria-hidden="true">14.4.</strong> 附录D：其它语言</a></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">Go语言圣经</h1>
+
+                    <div class="right-buttons">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        <a href="https://github.com/gopl-zh/gopl-zh.github.com" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                                                                        <a href="https://github.com/gopl-zh/gopl-zh.github.com/edit/master/./ch9/ch9-07.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <!-- Page table of contents -->
+                    <div class="sidetoc"><nav class="pagetoc"></nav></div>
+                    <main>
+                        <!-- 头部 -->
+                        <ul dir="auto">
+                        <li><em>KusonStack一站式可编程配置技术栈(Go): <a href="https://github.com/KusionStack/kusion">https://github.com/KusionStack/kusion</a></em></li>
+                        <li><em>KCL 配置编程语言(Rust): <a href="https://github.com/KusionStack/KCLVM">https://github.com/KusionStack/KCLVM</a></em></li>
+						<li><em>凹语言™: <a href="https://github.com/wa-lang/wa">https://github.com/wa-lang/wa</a></em></li>
+                        </ul>
+                        <hr>
+
+                        <h2 id="97-示例-并发的非阻塞缓存"><a class="header" href="#97-示例-并发的非阻塞缓存">9.7. 示例: 并发的非阻塞缓存</a></h2>
+<p>本节中我们会做一个无阻塞的缓存，这种工具可以帮助我们来解决现实世界中并发程序出现但没有现成的库可以解决的问题。这个问题叫作缓存（memoizing）函数（译注：Memoization的定义： memoization 一词是Donald Michie 根据拉丁语memorandum杜撰的一个词。相应的动词、过去分词、ing形式有memoiz、memoized、memoizing），也就是说，我们需要缓存函数的返回结果，这样在对函数进行调用的时候，我们就只需要一次计算，之后只要返回计算的结果就可以了。我们的解决方案会是并发安全且会避免对整个缓存加锁而导致所有操作都去争一个锁的设计。</p>
+<p>我们将使用下面的httpGetBody函数作为我们需要缓存的函数的一个样例。这个函数会去进行HTTP GET请求并且获取http响应body。对这个函数的调用本身开销是比较大的，所以我们尽量避免在不必要的时候反复调用。</p>
+<pre><code class="language-go">func httpGetBody(url string) (interface{}, error) {
+	resp, err := http.Get(url)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+	return ioutil.ReadAll(resp.Body)
+}
+</code></pre>
+<p>最后一行稍微隐藏了一些细节。ReadAll会返回两个结果，一个[]byte数组和一个错误，不过这两个对象可以被赋值给httpGetBody的返回声明里的interface{}和error类型，所以我们也就可以这样返回结果并且不需要额外的工作了。我们在httpGetBody中选用这种返回类型是为了使其可以与缓存匹配。</p>
+<p>下面是我们要设计的cache的第一个“草稿”：</p>
+<p><u><i>gopl.io/ch9/memo1</i></u></p>
+<pre><code class="language-go">// Package memo provides a concurrency-unsafe
+// memoization of a function of type Func.
+package memo
+
+// A Memo caches the results of calling a Func.
+type Memo struct {
+	f     Func
+	cache map[string]result
+}
+
+// Func is the type of the function to memoize.
+type Func func(key string) (interface{}, error)
+
+type result struct {
+	value interface{}
+	err   error
+}
+
+func New(f Func) *Memo {
+	return &amp;Memo{f: f, cache: make(map[string]result)}
+}
+
+// NOTE: not concurrency-safe!
+func (memo *Memo) Get(key string) (interface{}, error) {
+	res, ok := memo.cache[key]
+	if !ok {
+		res.value, res.err = memo.f(key)
+		memo.cache[key] = res
+	}
+	return res.value, res.err
+}
+</code></pre>
+<p>Memo实例会记录需要缓存的函数f（类型为Func），以及缓存内容（里面是一个string到result映射的map）。每一个result都是简单的函数返回的值对儿——一个值和一个错误值。继续下去我们会展示一些Memo的变种，不过所有的例子都会遵循上面的这些方面。</p>
+<p>下面是一个使用Memo的例子。对于流入的URL的每一个元素我们都会调用Get，并打印调用延时以及其返回的数据大小的log：</p>
+<pre><code class="language-go">m := memo.New(httpGetBody)
+for url := range incomingURLs() {
+	start := time.Now()
+	value, err := m.Get(url)
+	if err != nil {
+		log.Print(err)
+	}
+	fmt.Printf(&quot;%s, %s, %d bytes\n&quot;,
+	url, time.Since(start), len(value.([]byte)))
+}
+</code></pre>
+<p>我们可以使用测试包（第11章的主题）来系统地鉴定缓存的效果。从下面的测试输出，我们可以看到URL流包含了一些重复的情况，尽管我们第一次对每一个URL的<code>(*Memo).Get</code>的调用都会花上几百毫秒，但第二次就只需要花1毫秒就可以返回完整的数据了。</p>
+<pre><code>$ go test -v gopl.io/ch9/memo1
+=== RUN   Test
+https://golang.org, 175.026418ms, 7537 bytes
+https://godoc.org, 172.686825ms, 6878 bytes
+https://play.golang.org, 115.762377ms, 5767 bytes
+http://gopl.io, 749.887242ms, 2856 bytes
+https://golang.org, 721ns, 7537 bytes
+https://godoc.org, 152ns, 6878 bytes
+https://play.golang.org, 205ns, 5767 bytes
+http://gopl.io, 326ns, 2856 bytes
+--- PASS: Test (1.21s)
+PASS
+ok  gopl.io/ch9/memo1   1.257s
+</code></pre>
+<p>这个测试是顺序地去做所有的调用的。</p>
+<p>由于这种彼此独立的HTTP请求可以很好地并发，我们可以把这个测试改成并发形式。可以使用sync.WaitGroup来等待所有的请求都完成之后再返回。</p>
+<pre><code class="language-go">m := memo.New(httpGetBody)
+var n sync.WaitGroup
+for url := range incomingURLs() {
+	n.Add(1)
+	go func(url string) {
+		start := time.Now()
+		value, err := m.Get(url)
+		if err != nil {
+			log.Print(err)
+		}
+		fmt.Printf(&quot;%s, %s, %d bytes\n&quot;,
+		url, time.Since(start), len(value.([]byte)))
+		n.Done()
+	}(url)
+}
+n.Wait()
+</code></pre>
+<p>这次测试跑起来更快了，然而不幸的是貌似这个测试不是每次都能够正常工作。我们注意到有一些意料之外的cache miss（缓存未命中），或者命中了缓存但却返回了错误的值，或者甚至会直接崩溃。</p>
+<p>但更糟糕的是，有时候这个程序还是能正确的运行（译：也就是最让人崩溃的偶发bug），所以我们甚至可能都不会意识到这个程序有bug。但是我们可以使用-race这个flag来运行程序，竞争检测器（§9.6）会打印像下面这样的报告：</p>
+<pre><code>$ go test -run=TestConcurrent -race -v gopl.io/ch9/memo1
+=== RUN   TestConcurrent
+...
+WARNING: DATA RACE
+Write by goroutine 36:
+  runtime.mapassign1()
+      ~/go/src/runtime/hashmap.go:411 +0x0
+  gopl.io/ch9/memo1.(*Memo).Get()
+      ~/gobook2/src/gopl.io/ch9/memo1/memo.go:32 +0x205
+  ...
+Previous write by goroutine 35:
+  runtime.mapassign1()
+      ~/go/src/runtime/hashmap.go:411 +0x0
+  gopl.io/ch9/memo1.(*Memo).Get()
+      ~/gobook2/src/gopl.io/ch9/memo1/memo.go:32 +0x205
+...
+Found 1 data race(s)
+FAIL    gopl.io/ch9/memo1   2.393s
+</code></pre>
+<p>memo.go的32行出现了两次，说明有两个goroutine在没有同步干预的情况下更新了cache map。这表明Get不是并发安全的，存在数据竞争。</p>
+<pre><code class="language-go">28  func (memo *Memo) Get(key string) (interface{}, error) {
+29      res, ok := memo.cache(key)
+30      if !ok {
+31          res.value, res.err = memo.f(key)
+32          memo.cache[key] = res
+33      }
+34      return res.value, res.err
+35  }
+</code></pre>
+<p>最简单的使cache并发安全的方式是使用基于监控的同步。只要给Memo加上一个mutex，在Get的一开始获取互斥锁，return的时候释放锁，就可以让cache的操作发生在临界区内了：</p>
+<p><u><i>gopl.io/ch9/memo2</i></u></p>
+<pre><code class="language-go">type Memo struct {
+	f     Func
+	mu    sync.Mutex // guards cache
+	cache map[string]result
+}
+
+// Get is concurrency-safe.
+func (memo *Memo) Get(key string) (value interface{}, err error) {
+	memo.mu.Lock()
+	res, ok := memo.cache[key]
+    if !ok {
+		res.value, res.err = memo.f(key)
+		memo.cache[key] = res
+	}
+	memo.mu.Unlock()
+	return res.value, res.err
+}
+</code></pre>
+<p>测试依然并发进行，但这回竞争检查器“沉默”了。不幸的是对于Memo的这一点改变使我们完全丧失了并发的性能优点。每次对f的调用期间都会持有锁，Get将本来可以并行运行的I/O操作串行化了。我们本章的目的是完成一个无锁缓存，而不是现在这样的将所有请求串行化的函数的缓存。</p>
+<p>下一个Get的实现，调用Get的goroutine会两次获取锁：查找阶段获取一次，如果查找没有返回任何内容，那么进入更新阶段会再次获取。在这两次获取锁的中间阶段，其它goroutine可以随意使用cache。</p>
+<p><u><i>gopl.io/ch9/memo3</i></u></p>
+<pre><code class="language-go">func (memo *Memo) Get(key string) (value interface{}, err error) {
+	memo.mu.Lock()
+	res, ok := memo.cache[key]
+	memo.mu.Unlock()
+	if !ok {
+		res.value, res.err = memo.f(key)
+
+		// Between the two critical sections, several goroutines
+		// may race to compute f(key) and update the map.
+		memo.mu.Lock()
+		memo.cache[key] = res
+		memo.mu.Unlock()
+	}
+	return res.value, res.err
+}
+</code></pre>
+<p>这些修改使性能再次得到了提升，但有一些URL被获取了两次。这种情况在两个以上的goroutine同一时刻调用Get来请求同样的URL时会发生。多个goroutine一起查询cache，发现没有值，然后一起调用f这个慢不拉叽的函数。在得到结果后，也都会去更新map。其中一个获得的结果会覆盖掉另一个的结果。</p>
+<p>理想情况下是应该避免掉多余的工作的。而这种“避免”工作一般被称为duplicate suppression（重复抑制/避免）。下面版本的Memo每一个map元素都是指向一个条目的指针。每一个条目包含对函数f调用结果的内容缓存。与之前不同的是这次entry还包含了一个叫ready的channel。在条目的结果被设置之后，这个channel就会被关闭，以向其它goroutine广播（§8.9）去读取该条目内的结果是安全的了。</p>
+<p><u><i>gopl.io/ch9/memo4</i></u></p>
+<pre><code class="language-go">type entry struct {
+	res   result
+	ready chan struct{} // closed when res is ready
+}
+
+func New(f Func) *Memo {
+	return &amp;Memo{f: f, cache: make(map[string]*entry)}
+}
+
+type Memo struct {
+	f     Func
+	mu    sync.Mutex // guards cache
+	cache map[string]*entry
+}
+
+func (memo *Memo) Get(key string) (value interface{}, err error) {
+	memo.mu.Lock()
+	e := memo.cache[key]
+	if e == nil {
+		// This is the first request for this key.
+		// This goroutine becomes responsible for computing
+		// the value and broadcasting the ready condition.
+		e = &amp;entry{ready: make(chan struct{})}
+		memo.cache[key] = e
+		memo.mu.Unlock()
+
+		e.res.value, e.res.err = memo.f(key)
+
+		close(e.ready) // broadcast ready condition
+	} else {
+		// This is a repeat request for this key.
+		memo.mu.Unlock()
+
+		&lt;-e.ready // wait for ready condition
+	}
+	return e.res.value, e.res.err
+}
+</code></pre>
+<p>现在Get函数包括下面这些步骤了：获取互斥锁来保护共享变量cache map，查询map中是否存在指定条目，如果没有找到那么分配空间插入一个新条目，释放互斥锁。如果存在条目的话且其值没有写入完成（也就是有其它的goroutine在调用f这个慢函数）时，goroutine必须等待值ready之后才能读到条目的结果。而想知道是否ready的话，可以直接从ready channel中读取，由于这个读取操作在channel关闭之前一直是阻塞。</p>
+<p>如果没有条目的话，需要向map中插入一个没有准备好的条目，当前正在调用的goroutine就需要负责调用慢函数、更新条目以及向其它所有goroutine广播条目已经ready可读的消息了。</p>
+<p>条目中的e.res.value和e.res.err变量是在多个goroutine之间共享的。创建条目的goroutine同时也会设置条目的值，其它goroutine在收到&quot;ready&quot;的广播消息之后立刻会去读取条目的值。尽管会被多个goroutine同时访问，但却并不需要互斥锁。ready channel的关闭一定会发生在其它goroutine接收到广播事件之前，因此第一个goroutine对这些变量的写操作是一定发生在这些读操作之前的。不会发生数据竞争。</p>
+<p>这样并发、不重复、无阻塞的cache就完成了。</p>
+<p>上面这样Memo的实现使用了一个互斥量来保护多个goroutine调用Get时的共享map变量。不妨把这种设计和前面提到的把map变量限制在一个单独的monitor goroutine的方案做一些对比，后者在调用Get时需要发消息。</p>
+<p>Func、result和entry的声明和之前保持一致：</p>
+<pre><code class="language-go">// Func is the type of the function to memoize.
+type Func func(key string) (interface{}, error)
+
+// A result is the result of calling a Func.
+type result struct {
+	value interface{}
+	err   error
+}
+
+type entry struct {
+	res   result
+	ready chan struct{} // closed when res is ready
+}
+</code></pre>
+<p>然而Memo类型现在包含了一个叫做requests的channel，Get的调用方用这个channel来和monitor goroutine来通信。requests channel中的元素类型是request。Get的调用方会把这个结构中的两组key都填充好，实际上用这两个变量来对函数进行缓存的。另一个叫response的channel会被拿来发送响应结果。这个channel只会传回一个单独的值。</p>
+<p><u><i>gopl.io/ch9/memo5</i></u></p>
+<pre><code class="language-go">// A request is a message requesting that the Func be applied to key.
+type request struct {
+	key      string
+	response chan&lt;- result // the client wants a single result
+}
+
+type Memo struct{ requests chan request }
+// New returns a memoization of f.  Clients must subsequently call Close.
+func New(f Func) *Memo {
+	memo := &amp;Memo{requests: make(chan request)}
+	go memo.server(f)
+	return memo
+}
+
+func (memo *Memo) Get(key string) (interface{}, error) {
+	response := make(chan result)
+	memo.requests &lt;- request{key, response}
+	res := &lt;-response
+	return res.value, res.err
+}
+
+func (memo *Memo) Close() { close(memo.requests) }
+</code></pre>
+<p>上面的Get方法，会创建一个response channel，把它放进request结构中，然后发送给monitor goroutine，然后马上又会接收它。</p>
+<p>cache变量被限制在了monitor goroutine ``(*Memo).server`中，下面会看到。monitor会在循环中一直读取请求，直到request channel被Close方法关闭。每一个请求都会去查询cache，如果没有找到条目的话，那么就会创建/插入一个新的条目。</p>
+<pre><code class="language-go">func (memo *Memo) server(f Func) {
+	cache := make(map[string]*entry)
+	for req := range memo.requests {
+		e := cache[req.key]
+		if e == nil {
+			// This is the first request for this key.
+			e = &amp;entry{ready: make(chan struct{})}
+			cache[req.key] = e
+			go e.call(f, req.key) // call f(key)
+		}
+		go e.deliver(req.response)
+	}
+}
+
+func (e *entry) call(f Func, key string) {
+	// Evaluate the function.
+	e.res.value, e.res.err = f(key)
+	// Broadcast the ready condition.
+	close(e.ready)
+}
+
+func (e *entry) deliver(response chan&lt;- result) {
+	// Wait for the ready condition.
+	&lt;-e.ready
+	// Send the result to the client.
+	response &lt;- e.res
+}
+</code></pre>
+<p>和基于互斥量的版本类似，第一个对某个key的请求需要负责去调用函数f并传入这个key，将结果存在条目里，并关闭ready channel来广播条目的ready消息。使用<code>(*entry).call</code>来完成上述工作。</p>
+<p>紧接着对同一个key的请求会发现map中已经有了存在的条目，然后会等待结果变为ready，并将结果从response发送给客户端的goroutien。上述工作是用<code>(*entry).deliver</code>来完成的。对call和deliver方法的调用必须让它们在自己的goroutine中进行以确保monitor goroutines不会因此而被阻塞住而没法处理新的请求。</p>
+<p>这个例子说明我们无论用上锁，还是通信来建立并发程序都是可行的。</p>
+<p>上面的两种方案并不好说特定情境下哪种更好，不过了解他们还是有价值的。有时候从一种方式切换到另一种可以使你的代码更为简洁。（译注：不是说好的golang推崇通信并发么。）</p>
+<p><strong>练习 9.3：</strong> 扩展Func类型和<code>(*Memo).Get</code>方法，支持调用方提供一个可选的done channel，使其具备通过该channel来取消整个操作的能力（§8.9）。一个被取消了的Func的调用结果不应该被缓存。</p>
+
+
+                        <!-- 公众号 -->
+                        <hr>
+                        <table>
+                            <tr>
+                            <td>
+                            <img width="222px" src="https://chai2010.cn/advanced-go-programming-book/css.png">
+                            </td>
+                            <td>
+                            <img width="222px" src="https://chai2010.cn/advanced-go-programming-book/cch.png">
+                            </td>
+                            </tr>
+                        </table>
+
+                        <div id="giscus-container"></div>
+                        <footer class="page-footer">
+                            <span>© 2015-2016 | <a href="https://github.com/gopl-zh"> Go语言圣经中文版</a>, 仅学习交流使用</span>
+                        </footer>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../ch9/ch9-06.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="../ch9/ch9-08.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../ch9/ch9-06.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="../ch9/ch9-08.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript" charset="utf-8">
+        var pagePath = "ch9/ch9-07.md"
+        </script>
+
+
+        <!-- Custom JS scripts -->
+                <script type="text/javascript" src="../js/custom.js"></script>
+                <script type="text/javascript" src="../js/bigPicture.js"></script>
+        
+        
+    </body>
+</html>
