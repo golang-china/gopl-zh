@@ -13,7 +13,7 @@
 
 - https://gopl-zh.github.io
 - https://github.com/gopl-zh
-- https://github.com/golang-china/gopl-zh (废弃)
+- https://github.com/golang-china/gopl-zh
 
 译者信息：
 
