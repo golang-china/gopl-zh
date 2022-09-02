@@ -199,8 +199,8 @@ errorf(linenum, &quot;undefined: %s&quot;, name) // &quot;Line 12: undefined: co
 </code></pre>
 <p>interface{}表示函数的最后一个参数可以接收任意类型，我们会在第7章详细介绍。</p>
 <p><strong>练习5.15：</strong> 编写类似sum的可变参数函数max和min。考虑不传参时，max和min该如何处理，再编写至少接收1个参数的版本。</p>
-<p>**练习5.16：**编写多参数版本的strings.Join。</p>
-<p>**练习5.17：**编写多参数版本的ElementsByTagName，函数接收一个HTML结点树以及任意数量的标签名，返回与这些标签名匹配的所有元素。下面给出了2个例子：</p>
+<p><strong>练习5.16：</strong> 编写多参数版本的strings.Join。</p>
+<p><strong>练习5.17：</strong> 编写多参数版本的ElementsByTagName，函数接收一个HTML结点树以及任意数量的标签名，返回与这些标签名匹配的所有元素。下面给出了2个例子：</p>
 <pre><code class="language-Go">func ElementsByTagName(doc *html.Node, name...string) []*html.Node
 images := ElementsByTagName(doc, &quot;img&quot;)
 headings := ElementsByTagName(doc, &quot;h1&quot;, &quot;h2&quot;, &quot;h3&quot;, &quot;h4&quot;)
