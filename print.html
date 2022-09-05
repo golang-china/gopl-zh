@@ -4418,7 +4418,7 @@ func fetch(url string) (filename string, n int64, err error) {
 }
 </code></pre>
 <p>对resp.Body.Close延迟调用我们已经见过了，在此不做解释。上例中，通过os.Create打开文件进行写入，在关闭文件时，我们没有对f.close采用defer机制，因为这会产生一些微妙的错误。许多文件系统，尤其是NFS，写入文件时发生的错误会被延迟到文件关闭时反馈。如果没有检查文件关闭时的反馈信息，可能会导致数据丢失，而我们还误以为写入操作成功。如果io.Copy和f.close都失败了，我们倾向于将io.Copy的错误信息反馈给调用者，因为它先于f.close发生，更有可能接近问题的本质。</p>
-<p>**练习5.18：**不修改fetch的行为，重写fetch函数，要求使用defer机制关闭文件。</p>
+<p><strong>练习5.18：</strong> 不修改fetch的行为，重写fetch函数，要求使用defer机制关闭文件。</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="59-panic异常"><a class="header" href="#59-panic异常">5.9. Panic异常</a></h2>
 <p>Go的类型系统会在编译时捕获很多错误，但有些错误只能在运行时检查，如数组访问越界、空指针引用等。这些运行时错误会引起panic异常。</p>
 <p>一般而言，当panic异常发生时，程序会中断运行，并立即执行在该goroutine（可以先理解成线程，在第8章会详细介绍）中被延迟的函数（defer 机制）。随后，程序崩溃并输出日志信息。日志信息包括panic value和函数调用的堆栈跟踪信息。panic value通常是某种错误信息。对于每个goroutine，日志信息中都会有与之相对的，发生panic时的函数调用堆栈跟踪信息。通常，我们不需要再次运行程序去定位问题，日志信息已经提供了足够的诊断依据。因此，在我们填写问题报告时，一般会将panic异常和日志信息一并记录。</p>
