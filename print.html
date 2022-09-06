@@ -4816,7 +4816,7 @@ fmt.Println(*p.Point, *q.Point) // &quot;{2 2} {2 2}&quot;
 </code></pre>
 <p>然后这种类型的值便会拥有Point和RGBA类型的所有方法，以及直接定义在ColoredPoint中的方法。当编译器解析一个选择器到方法时，比如p.ScaleBy，它会首先去找直接定义在这个类型里的ScaleBy方法，然后找被ColoredPoint的内嵌字段们引入的方法，然后去找Point和RGBA的内嵌字段引入的方法，然后一直递归向下找。如果选择器有二义性的话编译器会报错，比如你在同一级里有两个同名的方法。</p>
 <p>方法只能在命名类型（像Point）或者指向类型的指针上定义，但是多亏了内嵌，有些时候我们给匿名struct类型来定义方法也有了手段。</p>
-<p>下面是一个小trick。这个例子展示了简单的cache，其使用两个包级别的变量来实现，一个mutex互斥量（§9.2）和它所操作的cache：</p>
+<p>下面是一个小trick。这个例子展示了简单的cache，其使用两个包级别的变量来实现，一个mutex互斥锁（§9.2）和它所操作的cache：</p>
 <pre><code class="language-go">var (
 	mu sync.Mutex // guards mapping
 	mapping = make(map[string]string)
