@@ -5001,7 +5001,7 @@ func (*IntSet) Copy() *IntSet // return a copy of the set
 </code></pre>
 <p><strong>练习 6.2：</strong> 定义一个变参方法(*IntSet).AddAll(...int)，这个方法可以添加一组IntSet，比如s.AddAll(1,2,3)。</p>
 <p><strong>练习 6.3：</strong> (*IntSet).UnionWith会用<code>|</code>操作符计算两个集合的并集，我们再为IntSet实现另外的几个函数IntersectWith（交集：元素在A集合B集合均出现），DifferenceWith（差集：元素出现在A集合，未出现在B集合），SymmetricDifference（并差集：元素出现在A但没有出现在B，或者出现在B没有出现在A）。</p>
-<p>***练习6.4: ** 实现一个Elems方法，返回集合中的所有元素，用于做一些range之类的遍历操作。</p>
+<p><strong>练习 6.4：</strong> 实现一个Elems方法，返回集合中的所有元素，用于做一些range之类的遍历操作。</p>
 <p><strong>练习 6.5：</strong> 我们这章定义的IntSet里的每个字都是用的uint64类型，但是64位的数值可能在32位的平台上不高效。修改程序，使其使用uint类型，这种类型对于32位平台来说更合适。当然了，这里我们可以不用简单粗暴地除64，可以定义一个常量来决定是用32还是64，这里你可能会用到平台的自动判断的一个智能表达式：32 &lt;&lt; (^uint(0) &gt;&gt; 63)</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="66-封装"><a class="header" href="#66-封装">6.6. 封装</a></h2>
 <p>一个对象的变量或者方法如果对调用方是不可见的话，一般就被定义为“封装”。封装有时候也被叫做信息隐藏，同时也是面向对象编程最关键的一个方面。</p>
