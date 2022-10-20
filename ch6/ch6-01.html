@@ -224,7 +224,7 @@ perim := geometry.Path{{1, 1}, {5, 1}, {5, 4}, {1, 1}}
 fmt.Println(geometry.PathDistance(perim)) // &quot;12&quot;, standalone function
 fmt.Println(perim.Distance())             // &quot;12&quot;, method of geometry.Path
 </code></pre>
-<p><strong>译注：</strong> 如果我们要用方法去计算perim的distance，还需要去写全geometry的包名，和其函数名，但是因为Path这个类型定义了一个可以直接用的Distance方法，所以我们可以直接写perim.Distance()。相当于可以少打很多字，作者应该是这个意思。因为在Go里包外调用函数需要带上包名，还是挺麻烦的。</p>
+<p><strong>译注：</strong> 如果我们要用函数去计算perim的distance，还需要去写全geometry的包名，和其函数名，但是因为Path这个类型定义了一个可以直接用的Distance方法，所以我们可以直接写perim.Distance()。相当于可以少打很多字，作者应该是这个意思。因为在Go里包外调用函数需要带上包名，还是挺麻烦的。</p>
 
 
                         <!-- 公众号 -->

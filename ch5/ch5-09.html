@@ -174,7 +174,7 @@ default:
 	panic(fmt.Sprintf(&quot;invalid suit %q&quot;, s)) // Joker?
 }
 </code></pre>
-<p>断言函数必须满足的前置条件是明智的做法，但这很容易被滥用。除非你能提供更多的错误信息，或者能更快速的发现错误，否则不需要使用断言，编译器在运行时会帮你检查代码。</p>
+<p>断言函数必须满足的前置条件是明智的做法，但这很容易被滥用。除非你能提供更多的错误信息，或者能更快速的发现错误，否则不需要断言那些运行时会检查的条件。</p>
 <pre><code class="language-Go">func Reset(x *Buffer) {
 	if x == nil {
 		panic(&quot;x is nil&quot;) // unnecessary!
