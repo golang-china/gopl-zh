@@ -326,7 +326,7 @@ func (memo *Memo) Get(key string) (value interface{}, err error) {
 }
 </code></pre>
 <p>这些修改使性能再次得到了提升，但有一些URL被获取了两次。这种情况在两个以上的goroutine同一时刻调用Get来请求同样的URL时会发生。多个goroutine一起查询cache，发现没有值，然后一起调用f这个慢不拉叽的函数。在得到结果后，也都会去更新map。其中一个获得的结果会覆盖掉另一个的结果。</p>
-<p>理想情况下是应该避免掉多余的工作的。而这种“避免”工作一般被称为duplicate suppression（重复抑制/避免）。下面版本的Memo每一个map元素都是指向一个条目的指针。每一个条目包含对函数f调用结果的内容缓存。与之前不同的是这次entry还包含了一个叫ready的channel。在条目的结果被设置之后，这个channel就会被关闭，以向其它goroutine广播（§8.9）去读取该条目内的结果是安全的了。</p>
+<p>理想情况下是应该避免掉多余的工作的。而这种“避免”工作一般被称为duplicate suppression（重复抑制/避免）。下面版本的Memo每一个map元素都是指向一个条目的指针。每一个entry包含对函数f调用结果的内容缓存。与之前不同的是这次entry还包含了一个叫ready的channel。在entry的res字段被设置之后，这个channel就会被关闭，以向其它goroutine广播（§8.9）去读取该entry内的结果是安全的了。</p>
 <p><u><i>gopl.io/ch9/memo4</i></u></p>
 <pre><code class="language-go">type entry struct {
 	res   result
@@ -442,7 +442,7 @@ func (e *entry) deliver(response chan&lt;- result) {
 }
 </code></pre>
 <p>和基于互斥量的版本类似，第一个对某个key的请求需要负责去调用函数f并传入这个key，将结果存在条目里，并关闭ready channel来广播条目的ready消息。使用<code>(*entry).call</code>来完成上述工作。</p>
-<p>紧接着对同一个key的请求会发现map中已经有了存在的条目，然后会等待结果变为ready，并将结果从response发送给客户端的goroutien。上述工作是用<code>(*entry).deliver</code>来完成的。对call和deliver方法的调用必须让它们在自己的goroutine中进行以确保monitor goroutines不会因此而被阻塞住而没法处理新的请求。</p>
+<p>紧接着对同一个key的请求会发现map中已经有了存在的条目，然后会等待结果变为ready，并将结果从response发送给客户端的goroutine。上述工作是用<code>(*entry).deliver</code>来完成的。对call和deliver方法的调用必须让它们在自己的goroutine中进行以确保monitor goroutines不会因此而被阻塞住而没法处理新的请求。</p>
 <p>这个例子说明我们无论用上锁，还是通信来建立并发程序都是可行的。</p>
 <p>上面的两种方案并不好说特定情境下哪种更好，不过了解他们还是有价值的。有时候从一种方式切换到另一种可以使你的代码更为简洁。（译注：不是说好的golang推崇通信并发么。）</p>
 <p><strong>练习 9.3：</strong> 扩展Func类型和<code>(*Memo).Get</code>方法，支持调用方提供一个可选的done channel，使其具备通过该channel来取消整个操作的能力（§8.9）。一个被取消了的Func的调用结果不应该被缓存。</p>
