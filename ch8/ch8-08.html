@@ -1,0 +1,395 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>示例: 并发的目录遍历 - Go语言圣经</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="&lt;The Go Programming Language&gt;中文版">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+                <link rel="stylesheet" href="../style.css">
+        
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Go语言圣经</a></li><li class="chapter-item expanded affix "><a href="../preface.html">前言</a></li><li class="chapter-item expanded "><a href="../ch1/ch1.html"><strong aria-hidden="true">1.</strong> 入门</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch1/ch1-01.html"><strong aria-hidden="true">1.1.</strong> Hello, World</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-02.html"><strong aria-hidden="true">1.2.</strong> 命令行参数</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-03.html"><strong aria-hidden="true">1.3.</strong> 查找重复的行</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-04.html"><strong aria-hidden="true">1.4.</strong> GIF动画</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-05.html"><strong aria-hidden="true">1.5.</strong> 获取URL</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-06.html"><strong aria-hidden="true">1.6.</strong> 并发获取多个URL</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-07.html"><strong aria-hidden="true">1.7.</strong> Web服务</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-08.html"><strong aria-hidden="true">1.8.</strong> 本章要点</a></li></ol></li><li class="chapter-item expanded "><a href="../ch2/ch2.html"><strong aria-hidden="true">2.</strong> 程序结构</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch2/ch2-01.html"><strong aria-hidden="true">2.1.</strong> 命名</a></li><li class="chapter-item expanded "><a href="../ch2/ch2-02.html"><strong aria-hidden="true">2.2.</strong> 声明</a></li><li class="chapter-item expanded "><a href="../ch2/ch2-03.html"><strong aria-hidden="true">2.3.</strong> 变量</a></li><li class="chapter-item expanded "><a href="../ch2/ch2-04.html"><strong aria-hidden="true">2.4.</strong> 赋值</a></li><li class="chapter-item expanded "><a href="../ch2/ch2-05.html"><strong aria-hidden="true">2.5.</strong> 类型</a></li><li class="chapter-item expanded "><a href="../ch2/ch2-06.html"><strong aria-hidden="true">2.6.</strong> 包和文件</a></li><li class="chapter-item expanded "><a href="../ch2/ch2-07.html"><strong aria-hidden="true">2.7.</strong> 作用域</a></li></ol></li><li class="chapter-item expanded "><a href="../ch3/ch3.html"><strong aria-hidden="true">3.</strong> 基础数据类型</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch3/ch3-01.html"><strong aria-hidden="true">3.1.</strong> 整型</a></li><li class="chapter-item expanded "><a href="../ch3/ch3-02.html"><strong aria-hidden="true">3.2.</strong> 浮点数</a></li><li class="chapter-item expanded "><a href="../ch3/ch3-03.html"><strong aria-hidden="true">3.3.</strong> 复数</a></li><li class="chapter-item expanded "><a href="../ch3/ch3-04.html"><strong aria-hidden="true">3.4.</strong> 布尔型</a></li><li class="chapter-item expanded "><a href="../ch3/ch3-05.html"><strong aria-hidden="true">3.5.</strong> 字符串</a></li><li class="chapter-item expanded "><a href="../ch3/ch3-06.html"><strong aria-hidden="true">3.6.</strong> 常量</a></li></ol></li><li class="chapter-item expanded "><a href="../ch4/ch4.html"><strong aria-hidden="true">4.</strong> 复合数据类型</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch4/ch4-01.html"><strong aria-hidden="true">4.1.</strong> 数组</a></li><li class="chapter-item expanded "><a href="../ch4/ch4-02.html"><strong aria-hidden="true">4.2.</strong> Slice</a></li><li class="chapter-item expanded "><a href="../ch4/ch4-03.html"><strong aria-hidden="true">4.3.</strong> Map</a></li><li class="chapter-item expanded "><a href="../ch4/ch4-04.html"><strong aria-hidden="true">4.4.</strong> 结构体</a></li><li class="chapter-item expanded "><a href="../ch4/ch4-05.html"><strong aria-hidden="true">4.5.</strong> JSON</a></li><li class="chapter-item expanded "><a href="../ch4/ch4-06.html"><strong aria-hidden="true">4.6.</strong> 文本和HTML模板</a></li></ol></li><li class="chapter-item expanded "><a href="../ch5/ch5.html"><strong aria-hidden="true">5.</strong> 函数</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch5/ch5-01.html"><strong aria-hidden="true">5.1.</strong> 函数声明</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-02.html"><strong aria-hidden="true">5.2.</strong> 递归</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-03.html"><strong aria-hidden="true">5.3.</strong> 多返回值</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-04.html"><strong aria-hidden="true">5.4.</strong> 错误</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-05.html"><strong aria-hidden="true">5.5.</strong> 函数值</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-06.html"><strong aria-hidden="true">5.6.</strong> 匿名函数</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-07.html"><strong aria-hidden="true">5.7.</strong> 可变参数</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-08.html"><strong aria-hidden="true">5.8.</strong> Deferred函数</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-09.html"><strong aria-hidden="true">5.9.</strong> Panic异常</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-10.html"><strong aria-hidden="true">5.10.</strong> Recover捕获异常</a></li></ol></li><li class="chapter-item expanded "><a href="../ch6/ch6.html"><strong aria-hidden="true">6.</strong> 方法</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch6/ch6-01.html"><strong aria-hidden="true">6.1.</strong> 方法声明</a></li><li class="chapter-item expanded "><a href="../ch6/ch6-02.html"><strong aria-hidden="true">6.2.</strong> 基于指针对象的方法</a></li><li class="chapter-item expanded "><a href="../ch6/ch6-03.html"><strong aria-hidden="true">6.3.</strong> 通过嵌入结构体来扩展类型</a></li><li class="chapter-item expanded "><a href="../ch6/ch6-04.html"><strong aria-hidden="true">6.4.</strong> 方法值和方法表达式</a></li><li class="chapter-item expanded "><a href="../ch6/ch6-05.html"><strong aria-hidden="true">6.5.</strong> 示例: Bit数组</a></li><li class="chapter-item expanded "><a href="../ch6/ch6-06.html"><strong aria-hidden="true">6.6.</strong> 封装</a></li></ol></li><li class="chapter-item expanded "><a href="../ch7/ch7.html"><strong aria-hidden="true">7.</strong> 接口</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch7/ch7-01.html"><strong aria-hidden="true">7.1.</strong> 接口是合约</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-02.html"><strong aria-hidden="true">7.2.</strong> 接口类型</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-03.html"><strong aria-hidden="true">7.3.</strong> 实现接口的条件</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-04.html"><strong aria-hidden="true">7.4.</strong> flag.Value接口</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-05.html"><strong aria-hidden="true">7.5.</strong> 接口值</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-06.html"><strong aria-hidden="true">7.6.</strong> sort.Interface接口</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-07.html"><strong aria-hidden="true">7.7.</strong> http.Handler接口</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-08.html"><strong aria-hidden="true">7.8.</strong> error接口</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-09.html"><strong aria-hidden="true">7.9.</strong> 示例: 表达式求值</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-10.html"><strong aria-hidden="true">7.10.</strong> 类型断言</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-11.html"><strong aria-hidden="true">7.11.</strong> 基于类型断言识别错误类型</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-12.html"><strong aria-hidden="true">7.12.</strong> 通过类型断言查询接口</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-13.html"><strong aria-hidden="true">7.13.</strong> 类型分支</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-14.html"><strong aria-hidden="true">7.14.</strong> 示例: 基于标记的XML解码</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-15.html"><strong aria-hidden="true">7.15.</strong> 补充几点</a></li></ol></li><li class="chapter-item expanded "><a href="../ch8/ch8.html"><strong aria-hidden="true">8.</strong> Goroutines和Channels</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch8/ch8-01.html"><strong aria-hidden="true">8.1.</strong> Goroutines</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-02.html"><strong aria-hidden="true">8.2.</strong> 示例: 并发的Clock服务</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-03.html"><strong aria-hidden="true">8.3.</strong> 示例: 并发的Echo服务</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-04.html"><strong aria-hidden="true">8.4.</strong> Channels</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-05.html"><strong aria-hidden="true">8.5.</strong> 并发的循环</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-06.html"><strong aria-hidden="true">8.6.</strong> 示例: 并发的Web爬虫</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-07.html"><strong aria-hidden="true">8.7.</strong> 基于select的多路复用</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-08.html" class="active"><strong aria-hidden="true">8.8.</strong> 示例: 并发的目录遍历</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-09.html"><strong aria-hidden="true">8.9.</strong> 并发的退出</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-10.html"><strong aria-hidden="true">8.10.</strong> 示例: 聊天服务</a></li></ol></li><li class="chapter-item expanded "><a href="../ch9/ch9.html"><strong aria-hidden="true">9.</strong> 基于共享变量的并发</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch9/ch9-01.html"><strong aria-hidden="true">9.1.</strong> 竞争条件</a></li><li class="chapter-item expanded "><a href="../ch9/ch9-02.html"><strong aria-hidden="true">9.2.</strong> sync.Mutex互斥锁</a></li><li class="chapter-item expanded "><a href="../ch9/ch9-03.html"><strong aria-hidden="true">9.3.</strong> sync.RWMutex读写锁</a></li><li class="chapter-item expanded "><a href="../ch9/ch9-04.html"><strong aria-hidden="true">9.4.</strong> 内存同步</a></li><li class="chapter-item expanded "><a href="../ch9/ch9-05.html"><strong aria-hidden="true">9.5.</strong> sync.Once惰性初始化</a></li><li class="chapter-item expanded "><a href="../ch9/ch9-06.html"><strong aria-hidden="true">9.6.</strong> 竞争条件检测</a></li><li class="chapter-item expanded "><a href="../ch9/ch9-07.html"><strong aria-hidden="true">9.7.</strong> 示例: 并发的非阻塞缓存</a></li><li class="chapter-item expanded "><a href="../ch9/ch9-08.html"><strong aria-hidden="true">9.8.</strong> Goroutines和线程</a></li></ol></li><li class="chapter-item expanded "><a href="../ch10/ch10.html"><strong aria-hidden="true">10.</strong> 包和工具</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch10/ch10-01.html"><strong aria-hidden="true">10.1.</strong> 包简介</a></li><li class="chapter-item expanded "><a href="../ch10/ch10-02.html"><strong aria-hidden="true">10.2.</strong> 导入路径</a></li><li class="chapter-item expanded "><a href="../ch10/ch10-03.html"><strong aria-hidden="true">10.3.</strong> 包声明</a></li><li class="chapter-item expanded "><a href="../ch10/ch10-04.html"><strong aria-hidden="true">10.4.</strong> 导入声明</a></li><li class="chapter-item expanded "><a href="../ch10/ch10-05.html"><strong aria-hidden="true">10.5.</strong> 包的匿名导入</a></li><li class="chapter-item expanded "><a href="../ch10/ch10-06.html"><strong aria-hidden="true">10.6.</strong> 包和命名</a></li><li class="chapter-item expanded "><a href="../ch10/ch10-07.html"><strong aria-hidden="true">10.7.</strong> 工具</a></li></ol></li><li class="chapter-item expanded "><a href="../ch11/ch11.html"><strong aria-hidden="true">11.</strong> 测试</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch11/ch11-01.html"><strong aria-hidden="true">11.1.</strong> go test</a></li><li class="chapter-item expanded "><a href="../ch11/ch11-02.html"><strong aria-hidden="true">11.2.</strong> 测试函数</a></li><li class="chapter-item expanded "><a href="../ch11/ch11-03.html"><strong aria-hidden="true">11.3.</strong> 测试覆盖率</a></li><li class="chapter-item expanded "><a href="../ch11/ch11-04.html"><strong aria-hidden="true">11.4.</strong> 基准测试</a></li><li class="chapter-item expanded "><a href="../ch11/ch11-05.html"><strong aria-hidden="true">11.5.</strong> 剖析</a></li><li class="chapter-item expanded "><a href="../ch11/ch11-06.html"><strong aria-hidden="true">11.6.</strong> 示例函数</a></li></ol></li><li class="chapter-item expanded "><a href="../ch12/ch12.html"><strong aria-hidden="true">12.</strong> 反射</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch12/ch12-01.html"><strong aria-hidden="true">12.1.</strong> 为何需要反射?</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-02.html"><strong aria-hidden="true">12.2.</strong> reflect.Type和reflect.Value</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-03.html"><strong aria-hidden="true">12.3.</strong> Display递归打印</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-04.html"><strong aria-hidden="true">12.4.</strong> 示例: 编码S表达式</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-05.html"><strong aria-hidden="true">12.5.</strong> 通过reflect.Value修改值</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-06.html"><strong aria-hidden="true">12.6.</strong> 示例: 解码S表达式</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-07.html"><strong aria-hidden="true">12.7.</strong> 获取结构体字段标签</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-08.html"><strong aria-hidden="true">12.8.</strong> 显示一个类型的方法集</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-09.html"><strong aria-hidden="true">12.9.</strong> 几点忠告</a></li></ol></li><li class="chapter-item expanded "><a href="../ch13/ch13.html"><strong aria-hidden="true">13.</strong> 底层编程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch13/ch13-01.html"><strong aria-hidden="true">13.1.</strong> unsafe.Sizeof, Alignof 和 Offsetof</a></li><li class="chapter-item expanded "><a href="../ch13/ch13-02.html"><strong aria-hidden="true">13.2.</strong> unsafe.Pointer</a></li><li class="chapter-item expanded "><a href="../ch13/ch13-03.html"><strong aria-hidden="true">13.3.</strong> 示例: 深度相等判断</a></li><li class="chapter-item expanded "><a href="../ch13/ch13-04.html"><strong aria-hidden="true">13.4.</strong> 通过cgo调用C代码</a></li><li class="chapter-item expanded "><a href="../ch13/ch13-05.html"><strong aria-hidden="true">13.5.</strong> 几点忠告</a></li></ol></li><li class="chapter-item expanded "><a href="../appendix/appendix.html"><strong aria-hidden="true">14.</strong> 附录</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../appendix/appendix-a-errata.html"><strong aria-hidden="true">14.1.</strong> 附录A：原文勘误</a></li><li class="chapter-item expanded "><a href="../appendix/appendix-b-author.html"><strong aria-hidden="true">14.2.</strong> 附录B：作者译者</a></li><li class="chapter-item expanded "><a href="../appendix/appendix-c-cpoyright.html"><strong aria-hidden="true">14.3.</strong> 附录C：译文授权</a></li><li class="chapter-item expanded "><a href="../appendix/appendix-d-translations.html"><strong aria-hidden="true">14.4.</strong> 附录D：其它语言</a></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">Go语言圣经</h1>
+
+                    <div class="right-buttons">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        <a href="https://github.com/gopl-zh/gopl-zh.github.com" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                                                                        <a href="https://github.com/gopl-zh/gopl-zh.github.com/edit/master/./ch8/ch8-08.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <!-- Page table of contents -->
+                    <div class="sidetoc"><nav class="pagetoc"></nav></div>
+                    <main>
+                        <!-- 头部 -->
+                        <ul dir="auto">
+                        <li><em>KusonStack一站式可编程配置技术栈(Go): <a href="https://github.com/KusionStack/kusion">https://github.com/KusionStack/kusion</a></em></li>
+                        <li><em>KCL 配置编程语言(Rust): <a href="https://github.com/KusionStack/KCLVM">https://github.com/KusionStack/KCLVM</a></em></li>
+						<li><em>凹语言™: <a href="https://github.com/wa-lang/wa">https://github.com/wa-lang/wa</a></em></li>
+                        </ul>
+                        <hr>
+
+                        <h2 id="88-示例-并发的目录遍历"><a class="header" href="#88-示例-并发的目录遍历">8.8. 示例: 并发的目录遍历</a></h2>
+<p>在本小节中，我们会创建一个程序来生成指定目录的硬盘使用情况报告，这个程序和Unix里的du工具比较相似。大多数工作用下面这个walkDir函数来完成，这个函数使用dirents函数来枚举一个目录下的所有入口。</p>
+<p><u><i>gopl.io/ch8/du1</i></u></p>
+<pre><code class="language-go">// walkDir recursively walks the file tree rooted at dir
+// and sends the size of each found file on fileSizes.
+func walkDir(dir string, fileSizes chan&lt;- int64) {
+	for _, entry := range dirents(dir) {
+		if entry.IsDir() {
+			subdir := filepath.Join(dir, entry.Name())
+			walkDir(subdir, fileSizes)
+		} else {
+			fileSizes &lt;- entry.Size()
+		}
+	}
+}
+
+// dirents returns the entries of directory dir.
+func dirents(dir string) []os.FileInfo {
+	entries, err := ioutil.ReadDir(dir)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, &quot;du1: %v\n&quot;, err)
+		return nil
+	}
+	return entries
+}
+</code></pre>
+<p>ioutil.ReadDir函数会返回一个os.FileInfo类型的slice，os.FileInfo类型也是os.Stat这个函数的返回值。对每一个子目录而言，walkDir会递归地调用其自身，同时也在递归里获取每一个文件的信息。walkDir函数会向fileSizes这个channel发送一条消息。这条消息包含了文件的字节大小。</p>
+<p>下面的主函数，用了两个goroutine。后台的goroutine调用walkDir来遍历命令行给出的每一个路径并最终关闭fileSizes这个channel。主goroutine会对其从channel中接收到的文件大小进行累加，并输出其和。</p>
+<pre><code class="language-go">package main
+
+import (
+	&quot;flag&quot;
+	&quot;fmt&quot;
+	&quot;io/ioutil&quot;
+	&quot;os&quot;
+	&quot;path/filepath&quot;
+)
+
+func main() {
+	// Determine the initial directories.
+	flag.Parse()
+	roots := flag.Args()
+	if len(roots) == 0 {
+		roots = []string{&quot;.&quot;}
+	}
+
+	// Traverse the file tree.
+	fileSizes := make(chan int64)
+	go func() {
+		for _, root := range roots {
+			walkDir(root, fileSizes)
+		}
+		close(fileSizes)
+	}()
+
+	// Print the results.
+	var nfiles, nbytes int64
+	for size := range fileSizes {
+		nfiles++
+		nbytes += size
+	}
+	printDiskUsage(nfiles, nbytes)
+}
+
+func printDiskUsage(nfiles, nbytes int64) {
+	fmt.Printf(&quot;%d files  %.1f GB\n&quot;, nfiles, float64(nbytes)/1e9)
+}
+</code></pre>
+<p>这个程序会在打印其结果之前卡住很长时间。</p>
+<pre><code>$ go build gopl.io/ch8/du1
+$ ./du1 $HOME /usr /bin /etc
+213201 files  62.7 GB
+</code></pre>
+<p>如果在运行的时候能够让我们知道处理进度的话想必更好。但是，如果简单地把printDiskUsage函数调用移动到循环里会导致其打印出成百上千的输出。</p>
+<p>下面这个du的变种会间歇打印内容，不过只有在调用时提供了-v的flag才会显示程序进度信息。在roots目录上循环的后台goroutine在这里保持不变。主goroutine现在使用了计时器来每500ms生成事件，然后用select语句来等待文件大小的消息来更新总大小数据，或者一个计时器的事件来打印当前的总大小数据。如果-v的flag在运行时没有传入的话，tick这个channel会保持为nil，这样在select里的case也就相当于被禁用了。</p>
+<p><u><i>gopl.io/ch8/du2</i></u></p>
+<pre><code class="language-go">var verbose = flag.Bool(&quot;v&quot;, false, &quot;show verbose progress messages&quot;)
+
+func main() {
+	// ...start background goroutine...
+
+	// Print the results periodically.
+	var tick &lt;-chan time.Time
+	if *verbose {
+		tick = time.Tick(500 * time.Millisecond)
+	}
+	var nfiles, nbytes int64
+loop:
+	for {
+		select {
+		case size, ok := &lt;-fileSizes:
+			if !ok {
+				break loop // fileSizes was closed
+			}
+			nfiles++
+			nbytes += size
+		case &lt;-tick:
+			printDiskUsage(nfiles, nbytes)
+		}
+	}
+	printDiskUsage(nfiles, nbytes) // final totals
+}
+</code></pre>
+<p>由于我们的程序不再使用range循环，第一个select的case必须显式地判断fileSizes的channel是不是已经被关闭了，这里可以用到channel接收的二值形式。如果channel已经被关闭了的话，程序会直接退出循环。这里的break语句用到了标签break，这样可以同时终结select和for两个循环；如果没有用标签就break的话只会退出内层的select循环，而外层的for循环会使之进入下一轮select循环。</p>
+<p>现在程序会悠闲地为我们打印更新流：</p>
+<pre><code>$ go build gopl.io/ch8/du2
+$ ./du2 -v $HOME /usr /bin /etc
+28608 files  8.3 GB
+54147 files  10.3 GB
+93591 files  15.1 GB
+127169 files  52.9 GB
+175931 files  62.2 GB
+213201 files  62.7 GB
+</code></pre>
+<p>然而这个程序还是会花上很长时间才会结束。完全可以并发调用walkDir，从而发挥磁盘系统的并行性能。下面这个第三个版本的du，会对每一个walkDir的调用创建一个新的goroutine。它使用sync.WaitGroup（§8.5）来对仍旧活跃的walkDir调用进行计数，另一个goroutine会在计数器减为零的时候将fileSizes这个channel关闭。</p>
+<p><u><i>gopl.io/ch8/du3</i></u></p>
+<pre><code class="language-go">func main() {
+	// ...determine roots...
+	// Traverse each root of the file tree in parallel.
+	fileSizes := make(chan int64)
+	var n sync.WaitGroup
+	for _, root := range roots {
+		n.Add(1)
+		go walkDir(root, &amp;n, fileSizes)
+	}
+	go func() {
+		n.Wait()
+		close(fileSizes)
+	}()
+	// ...select loop...
+}
+
+func walkDir(dir string, n *sync.WaitGroup, fileSizes chan&lt;- int64) {
+	defer n.Done()
+	for _, entry := range dirents(dir) {
+		if entry.IsDir() {
+			n.Add(1)
+			subdir := filepath.Join(dir, entry.Name())
+			go walkDir(subdir, n, fileSizes)
+		} else {
+			fileSizes &lt;- entry.Size()
+		}
+	}
+}
+</code></pre>
+<p>由于这个程序在高峰期会创建成百上千的goroutine，我们需要修改dirents函数，用计数信号量来阻止他同时打开太多的文件，就像我们在8.7节中的并发爬虫一样：</p>
+<pre><code class="language-go">// sema is a counting semaphore for limiting concurrency in dirents.
+var sema = make(chan struct{}, 20)
+
+// dirents returns the entries of directory dir.
+func dirents(dir string) []os.FileInfo {
+	sema &lt;- struct{}{}        // acquire token
+	defer func() { &lt;-sema }() // release token
+	// ...
+</code></pre>
+<p>这个版本比之前那个快了好几倍，尽管其具体效率还是和你的运行环境，机器配置相关。</p>
+<p><strong>练习 8.9：</strong> 编写一个du工具，每隔一段时间将root目录下的目录大小计算并显示出来。</p>
+
+
+                        <!-- 公众号 -->
+                        <hr>
+                        <table>
+                            <tr>
+                            <td>
+                            <img width="222px" src="https://chai2010.cn/advanced-go-programming-book/css.png">
+                            </td>
+                            <td>
+                            <img width="222px" src="https://chai2010.cn/advanced-go-programming-book/cch.png">
+                            </td>
+                            </tr>
+                        </table>
+
+                        <div id="giscus-container"></div>
+                        <footer class="page-footer">
+                            <span>© 2015-2016 | <a href="https://github.com/gopl-zh"> Go语言圣经中文版</a>, 仅学习交流使用</span>
+                        </footer>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../ch8/ch8-07.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="../ch8/ch8-09.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../ch8/ch8-07.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="../ch8/ch8-09.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript" charset="utf-8">
+        var pagePath = "ch8/ch8-08.md"
+        </script>
+
+
+        <!-- Custom JS scripts -->
+                <script type="text/javascript" src="../js/custom.js"></script>
+                <script type="text/javascript" src="../js/bigPicture.js"></script>
+        
+        
+    </body>
+</html>
