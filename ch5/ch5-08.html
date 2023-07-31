@@ -171,17 +171,17 @@
 	}
 	// Check Content-Type is HTML (e.g., &quot;text/html;charset=utf-8&quot;).
 	ct := resp.Header.Get(&quot;Content-Type&quot;)
-	if ct != &quot;text/html&quot; &amp;&amp; !strings.HasPrefix(ct,&quot;text/html;&quot;) {
+	if ct != &quot;text/html&quot; &amp;&amp; !strings.HasPrefix(ct, &quot;text/html;&quot;) {
 		resp.Body.Close()
-		return fmt.Errorf(&quot;%s has type %s, not text/html&quot;,url, ct)
+		return fmt.Errorf(&quot;%s has type %s, not text/html&quot;, url, ct)
 	}
 	doc, err := html.Parse(resp.Body)
 	resp.Body.Close()
 	if err != nil {
-		return fmt.Errorf(&quot;parsing %s as HTML: %v&quot;, url,err)
+		return fmt.Errorf(&quot;parsing %s as HTML: %v&quot;, url, err)
 	}
 	visitNode := func(n *html.Node) {
-		if n.Type == html.ElementNode &amp;&amp; n.Data == &quot;title&quot;&amp;&amp;n.FirstChild != nil {
+		if n.Type == html.ElementNode &amp;&amp; n.Data == &quot;title&quot; &amp;&amp; n.FirstChild != nil {
 			fmt.Println(n.FirstChild.Data)
 		}
 	}
@@ -210,13 +210,13 @@ title1: https://golang.org/doc/gopher/frontpage.png has type image/png, not text
 	defer resp.Body.Close()
 	ct := resp.Header.Get(&quot;Content-Type&quot;)
 	if ct != &quot;text/html&quot; &amp;&amp; !strings.HasPrefix(ct,&quot;text/html;&quot;) {
-		return fmt.Errorf(&quot;%s has type %s, not text/html&quot;,url, ct)
+		return fmt.Errorf(&quot;%s has type %s, not text/html&quot;, url, ct)
 	}
 	doc, err := html.Parse(resp.Body)
 	if err != nil {
-		return fmt.Errorf(&quot;parsing %s as HTML: %v&quot;, url,err)
+		return fmt.Errorf(&quot;parsing %s as HTML: %v&quot;, url, err)
 	}
-	// ...print doc's title element…
+	// ...print doc's title element...
 	return nil
 }
 </code></pre>
@@ -252,7 +252,7 @@ func trace(msg string) func() {
 	start := time.Now()
 	log.Printf(&quot;enter %s&quot;, msg)
 	return func() { 
-		log.Printf(&quot;exit %s (%s)&quot;, msg,time.Since(start)) 
+		log.Printf(&quot;exit %s (%s)&quot;, msg, time.Since(start))
 	}
 }
 </code></pre>
@@ -270,7 +270,7 @@ $ ./trace
 </code></pre>
 <p>我们只需要首先命名double的返回值，再增加defer语句，我们就可以在double每次被调用时，输出参数以及返回值。</p>
 <pre><code class="language-Go">func double(x int) (result int) {
-	defer func() { fmt.Printf(&quot;double(%d) = %d\n&quot;, x,result) }()
+	defer func() { fmt.Printf(&quot;double(%d) = %d\n&quot;, x, result) }()
 	return x + x
 }
 _ = double(4)

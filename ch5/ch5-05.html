@@ -193,12 +193,12 @@
 	fmt.Println(strings.Map(add1, &quot;VMS&quot;))      // &quot;WNT&quot;
 	fmt.Println(strings.Map(add1, &quot;Admix&quot;))    // &quot;Benjy&quot;
 </code></pre>
-<p>5.2节的findLinks函数使用了辅助函数visit，遍历和操作了HTML页面的所有结点。使用函数值，我们可以将遍历结点的逻辑和操作结点的逻辑分离，使得我们可以复用遍历的逻辑，从而对结点进行不同的操作。</p>
+<p>5.2节的findLinks函数使用了辅助函数visit，遍历和操作了HTML页面的所有节点。使用函数值，我们可以将遍历节点的逻辑和操作节点的逻辑分离，使得我们可以复用遍历的逻辑，从而对节点进行不同的操作。</p>
 <p><u><i>gopl.io/ch5/outline2</i></u></p>
-<pre><code class="language-Go">// forEachNode针对每个结点x，都会调用pre(x)和post(x)。
+<pre><code class="language-Go">// forEachNode针对每个节点x，都会调用pre(x)和post(x)。
 // pre和post都是可选的。
-// 遍历孩子结点之前，pre被调用
-// 遍历孩子结点之后，post被调用
+// 遍历孩子节点之前，pre被调用
+// 遍历孩子节点之后，post被调用
 func forEachNode(n *html.Node, pre, post func(n *html.Node)) {
 	if pre != nil {
 		pre(n)
@@ -211,7 +211,7 @@ func forEachNode(n *html.Node, pre, post func(n *html.Node)) {
 	}
 }
 </code></pre>
-<p>该函数接收2个函数作为参数，分别在结点的孩子被访问前和访问后调用。这样的设计给调用者更大的灵活性。举个例子，现在我们有startElement和endElement两个函数用于输出HTML元素的开始标签和结束标签<code>&lt;b&gt;...&lt;/b&gt;</code>：</p>
+<p>该函数接收2个函数作为参数，分别在节点的孩子被访问前和访问后调用。这样的设计给调用者更大的灵活性。举个例子，现在我们有startElement和endElement两个函数用于输出HTML元素的开始标签和结束标签<code>&lt;b&gt;...&lt;/b&gt;</code>：</p>
 <pre><code class="language-Go">var depth int
 func startElement(n *html.Node) {
 	if n.Type == html.ElementNode {
@@ -252,7 +252,7 @@ $ ./outline2 http://gopl.io
               &lt;/img&gt;
 ...
 </code></pre>
-<p><strong>练习 5.7：</strong> 完善startElement和endElement函数，使其成为通用的HTML输出器。要求：输出注释结点，文本结点以及每个元素的属性（&lt; a href='...'&gt;）。使用简略格式输出没有孩子结点的元素（即用<code>&lt;img/&gt;</code>代替<code>&lt;img&gt;&lt;/img&gt;</code>）。编写测试，验证程序输出的格式正确。（详见11章）</p>
+<p><strong>练习 5.7：</strong> 完善startElement和endElement函数，使其成为通用的HTML输出器。要求：输出注释节点，文本节点以及每个元素的属性（&lt; a href='...'&gt;）。使用简略格式输出没有孩子节点的元素（即用<code>&lt;img/&gt;</code>代替<code>&lt;img&gt;&lt;/img&gt;</code>）。编写测试，验证程序输出的格式正确。（详见11章）</p>
 <p><strong>练习 5.8：</strong> 修改pre和post函数，使其返回布尔类型的返回值。返回false时，中止forEachNoded的遍历。使用修改后的代码编写ElementByID函数，根据用户输入的id查找第一个拥有该id元素的HTML元素，查找成功后，停止遍历。</p>
 <pre><code class="language-Go">func ElementByID(doc *html.Node, id string) *html.Node
 </code></pre>

@@ -258,7 +258,7 @@ func topoSort(m map[string][]string) []string {
 12: networks
 13: programming languages
 </code></pre>
-<p>让我们回到findLinks这个例子。我们将代码移动到了links包下，将函数重命名为Extract，在第八章我们会再次用到这个函数。新的匿名函数被引入，用于替换原来的visit函数。该匿名函数负责将新连接添加到切片中。在Extract中，使用forEachNode遍历HTML页面，由于Extract只需要在遍历结点前操作结点，所以forEachNode的post参数被传入nil。</p>
+<p>让我们回到findLinks这个例子。我们将代码移动到了links包下，将函数重命名为Extract，在第八章我们会再次用到这个函数。新的匿名函数被引入，用于替换原来的visit函数。该匿名函数负责将新连接添加到切片中。在Extract中，使用forEachNode遍历HTML页面，由于Extract只需要在遍历节点前操作节点，所以forEachNode的post参数被传入nil。</p>
 <p><u><i>gopl.io/ch5/links</i></u></p>
 <pre><code class="language-Go">// Package links provides a link-extraction function.
 package links
@@ -276,7 +276,7 @@ func Extract(url string) ([]string, error) {
 	}
 	if resp.StatusCode != http.StatusOK {
 	resp.Body.Close()
-		return nil, fmt.Errorf(&quot;getting %s: %s&quot;, url, resp.Status)
+    return nil, fmt.Errorf(&quot;getting %s: %s&quot;, url, resp.Status)
 	}
 	doc, err := html.Parse(resp.Body)
 	resp.Body.Close()
