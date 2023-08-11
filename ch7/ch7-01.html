@@ -176,9 +176,8 @@ func Sprintf(format string, args ...interface{}) string {
 	return buf.String()
 }
 </code></pre>
-<p>Fprintf的前缀F表示文件（File）也表明格式化输出结果应该被写入第一个参数提供的文件中。在Printf函数中的第一个参数os.Stdout是<code>*os.File</code>类型；在Sprintf函数中的第一个参数&amp;buf是一个指向可以写入字节的内存缓冲区，然而它
-并不是一个文件类型尽管它在某种意义上和文件类型相似。</p>
-<p>即使Fprintf函数中的第一个参数也不是一个文件类型。它是io.Writer类型，这是一个接口类型定义如下：</p>
+<p>Fprintf的前缀F表示文件（File），也表明格式化输出结果应该被写入第一个参数提供的文件中。在Printf函数中的第一个参数os.Stdout是<code>*os.File</code>类型；在Sprintf函数中的第一个参数&amp;buf是一个指向可以写入字节的内存缓冲区。然而它并不是一个文件类型，尽管它在某种意义上和文件类型相似。</p>
+<p>即使是Fprintf函数中的第一个参数，它也不是一个文件类型。它是io.Writer类型，这是一个接口类型定义如下：</p>
 <pre><code class="language-go">package io
 
 // Writer is the interface that wraps the basic Write method.
