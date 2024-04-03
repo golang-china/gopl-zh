@@ -3972,7 +3972,7 @@ $ ./outline2 http://gopl.io
 <p>更为重要的是，通过这种方式定义的函数可以访问完整的词法环境（lexical environment），这意味着在函数中定义的内部函数可以引用该函数的变量，如下例所示：</p>
 <p><u><i>gopl.io/ch5/squares</i></u></p>
 <pre><code class="language-Go">// squares返回一个匿名函数。
-// 该匿名函数每次被调用时都会返回下一个数的平方的函数
+// 该匿名函数每次被调用时都会返回下一个数的平方。
 func squares() func() int {
 	var x int
 	return func() int {
@@ -3982,11 +3982,10 @@ func squares() func() int {
 }
 func main() {
 	f := squares()
-        // () 函数调用符号
-	fmt.Println(f()()) // &quot;1&quot;
-	fmt.Println(f()()) // &quot;4&quot;
-	fmt.Println(f()()) // &quot;9&quot;
-	fmt.Println(f()()) // &quot;16&quot;
+	fmt.Println(f()) // &quot;1&quot;
+	fmt.Println(f()) // &quot;4&quot;
+	fmt.Println(f()) // &quot;9&quot;
+	fmt.Println(f()) // &quot;16&quot;
 }
 </code></pre>
 <p>函数squares返回另一个类型为 func() int 的函数。对squares的一次调用会生成一个局部变量x并返回一个匿名函数。每次调用匿名函数时，该函数都会先使x的值加1，再返回x的平方。第二次调用squares时，会生成第二个x变量，并返回一个新的匿名函数。新匿名函数操作的是第二个x变量。</p>
