@@ -489,7 +489,7 @@ func countLines(f *os.File, counts map[string]int) {
 <p>为了使示例代码保持合理的大小，本书开始的一些示例有意简化了错误处理，显而易见的是，应该检查 <code>os.Open</code> 返回的错误值，然而，使用 <code>input.Scan</code> 读取文件过程中，不大可能出现错误，因此我们忽略了错误处理。我们会在跳过错误检查的地方做说明。5.4 节中深入介绍错误处理。</p>
 <p>注意 <code>countLines</code> 函数在其声明前被调用。函数和包级别的变量（package-level entities）可以任意顺序声明，并不影响其被调用。（译注：最好还是遵循一定的规范）</p>
 <p><code>map</code> 是一个由 <code>make</code> 函数创建的数据结构的引用。<code>map</code> 作为参数传递给某函数时，该函数接收这个引用的一份拷贝（copy，或译为副本），被调用函数对 <code>map</code> 底层数据结构的任何修改，调用者函数都可以通过持有的 <code>map</code> 引用看到。在我们的例子中，<code>countLines</code> 函数向 <code>counts</code> 插入的值，也会被 <code>main</code> 函数看到。（译注：类似于 C++ 里的引用传递，实际上指针是另一个指针了，但内部存的值指向同一块内存）</p>
-<p><code>dup</code> 的前两个版本以&quot;流”模式读取输入，并根据需要拆分成多个行。理论上，这些程序可以处理任意数量的输入数据。还有另一个方法，就是一口气把全部输入数据读到内存中，一次分割为多行，然后处理它们。下面这个版本，<code>dup3</code>，就是这么操作的。这个例子引入了 <code>ReadFile</code> 函数（来自于<code>io/ioutil</code>包），其读取指定文件的全部内容，<code>strings.Split</code> 函数把字符串分割成子串的切片。（<code>Split</code> 的作用与前文提到的 <code>strings.Join</code> 相反。）</p>
+<p><code>dup</code> 的前两个版本以&quot;流”模式读取输入，并根据需要拆分成多个行。理论上，这些程序可以处理任意数量的输入数据。还有另一个方法，就是一口气把全部输入数据读到内存中，一次分割为多行，然后处理它们。下面这个版本，<code>dup3</code>，就是这么操作的。这个例子引入了 <code>ReadFile</code> 函数（来自于<code>io/ioutil</code>包），其读取指定文件的全部内容，<code>strings.Split</code> 函数把字符串分割成子串的切片。（<code>Split</code> 的作用与前文提到的 <code>strings.Join</code> 相反。请注意如果在Windows下测试注意换行是否为\r\n，否则最后一行是否有空行将会影响结果。）</p>
 <p>我们略微简化了 <code>dup3</code>。首先，由于 <code>ReadFile</code> 函数需要文件名作为参数，因此只读指定文件，不读标准输入。其次，由于行计数代码只在一处用到，故将其移回 <code>main</code> 函数。</p>
 <p><u><i>gopl.io/ch1/dup3</i></u></p>
 <pre><code class="language-go">package main
