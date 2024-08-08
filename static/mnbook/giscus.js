@@ -1,11 +1,11 @@
 // https://giscus.app
 
-const data_repo = "gopl-zh/gopl-zh.github.com";
-const data_repo_id = "MDEwOlJlcG9zaXRvcnk2MTUzMTQ2Mw==";
-const data_category = "General";
-const data_category_id = "DIC_kwDOA6rlR84CQnJW";
+const giscus_data_repo = "gopl-zh/gopl-zh.github.com";
+const giscus_data_repo_id = "MDEwOlJlcG9zaXRvcnk2MTUzMTQ2Mw==";
+const giscus_data_category = "General";
+const giscus_data_category_id = "DIC_kwDOA6rlR84CQnJW";
 
-var initAll = function () {
+var giscus_initAll = function () {
     var path = window.location.pathname;
     if (path.endsWith("/print.html")) {
         return;
@@ -128,10 +128,10 @@ var initAll = function () {
     script.src = "https://giscus.app/client.js";
     script.async = true;
     script.crossOrigin = "anonymous";
-    script.setAttribute("data-repo", data_repo);
-    script.setAttribute("data-repo-id", data_repo_id);
-    script.setAttribute("data-category", data_category);
-    script.setAttribute("data-category-id", data_category_id);
+    script.setAttribute("data-repo", giscus_data_repo);
+    script.setAttribute("data-repo-id", giscus_data_repo_id);
+    script.setAttribute("data-category", giscus_data_category);
+    script.setAttribute("data-category-id", giscus_data_category_id);
     script.setAttribute("data-mapping", "specific");
     script.setAttribute("data-term", pagePath);
     script.setAttribute("data-reactions-enabled", "1");
@@ -143,4 +143,4 @@ var initAll = function () {
     document.getElementById("giscus-container").appendChild(script);
 };
 
-window.addEventListener('load', initAll);
+window.addEventListener('load', giscus_initAll);

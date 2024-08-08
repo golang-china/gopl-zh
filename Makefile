@@ -2,9 +2,19 @@
 # Use of this source code is governed by a BSD-style
 # license that can be found in the LICENSE file.
 
-# install mkbook
+#
+# MnBook: Mini Markdown Book
+# https://github.com/wa-lang/mnbook
+#
 
 default:
-	mdbook serve
+	mnbook serve
+
+build:
+	-rm book
+	mnbook build
+	-rm book/.gitignore
+	-rm -rf book/.git
 
 clean:
+	-rm -rf book

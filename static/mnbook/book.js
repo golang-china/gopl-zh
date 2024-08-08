@@ -25,19 +25,7 @@ function playground_text(playground) {
 
     var playgrounds = Array.from(document.querySelectorAll(".playground"));
     if (playgrounds.length > 0) {
-        fetch_with_timeout("https://play.rust-lang.org/meta/crates", {
-            headers: {
-                'Content-Type': "application/json",
-            },
-            method: 'POST',
-            mode: 'cors',
-        })
-        .then(response => response.json())
-        .then(response => {
-            // get list of crates available in the rust playground
-            let playground_crates = response.crates.map(item => item["id"]);
-            playgrounds.forEach(block => handle_crate_list_update(block, playground_crates));
-        });
+        // ignore
     }
 
     function handle_crate_list_update(playground_block, playground_crates) {
@@ -52,21 +40,23 @@ function playground_text(playground) {
                 editor.addEventListener("change", function (e) {
                     update_play_button(playground_block, playground_crates);
                 });
-                // add Ctrl-Enter command to execute rust code
+
+                // add Ctrl-Enter command to execute xxx code
                 editor.commands.addCommand({
                     name: "run",
                     bindKey: {
                         win: "Ctrl-Enter",
                         mac: "Ctrl-Enter"
                     },
-                    exec: _editor => run_rust_code(playground_block)
+
+                    exec: _editor => run_xxx_code(playground_block)
                 });
             }
         }
     }
 
     // updates the visibility of play button based on `no_run` class and
-    // used crates vs ones available on http://play.rust-lang.org
+    // used crates vs ones available on http://play.xxx-lang.org
     function update_play_button(pre_block, playground_crates) {
         var play_button = pre_block.querySelector(".play-button");
 
@@ -76,65 +66,11 @@ function playground_text(playground) {
             return;
         }
 
-        // get list of `extern crate`'s from snippet
-        var txt = playground_text(pre_block);
-        var re = /extern\s+crate\s+([a-zA-Z_0-9]+)\s*;/g;
-        var snippet_crates = [];
-        var item;
-        while (item = re.exec(txt)) {
-            snippet_crates.push(item[1]);
-        }
-
-        // check if all used crates are available on play.rust-lang.org
-        var all_available = snippet_crates.every(function (elem) {
-            return playground_crates.indexOf(elem) > -1;
-        });
-
-        if (all_available) {
-            play_button.classList.remove("hidden");
-        } else {
-            play_button.classList.add("hidden");
-        }
+        return;
     }
 
-    function run_rust_code(code_block) {
-        var result_block = code_block.querySelector(".result");
-        if (!result_block) {
-            result_block = document.createElement('code');
-            result_block.className = 'result hljs language-bash';
-
-            code_block.append(result_block);
-        }
-
-        let text = playground_text(code_block);
-        let classes = code_block.querySelector('code').classList;
-        let has_2018 = classes.contains("edition2018");
-        let edition = has_2018 ? "2018" : "2015";
-
-        var params = {
-            version: "stable",
-            optimize: "0",
-            code: text,
-            edition: edition
-        };
-
-        if (text.indexOf("#![feature") !== -1) {
-            params.version = "nightly";
-        }
-
-        result_block.innerText = "Running...";
-
-        fetch_with_timeout("https://play.rust-lang.org/evaluate.json", {
-            headers: {
-                'Content-Type': "application/json",
-            },
-            method: 'POST',
-            mode: 'cors',
-            body: JSON.stringify(params)
-        })
-        .then(response => response.json())
-        .then(response => result_block.innerText = response.result)
-        .catch(error => result_block.innerText = "Playground Communication: " + error.message);
+    function run_xxx_code(code_block) {
+        // todo
     }
 
     // Syntax highlighting Configuration
@@ -149,14 +85,15 @@ function playground_text(playground) {
         .filter(function (node) {return !node.parentElement.classList.contains("header"); });
 
     if (window.ace) {
-        // language-rust class needs to be removed for editable
+        // language-xxx class needs to be removed for editable
         // blocks or highlightjs will capture events
-        Array
-            .from(document.querySelectorAll('code.editable'))
-            .forEach(function (block) { block.classList.remove('language-rust'); });
+        code_nodes
+            .filter(function (node) {return node.classList.contains("editable"); })
+            .forEach(function (block) { block.classList.remove('language-xxx'); });
 
         Array
-            .from(document.querySelectorAll('code:not(.editable)'))
+        code_nodes
+            .filter(function (node) {return !node.classList.contains("editable"); })
             .forEach(function (block) { hljs.highlightBlock(block); });
     } else {
         code_nodes.forEach(function (block) { hljs.highlightBlock(block); });
@@ -165,8 +102,7 @@ function playground_text(playground) {
     // Adding the hljs class gives code blocks the color css
     // even if highlighting doesn't apply
     code_nodes.forEach(function (block) { block.classList.add('hljs'); });
-
-    Array.from(document.querySelectorAll("code.language-rust")).forEach(function (block) {
+    Array.from(document.querySelectorAll("code.language-xxx")).forEach(function (block) {
 
         var lines = Array.from(block.querySelectorAll('.boring'));
         // If no lines were hidden, return
@@ -240,7 +176,7 @@ function playground_text(playground) {
 
         buttons.insertBefore(runCodeButton, buttons.firstChild);
         runCodeButton.addEventListener('click', function (e) {
-            run_rust_code(pre_block);
+            run_xxx_code(pre_block);
         });
 
         if (window.playground_copyable) {
@@ -296,7 +232,7 @@ function playground_text(playground) {
 
     function get_theme() {
         var theme;
-        try { theme = localStorage.getItem('mdbook-theme'); } catch (e) { }
+        try { theme = localStorage.getItem('mnbook-theme'); } catch (e) { }
         if (theme === null || theme === undefined) {
             return default_theme;
         } else {
@@ -338,7 +274,7 @@ function playground_text(playground) {
         var previousTheme = get_theme();
 
         if (store) {
-            try { localStorage.setItem('mdbook-theme', theme); } catch (e) { }
+            try { localStorage.setItem('mnbook-theme', theme); } catch (e) { }
         }
 
         html.classList.remove(previousTheme);
@@ -359,7 +295,14 @@ function playground_text(playground) {
     });
 
     themePopup.addEventListener('click', function (e) {
-        var theme = e.target.id || e.target.parentElement.id;
+        var theme;
+        if (e.target.className === "theme") {
+            theme = e.target.id;
+        } else if (e.target.parentElement.className === "theme") {
+            theme = e.target.parentElement.id;
+        } else {
+            return;
+        }
         set_theme(theme);
     });
 
@@ -370,7 +313,7 @@ function playground_text(playground) {
         }
     });
 
-    // Should not be needed, but it works around an issue on macOS & iOS: https://github.com/rust-lang/mdBook/issues/628
+    // Should not be needed, but it works around an issue on macOS & iOS: https://github.com/rust-lang/mnbook/issues/628
     document.addEventListener('click', function(e) {
         if (themePopup.style.display === 'block' && !themeToggleButton.contains(e.target) && !themePopup.contains(e.target)) {
             hideThemes();
@@ -428,7 +371,7 @@ function playground_text(playground) {
         });
         sidebarToggleButton.setAttribute('aria-expanded', true);
         sidebar.setAttribute('aria-hidden', false);
-        try { localStorage.setItem('mdbook-sidebar', 'visible'); } catch (e) { }
+        try { localStorage.setItem('mnbook-sidebar', 'visible'); } catch (e) { }
     }
 
 
@@ -450,7 +393,7 @@ function playground_text(playground) {
         });
         sidebarToggleButton.setAttribute('aria-expanded', false);
         sidebar.setAttribute('aria-hidden', true);
-        try { localStorage.setItem('mdbook-sidebar', 'hidden'); } catch (e) { }
+        try { localStorage.setItem('mnbook-sidebar', 'hidden'); } catch (e) { }
     }
 
     // Toggle sidebar

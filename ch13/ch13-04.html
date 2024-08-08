@@ -1,39 +1,30 @@
 <!DOCTYPE HTML>
 <html lang="zh" class="sidebar-visible no-js light">
     <head>
-        <!-- Book generated using mdBook -->
+        <!-- Book generated using https://github.com/wa-lang/mnbook -->
         <meta charset="UTF-8">
         <title>通过cgo调用C代码 - Go语言圣经</title>
-                
-
         <!-- Custom HTML head -->
-        
-
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <meta name="description" content="&lt;The Go Programming Language&gt;中文版">
+        <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-                <link rel="icon" href="../favicon.svg">
-                        <link rel="shortcut icon" href="../favicon.png">
-                <link rel="stylesheet" href="../css/variables.css">
-        <link rel="stylesheet" href="../css/general.css">
-        <link rel="stylesheet" href="../css/chrome.css">
-                <link rel="stylesheet" href="../css/print.css" media="print">
-        
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../static/mnbook/css/variables.css">
+        <link rel="stylesheet" href="../static/mnbook/css/general.css">
+        <link rel="stylesheet" href="../static/mnbook/css/chrome.css">
+        <link rel="stylesheet" href="../static/mnbook/css/print.css" media="print">
         <!-- Fonts -->
-        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-                <link rel="stylesheet" href="../fonts/fonts.css">
-        
+        <link rel="stylesheet" href="../static/mnbook/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../static/mnbook/fonts/fonts.css">
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="../highlight.css">
-        <link rel="stylesheet" href="../tomorrow-night.css">
-        <link rel="stylesheet" href="../ayu-highlight.css">
+        <link rel="stylesheet" href="../static/mnbook/highlight.css">
+        <link rel="stylesheet" href="../static/mnbook/tomorrow-night.css">
+        <link rel="stylesheet" href="../static/mnbook/ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-                <link rel="stylesheet" href="../style.css">
-        
-        
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -45,15 +36,15 @@
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script type="text/javascript">
             try {
-                var theme = localStorage.getItem('mdbook-theme');
-                var sidebar = localStorage.getItem('mdbook-sidebar');
+                var theme = localStorage.getItem('mnbook-theme');
+                var sidebar = localStorage.getItem('mnbook-sidebar');
 
                 if (theme.startsWith('"') && theme.endsWith('"')) {
-                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                    localStorage.setItem('mnbook-theme', theme.slice(1, theme.length - 1));
                 }
 
                 if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
-                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                    localStorage.setItem('mnbook-sidebar', sidebar.slice(1, sidebar.length - 1));
                 }
             } catch (e) { }
         </script>
@@ -61,7 +52,7 @@
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script type="text/javascript">
             var theme;
-            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            try { theme = localStorage.getItem('mnbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
             html.classList.remove('no-js')
@@ -75,7 +66,7 @@
             var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
-                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                try { sidebar = localStorage.getItem('mnbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             }
             html.classList.remove('sidebar-visible');
@@ -84,14 +75,416 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Go语言圣经</a></li><li class="chapter-item expanded affix "><a href="../preface-zh.html">译者序</a></li><li class="chapter-item expanded affix "><a href="../preface.html">前言</a></li><li class="chapter-item expanded "><a href="../ch1/ch1.html"><strong aria-hidden="true">1.</strong> 入门</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch1/ch1-01.html"><strong aria-hidden="true">1.1.</strong> Hello, World</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-02.html"><strong aria-hidden="true">1.2.</strong> 命令行参数</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-03.html"><strong aria-hidden="true">1.3.</strong> 查找重复的行</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-04.html"><strong aria-hidden="true">1.4.</strong> GIF动画</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-05.html"><strong aria-hidden="true">1.5.</strong> 获取URL</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-06.html"><strong aria-hidden="true">1.6.</strong> 并发获取多个URL</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-07.html"><strong aria-hidden="true">1.7.</strong> Web服务</a></li><li class="chapter-item expanded "><a href="../ch1/ch1-08.html"><strong aria-hidden="true">1.8.</strong> 本章要点</a></li></ol></li><li class="chapter-item expanded "><a href="../ch2/ch2.html"><strong aria-hidden="true">2.</strong> 程序结构</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch2/ch2-01.html"><strong aria-hidden="true">2.1.</strong> 命名</a></li><li class="chapter-item expanded "><a href="../ch2/ch2-02.html"><strong aria-hidden="true">2.2.</strong> 声明</a></li><li class="chapter-item expanded "><a href="../ch2/ch2-03.html"><strong aria-hidden="true">2.3.</strong> 变量</a></li><li class="chapter-item expanded "><a href="../ch2/ch2-04.html"><strong aria-hidden="true">2.4.</strong> 赋值</a></li><li class="chapter-item expanded "><a href="../ch2/ch2-05.html"><strong aria-hidden="true">2.5.</strong> 类型</a></li><li class="chapter-item expanded "><a href="../ch2/ch2-06.html"><strong aria-hidden="true">2.6.</strong> 包和文件</a></li><li class="chapter-item expanded "><a href="../ch2/ch2-07.html"><strong aria-hidden="true">2.7.</strong> 作用域</a></li></ol></li><li class="chapter-item expanded "><a href="../ch3/ch3.html"><strong aria-hidden="true">3.</strong> 基础数据类型</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch3/ch3-01.html"><strong aria-hidden="true">3.1.</strong> 整型</a></li><li class="chapter-item expanded "><a href="../ch3/ch3-02.html"><strong aria-hidden="true">3.2.</strong> 浮点数</a></li><li class="chapter-item expanded "><a href="../ch3/ch3-03.html"><strong aria-hidden="true">3.3.</strong> 复数</a></li><li class="chapter-item expanded "><a href="../ch3/ch3-04.html"><strong aria-hidden="true">3.4.</strong> 布尔型</a></li><li class="chapter-item expanded "><a href="../ch3/ch3-05.html"><strong aria-hidden="true">3.5.</strong> 字符串</a></li><li class="chapter-item expanded "><a href="../ch3/ch3-06.html"><strong aria-hidden="true">3.6.</strong> 常量</a></li></ol></li><li class="chapter-item expanded "><a href="../ch4/ch4.html"><strong aria-hidden="true">4.</strong> 复合数据类型</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch4/ch4-01.html"><strong aria-hidden="true">4.1.</strong> 数组</a></li><li class="chapter-item expanded "><a href="../ch4/ch4-02.html"><strong aria-hidden="true">4.2.</strong> Slice</a></li><li class="chapter-item expanded "><a href="../ch4/ch4-03.html"><strong aria-hidden="true">4.3.</strong> Map</a></li><li class="chapter-item expanded "><a href="../ch4/ch4-04.html"><strong aria-hidden="true">4.4.</strong> 结构体</a></li><li class="chapter-item expanded "><a href="../ch4/ch4-05.html"><strong aria-hidden="true">4.5.</strong> JSON</a></li><li class="chapter-item expanded "><a href="../ch4/ch4-06.html"><strong aria-hidden="true">4.6.</strong> 文本和HTML模板</a></li></ol></li><li class="chapter-item expanded "><a href="../ch5/ch5.html"><strong aria-hidden="true">5.</strong> 函数</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch5/ch5-01.html"><strong aria-hidden="true">5.1.</strong> 函数声明</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-02.html"><strong aria-hidden="true">5.2.</strong> 递归</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-03.html"><strong aria-hidden="true">5.3.</strong> 多返回值</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-04.html"><strong aria-hidden="true">5.4.</strong> 错误</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-05.html"><strong aria-hidden="true">5.5.</strong> 函数值</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-06.html"><strong aria-hidden="true">5.6.</strong> 匿名函数</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-07.html"><strong aria-hidden="true">5.7.</strong> 可变参数</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-08.html"><strong aria-hidden="true">5.8.</strong> Deferred函数</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-09.html"><strong aria-hidden="true">5.9.</strong> Panic异常</a></li><li class="chapter-item expanded "><a href="../ch5/ch5-10.html"><strong aria-hidden="true">5.10.</strong> Recover捕获异常</a></li></ol></li><li class="chapter-item expanded "><a href="../ch6/ch6.html"><strong aria-hidden="true">6.</strong> 方法</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch6/ch6-01.html"><strong aria-hidden="true">6.1.</strong> 方法声明</a></li><li class="chapter-item expanded "><a href="../ch6/ch6-02.html"><strong aria-hidden="true">6.2.</strong> 基于指针对象的方法</a></li><li class="chapter-item expanded "><a href="../ch6/ch6-03.html"><strong aria-hidden="true">6.3.</strong> 通过嵌入结构体来扩展类型</a></li><li class="chapter-item expanded "><a href="../ch6/ch6-04.html"><strong aria-hidden="true">6.4.</strong> 方法值和方法表达式</a></li><li class="chapter-item expanded "><a href="../ch6/ch6-05.html"><strong aria-hidden="true">6.5.</strong> 示例: Bit数组</a></li><li class="chapter-item expanded "><a href="../ch6/ch6-06.html"><strong aria-hidden="true">6.6.</strong> 封装</a></li></ol></li><li class="chapter-item expanded "><a href="../ch7/ch7.html"><strong aria-hidden="true">7.</strong> 接口</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch7/ch7-01.html"><strong aria-hidden="true">7.1.</strong> 接口是合约</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-02.html"><strong aria-hidden="true">7.2.</strong> 接口类型</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-03.html"><strong aria-hidden="true">7.3.</strong> 实现接口的条件</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-04.html"><strong aria-hidden="true">7.4.</strong> flag.Value接口</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-05.html"><strong aria-hidden="true">7.5.</strong> 接口值</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-06.html"><strong aria-hidden="true">7.6.</strong> sort.Interface接口</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-07.html"><strong aria-hidden="true">7.7.</strong> http.Handler接口</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-08.html"><strong aria-hidden="true">7.8.</strong> error接口</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-09.html"><strong aria-hidden="true">7.9.</strong> 示例: 表达式求值</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-10.html"><strong aria-hidden="true">7.10.</strong> 类型断言</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-11.html"><strong aria-hidden="true">7.11.</strong> 基于类型断言识别错误类型</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-12.html"><strong aria-hidden="true">7.12.</strong> 通过类型断言查询接口</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-13.html"><strong aria-hidden="true">7.13.</strong> 类型分支</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-14.html"><strong aria-hidden="true">7.14.</strong> 示例: 基于标记的XML解码</a></li><li class="chapter-item expanded "><a href="../ch7/ch7-15.html"><strong aria-hidden="true">7.15.</strong> 补充几点</a></li></ol></li><li class="chapter-item expanded "><a href="../ch8/ch8.html"><strong aria-hidden="true">8.</strong> Goroutines和Channels</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch8/ch8-01.html"><strong aria-hidden="true">8.1.</strong> Goroutines</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-02.html"><strong aria-hidden="true">8.2.</strong> 示例: 并发的Clock服务</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-03.html"><strong aria-hidden="true">8.3.</strong> 示例: 并发的Echo服务</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-04.html"><strong aria-hidden="true">8.4.</strong> Channels</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-05.html"><strong aria-hidden="true">8.5.</strong> 并发的循环</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-06.html"><strong aria-hidden="true">8.6.</strong> 示例: 并发的Web爬虫</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-07.html"><strong aria-hidden="true">8.7.</strong> 基于select的多路复用</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-08.html"><strong aria-hidden="true">8.8.</strong> 示例: 并发的目录遍历</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-09.html"><strong aria-hidden="true">8.9.</strong> 并发的退出</a></li><li class="chapter-item expanded "><a href="../ch8/ch8-10.html"><strong aria-hidden="true">8.10.</strong> 示例: 聊天服务</a></li></ol></li><li class="chapter-item expanded "><a href="../ch9/ch9.html"><strong aria-hidden="true">9.</strong> 基于共享变量的并发</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch9/ch9-01.html"><strong aria-hidden="true">9.1.</strong> 竞争条件</a></li><li class="chapter-item expanded "><a href="../ch9/ch9-02.html"><strong aria-hidden="true">9.2.</strong> sync.Mutex互斥锁</a></li><li class="chapter-item expanded "><a href="../ch9/ch9-03.html"><strong aria-hidden="true">9.3.</strong> sync.RWMutex读写锁</a></li><li class="chapter-item expanded "><a href="../ch9/ch9-04.html"><strong aria-hidden="true">9.4.</strong> 内存同步</a></li><li class="chapter-item expanded "><a href="../ch9/ch9-05.html"><strong aria-hidden="true">9.5.</strong> sync.Once惰性初始化</a></li><li class="chapter-item expanded "><a href="../ch9/ch9-06.html"><strong aria-hidden="true">9.6.</strong> 竞争条件检测</a></li><li class="chapter-item expanded "><a href="../ch9/ch9-07.html"><strong aria-hidden="true">9.7.</strong> 示例: 并发的非阻塞缓存</a></li><li class="chapter-item expanded "><a href="../ch9/ch9-08.html"><strong aria-hidden="true">9.8.</strong> Goroutines和线程</a></li></ol></li><li class="chapter-item expanded "><a href="../ch10/ch10.html"><strong aria-hidden="true">10.</strong> 包和工具</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch10/ch10-01.html"><strong aria-hidden="true">10.1.</strong> 包简介</a></li><li class="chapter-item expanded "><a href="../ch10/ch10-02.html"><strong aria-hidden="true">10.2.</strong> 导入路径</a></li><li class="chapter-item expanded "><a href="../ch10/ch10-03.html"><strong aria-hidden="true">10.3.</strong> 包声明</a></li><li class="chapter-item expanded "><a href="../ch10/ch10-04.html"><strong aria-hidden="true">10.4.</strong> 导入声明</a></li><li class="chapter-item expanded "><a href="../ch10/ch10-05.html"><strong aria-hidden="true">10.5.</strong> 包的匿名导入</a></li><li class="chapter-item expanded "><a href="../ch10/ch10-06.html"><strong aria-hidden="true">10.6.</strong> 包和命名</a></li><li class="chapter-item expanded "><a href="../ch10/ch10-07.html"><strong aria-hidden="true">10.7.</strong> 工具</a></li></ol></li><li class="chapter-item expanded "><a href="../ch11/ch11.html"><strong aria-hidden="true">11.</strong> 测试</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch11/ch11-01.html"><strong aria-hidden="true">11.1.</strong> go test</a></li><li class="chapter-item expanded "><a href="../ch11/ch11-02.html"><strong aria-hidden="true">11.2.</strong> 测试函数</a></li><li class="chapter-item expanded "><a href="../ch11/ch11-03.html"><strong aria-hidden="true">11.3.</strong> 测试覆盖率</a></li><li class="chapter-item expanded "><a href="../ch11/ch11-04.html"><strong aria-hidden="true">11.4.</strong> 基准测试</a></li><li class="chapter-item expanded "><a href="../ch11/ch11-05.html"><strong aria-hidden="true">11.5.</strong> 剖析</a></li><li class="chapter-item expanded "><a href="../ch11/ch11-06.html"><strong aria-hidden="true">11.6.</strong> 示例函数</a></li></ol></li><li class="chapter-item expanded "><a href="../ch12/ch12.html"><strong aria-hidden="true">12.</strong> 反射</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch12/ch12-01.html"><strong aria-hidden="true">12.1.</strong> 为何需要反射?</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-02.html"><strong aria-hidden="true">12.2.</strong> reflect.Type和reflect.Value</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-03.html"><strong aria-hidden="true">12.3.</strong> Display递归打印</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-04.html"><strong aria-hidden="true">12.4.</strong> 示例: 编码S表达式</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-05.html"><strong aria-hidden="true">12.5.</strong> 通过reflect.Value修改值</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-06.html"><strong aria-hidden="true">12.6.</strong> 示例: 解码S表达式</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-07.html"><strong aria-hidden="true">12.7.</strong> 获取结构体字段标签</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-08.html"><strong aria-hidden="true">12.8.</strong> 显示一个类型的方法集</a></li><li class="chapter-item expanded "><a href="../ch12/ch12-09.html"><strong aria-hidden="true">12.9.</strong> 几点忠告</a></li></ol></li><li class="chapter-item expanded "><a href="../ch13/ch13.html"><strong aria-hidden="true">13.</strong> 底层编程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch13/ch13-01.html"><strong aria-hidden="true">13.1.</strong> unsafe.Sizeof, Alignof 和 Offsetof</a></li><li class="chapter-item expanded "><a href="../ch13/ch13-02.html"><strong aria-hidden="true">13.2.</strong> unsafe.Pointer</a></li><li class="chapter-item expanded "><a href="../ch13/ch13-03.html"><strong aria-hidden="true">13.3.</strong> 示例: 深度相等判断</a></li><li class="chapter-item expanded "><a href="../ch13/ch13-04.html" class="active"><strong aria-hidden="true">13.4.</strong> 通过cgo调用C代码</a></li><li class="chapter-item expanded "><a href="../ch13/ch13-05.html"><strong aria-hidden="true">13.5.</strong> 几点忠告</a></li></ol></li><li class="chapter-item expanded "><a href="../appendix/appendix.html"><strong aria-hidden="true">14.</strong> 附录</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../appendix/appendix-a-errata.html"><strong aria-hidden="true">14.1.</strong> 附录A：原文勘误</a></li><li class="chapter-item expanded "><a href="../appendix/appendix-b-author.html"><strong aria-hidden="true">14.2.</strong> 附录B：作者译者</a></li><li class="chapter-item expanded "><a href="../appendix/appendix-c-cpoyright.html"><strong aria-hidden="true">14.3.</strong> 附录C：译文授权</a></li><li class="chapter-item expanded "><a href="../appendix/appendix-d-translations.html"><strong aria-hidden="true">14.4.</strong> 附录D：其它语言</a></li></ol></li></ol>            </div>
+                <ol class="chapter">
+  <li class="chapter-item expanded ">
+    <a href="../index.html" >Go语言圣经</a>
+  </li>
+  <li class="chapter-item expanded ">
+    <a href="../preface-zh.html" >译者序</a>
+  </li>
+  <li class="chapter-item expanded ">
+    <a href="../preface.html" >前言</a>
+  </li>
+  <li class="chapter-item expanded ">
+    <a href="../ch1/ch1.html" ><strong aria-hidden="true">1.</strong> 入门</a>
+  </li>
+  <ol class="section">
+    <li class="chapter-item expanded ">
+      <a href="../ch1/ch1-01.html" ><strong aria-hidden="true">1.1.</strong> Hello, World</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch1/ch1-02.html" ><strong aria-hidden="true">1.2.</strong> 命令行参数</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch1/ch1-03.html" ><strong aria-hidden="true">1.3.</strong> 查找重复的行</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch1/ch1-04.html" ><strong aria-hidden="true">1.4.</strong> GIF动画</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch1/ch1-05.html" ><strong aria-hidden="true">1.5.</strong> 获取URL</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch1/ch1-06.html" ><strong aria-hidden="true">1.6.</strong> 并发获取多个URL</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch1/ch1-07.html" ><strong aria-hidden="true">1.7.</strong> Web服务</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch1/ch1-08.html" ><strong aria-hidden="true">1.8.</strong> 本章要点</a>
+    </li>
+  </ol>
+  <li class="chapter-item expanded ">
+    <a href="../ch2/ch2.html" ><strong aria-hidden="true">2.</strong> 程序结构</a>
+  </li>
+  <ol class="section">
+    <li class="chapter-item expanded ">
+      <a href="../ch2/ch2-01.html" ><strong aria-hidden="true">2.1.</strong> 命名</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch2/ch2-02.html" ><strong aria-hidden="true">2.2.</strong> 声明</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch2/ch2-03.html" ><strong aria-hidden="true">2.3.</strong> 变量</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch2/ch2-04.html" ><strong aria-hidden="true">2.4.</strong> 赋值</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch2/ch2-05.html" ><strong aria-hidden="true">2.5.</strong> 类型</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch2/ch2-06.html" ><strong aria-hidden="true">2.6.</strong> 包和文件</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch2/ch2-07.html" ><strong aria-hidden="true">2.7.</strong> 作用域</a>
+    </li>
+  </ol>
+  <li class="chapter-item expanded ">
+    <a href="../ch3/ch3.html" ><strong aria-hidden="true">3.</strong> 基础数据类型</a>
+  </li>
+  <ol class="section">
+    <li class="chapter-item expanded ">
+      <a href="../ch3/ch3-01.html" ><strong aria-hidden="true">3.1.</strong> 整型</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch3/ch3-02.html" ><strong aria-hidden="true">3.2.</strong> 浮点数</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch3/ch3-03.html" ><strong aria-hidden="true">3.3.</strong> 复数</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch3/ch3-04.html" ><strong aria-hidden="true">3.4.</strong> 布尔型</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch3/ch3-05.html" ><strong aria-hidden="true">3.5.</strong> 字符串</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch3/ch3-06.html" ><strong aria-hidden="true">3.6.</strong> 常量</a>
+    </li>
+  </ol>
+  <li class="chapter-item expanded ">
+    <a href="../ch4/ch4.html" ><strong aria-hidden="true">4.</strong> 复合数据类型</a>
+  </li>
+  <ol class="section">
+    <li class="chapter-item expanded ">
+      <a href="../ch4/ch4-01.html" ><strong aria-hidden="true">4.1.</strong> 数组</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch4/ch4-02.html" ><strong aria-hidden="true">4.2.</strong> Slice</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch4/ch4-03.html" ><strong aria-hidden="true">4.3.</strong> Map</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch4/ch4-04.html" ><strong aria-hidden="true">4.4.</strong> 结构体</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch4/ch4-05.html" ><strong aria-hidden="true">4.5.</strong> JSON</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch4/ch4-06.html" ><strong aria-hidden="true">4.6.</strong> 文本和HTML模板</a>
+    </li>
+  </ol>
+  <li class="chapter-item expanded ">
+    <a href="../ch5/ch5.html" ><strong aria-hidden="true">5.</strong> 函数</a>
+  </li>
+  <ol class="section">
+    <li class="chapter-item expanded ">
+      <a href="../ch5/ch5-01.html" ><strong aria-hidden="true">5.1.</strong> 函数声明</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch5/ch5-02.html" ><strong aria-hidden="true">5.2.</strong> 递归</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch5/ch5-03.html" ><strong aria-hidden="true">5.3.</strong> 多返回值</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch5/ch5-04.html" ><strong aria-hidden="true">5.4.</strong> 错误</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch5/ch5-05.html" ><strong aria-hidden="true">5.5.</strong> 函数值</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch5/ch5-06.html" ><strong aria-hidden="true">5.6.</strong> 匿名函数</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch5/ch5-07.html" ><strong aria-hidden="true">5.7.</strong> 可变参数</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch5/ch5-08.html" ><strong aria-hidden="true">5.8.</strong> Deferred函数</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch5/ch5-09.html" ><strong aria-hidden="true">5.9.</strong> Panic异常</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch5/ch5-10.html" ><strong aria-hidden="true">5.10.</strong> Recover捕获异常</a>
+    </li>
+  </ol>
+  <li class="chapter-item expanded ">
+    <a href="../ch6/ch6.html" ><strong aria-hidden="true">6.</strong> 方法</a>
+  </li>
+  <ol class="section">
+    <li class="chapter-item expanded ">
+      <a href="../ch6/ch6-01.html" ><strong aria-hidden="true">6.1.</strong> 方法声明</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch6/ch6-02.html" ><strong aria-hidden="true">6.2.</strong> 基于指针对象的方法</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch6/ch6-03.html" ><strong aria-hidden="true">6.3.</strong> 通过嵌入结构体来扩展类型</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch6/ch6-04.html" ><strong aria-hidden="true">6.4.</strong> 方法值和方法表达式</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch6/ch6-05.html" ><strong aria-hidden="true">6.5.</strong> 示例: Bit数组</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch6/ch6-06.html" ><strong aria-hidden="true">6.6.</strong> 封装</a>
+    </li>
+  </ol>
+  <li class="chapter-item expanded ">
+    <a href="../ch7/ch7.html" ><strong aria-hidden="true">7.</strong> 接口</a>
+  </li>
+  <ol class="section">
+    <li class="chapter-item expanded ">
+      <a href="../ch7/ch7-01.html" ><strong aria-hidden="true">7.1.</strong> 接口是合约</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch7/ch7-02.html" ><strong aria-hidden="true">7.2.</strong> 接口类型</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch7/ch7-03.html" ><strong aria-hidden="true">7.3.</strong> 实现接口的条件</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch7/ch7-04.html" ><strong aria-hidden="true">7.4.</strong> flag.Value接口</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch7/ch7-05.html" ><strong aria-hidden="true">7.5.</strong> 接口值</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch7/ch7-06.html" ><strong aria-hidden="true">7.6.</strong> sort.Interface接口</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch7/ch7-07.html" ><strong aria-hidden="true">7.7.</strong> http.Handler接口</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch7/ch7-08.html" ><strong aria-hidden="true">7.8.</strong> error接口</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch7/ch7-09.html" ><strong aria-hidden="true">7.9.</strong> 示例: 表达式求值</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch7/ch7-10.html" ><strong aria-hidden="true">7.10.</strong> 类型断言</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch7/ch7-11.html" ><strong aria-hidden="true">7.11.</strong> 基于类型断言识别错误类型</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch7/ch7-12.html" ><strong aria-hidden="true">7.12.</strong> 通过类型断言查询接口</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch7/ch7-13.html" ><strong aria-hidden="true">7.13.</strong> 类型分支</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch7/ch7-14.html" ><strong aria-hidden="true">7.14.</strong> 示例: 基于标记的XML解码</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch7/ch7-15.html" ><strong aria-hidden="true">7.15.</strong> 补充几点</a>
+    </li>
+  </ol>
+  <li class="chapter-item expanded ">
+    <a href="../ch8/ch8.html" ><strong aria-hidden="true">8.</strong> Goroutines和Channels</a>
+  </li>
+  <ol class="section">
+    <li class="chapter-item expanded ">
+      <a href="../ch8/ch8-01.html" ><strong aria-hidden="true">8.1.</strong> Goroutines</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch8/ch8-02.html" ><strong aria-hidden="true">8.2.</strong> 示例: 并发的Clock服务</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch8/ch8-03.html" ><strong aria-hidden="true">8.3.</strong> 示例: 并发的Echo服务</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch8/ch8-04.html" ><strong aria-hidden="true">8.4.</strong> Channels</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch8/ch8-05.html" ><strong aria-hidden="true">8.5.</strong> 并发的循环</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch8/ch8-06.html" ><strong aria-hidden="true">8.6.</strong> 示例: 并发的Web爬虫</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch8/ch8-07.html" ><strong aria-hidden="true">8.7.</strong> 基于select的多路复用</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch8/ch8-08.html" ><strong aria-hidden="true">8.8.</strong> 示例: 并发的目录遍历</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch8/ch8-09.html" ><strong aria-hidden="true">8.9.</strong> 并发的退出</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch8/ch8-10.html" ><strong aria-hidden="true">8.10.</strong> 示例: 聊天服务</a>
+    </li>
+  </ol>
+  <li class="chapter-item expanded ">
+    <a href="../ch9/ch9.html" ><strong aria-hidden="true">9.</strong> 基于共享变量的并发</a>
+  </li>
+  <ol class="section">
+    <li class="chapter-item expanded ">
+      <a href="../ch9/ch9-01.html" ><strong aria-hidden="true">9.1.</strong> 竞争条件</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch9/ch9-02.html" ><strong aria-hidden="true">9.2.</strong> sync.Mutex互斥锁</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch9/ch9-03.html" ><strong aria-hidden="true">9.3.</strong> sync.RWMutex读写锁</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch9/ch9-04.html" ><strong aria-hidden="true">9.4.</strong> 内存同步</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch9/ch9-05.html" ><strong aria-hidden="true">9.5.</strong> sync.Once惰性初始化</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch9/ch9-06.html" ><strong aria-hidden="true">9.6.</strong> 竞争条件检测</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch9/ch9-07.html" ><strong aria-hidden="true">9.7.</strong> 示例: 并发的非阻塞缓存</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch9/ch9-08.html" ><strong aria-hidden="true">9.8.</strong> Goroutines和线程</a>
+    </li>
+  </ol>
+  <li class="chapter-item expanded ">
+    <a href="../ch10/ch10.html" ><strong aria-hidden="true">10.</strong> 包和工具</a>
+  </li>
+  <ol class="section">
+    <li class="chapter-item expanded ">
+      <a href="../ch10/ch10-01.html" ><strong aria-hidden="true">10.1.</strong> 包简介</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch10/ch10-02.html" ><strong aria-hidden="true">10.2.</strong> 导入路径</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch10/ch10-03.html" ><strong aria-hidden="true">10.3.</strong> 包声明</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch10/ch10-04.html" ><strong aria-hidden="true">10.4.</strong> 导入声明</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch10/ch10-05.html" ><strong aria-hidden="true">10.5.</strong> 包的匿名导入</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch10/ch10-06.html" ><strong aria-hidden="true">10.6.</strong> 包和命名</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch10/ch10-07.html" ><strong aria-hidden="true">10.7.</strong> 工具</a>
+    </li>
+  </ol>
+  <li class="chapter-item expanded ">
+    <a href="../ch11/ch11.html" ><strong aria-hidden="true">11.</strong> 测试</a>
+  </li>
+  <ol class="section">
+    <li class="chapter-item expanded ">
+      <a href="../ch11/ch11-01.html" ><strong aria-hidden="true">11.1.</strong> go test</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch11/ch11-02.html" ><strong aria-hidden="true">11.2.</strong> 测试函数</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch11/ch11-03.html" ><strong aria-hidden="true">11.3.</strong> 测试覆盖率</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch11/ch11-04.html" ><strong aria-hidden="true">11.4.</strong> 基准测试</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch11/ch11-05.html" ><strong aria-hidden="true">11.5.</strong> 剖析</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch11/ch11-06.html" ><strong aria-hidden="true">11.6.</strong> 示例函数</a>
+    </li>
+  </ol>
+  <li class="chapter-item expanded ">
+    <a href="../ch12/ch12.html" ><strong aria-hidden="true">12.</strong> 反射</a>
+  </li>
+  <ol class="section">
+    <li class="chapter-item expanded ">
+      <a href="../ch12/ch12-01.html" ><strong aria-hidden="true">12.1.</strong> 为何需要反射?</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch12/ch12-02.html" ><strong aria-hidden="true">12.2.</strong> reflect.Type和reflect.Value</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch12/ch12-03.html" ><strong aria-hidden="true">12.3.</strong> Display递归打印</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch12/ch12-04.html" ><strong aria-hidden="true">12.4.</strong> 示例: 编码S表达式</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch12/ch12-05.html" ><strong aria-hidden="true">12.5.</strong> 通过reflect.Value修改值</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch12/ch12-06.html" ><strong aria-hidden="true">12.6.</strong> 示例: 解码S表达式</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch12/ch12-07.html" ><strong aria-hidden="true">12.7.</strong> 获取结构体字段标签</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch12/ch12-08.html" ><strong aria-hidden="true">12.8.</strong> 显示一个类型的方法集</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch12/ch12-09.html" ><strong aria-hidden="true">12.9.</strong> 几点忠告</a>
+    </li>
+  </ol>
+  <li class="chapter-item expanded ">
+    <a href="../ch13/ch13.html" ><strong aria-hidden="true">13.</strong> 底层编程</a>
+  </li>
+  <ol class="section">
+    <li class="chapter-item expanded ">
+      <a href="../ch13/ch13-01.html" ><strong aria-hidden="true">13.1.</strong> unsafe.Sizeof, Alignof 和 Offsetof</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch13/ch13-02.html" ><strong aria-hidden="true">13.2.</strong> unsafe.Pointer</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch13/ch13-03.html" ><strong aria-hidden="true">13.3.</strong> 示例: 深度相等判断</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch13/ch13-04.html" class="active"><strong aria-hidden="true">13.4.</strong> 通过cgo调用C代码</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../ch13/ch13-05.html" ><strong aria-hidden="true">13.5.</strong> 几点忠告</a>
+    </li>
+  </ol>
+  <li class="chapter-item expanded ">
+    <a href="../appendix/appendix.html" ><strong aria-hidden="true">14.</strong> 附录</a>
+  </li>
+  <ol class="section">
+    <li class="chapter-item expanded ">
+      <a href="../appendix/appendix-a-errata.html" ><strong aria-hidden="true">14.1.</strong> 附录A：原文勘误</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../appendix/appendix-b-author.html" ><strong aria-hidden="true">14.2.</strong> 附录B：作者译者</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../appendix/appendix-c-cpoyright.html" ><strong aria-hidden="true">14.3.</strong> 附录C：译文授权</a>
+    </li>
+    <li class="chapter-item expanded ">
+      <a href="../appendix/appendix-d-translations.html" ><strong aria-hidden="true">14.4.</strong> 附录D：其它语言</a>
+    </li>
+  </ol>
+</ol>
+
+            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
@@ -103,43 +496,24 @@
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
                             <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                            <i class="fa fa-search"></i>
-                        </button>
-                                            </div>
+                    </div>
 
-                    <h1 class="menu-title">Go语言圣经</h1>
+                    <h1 class="menu-title"><a href="../index.html">Go语言圣经</a></h1>
 
                     <div class="right-buttons">
-                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
-                            <i id="print-button" class="fa fa-print"></i>
-                        </a>
-                                                                        <a href="https://github.com/gopl-zh/gopl-zh.github.com" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/gopl-zh/gopl-zh.github.com" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                                                                        <a href="https://github.com/gopl-zh/gopl-zh.github.com/edit/master/./ch13/ch13-04.md" title="Suggest an edit" aria-label="Suggest an edit">
+                        <a href="https://github.com/gopl-zh/gopl-zh.github.com/edit/master/ch13/ch13-04.md" title="Suggest an edit" aria-label="Suggest an edit">
                             <i id="git-edit-button" class="fa fa-edit"></i>
                         </a>
-                        
                     </div>
                 </div>
 
-                                <div id="search-wrapper" class="hidden">
-                    <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
-                    </form>
-                    <div id="searchresults-outer" class="searchresults-outer hidden">
-                        <div id="searchresults-header" class="searchresults-header"></div>
-                        <ul id="searchresults">
-                        </ul>
-                    </div>
-                </div>
-                
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
@@ -152,15 +526,11 @@
                 <div id="content" class="content">
                     <!-- Page table of contents -->
                     <div class="sidetoc"><nav class="pagetoc"></nav></div>
-                    <main>
-                        <!-- 头部 -->
-                        <ul dir="auto">
-			<li><em>Go语言圣经读书笔记(挖坑中...): <a href="https://github.com/chai2010/gopl-notes-zh">https://github.com/chai2010/gopl-notes-zh</a></em></li>
-                        <li><em>凹语言(Go实现, 面向WASM设计): <a href="https://github.com/wa-lang/wa">https://github.com/wa-lang/wa</a></em></li>
-			</ul>
-                        <hr>
 
-                        <h2 id="134-通过cgo调用c代码"><a class="header" href="#134-通过cgo调用c代码">13.4. 通过cgo调用C代码</a></h2>
+                    <main>
+                        <ul dir="auto"><li><em>凹语言(Go实现, 面向WASM设计): <a href="https://github.com/wa-lang/wa">https://github.com/wa-lang/wa</a></em></li><li><em>MnBook(Go语言实现的MD电子书构建工具): <a href="https://github.com/wa-lang/mnbook">https://github.com/wa-lang/mnbook</a></em></li></ul><hr>
+
+                        <h2>13.4. 通过cgo调用C代码</h2>
 <p>Go程序可能会遇到要访问C语言的某些硬件驱动函数的场景，或者是从一个C++语言实现的嵌入式数据库查询记录的场景，或者是使用Fortran语言实现的一些线性代数库的场景。C语言作为一个通用语言，很多库会选择提供一个C兼容的API，然后用其他不同的编程语言实现（译者：Go语言需要也应该拥抱这些巨大的代码遗产）。</p>
 <p>在本节中，我们将构建一个简易的数据压缩程序，使用了一个Go语言自带的叫cgo的用于支援C语言函数调用的工具。这类工具一般被称为 <em>foreign-function interfaces</em> （简称ffi），并且在类似工具中cgo也不是唯一的。SWIG（<a href="http://swig.org">http://swig.org</a>）是另一个类似的且被广泛使用的工具，SWIG提供了很多复杂特性以支援C++的特性，但SWIG并不是我们要讨论的主题。</p>
 <p>在标准库的<code>compress/...</code>子包有很多流行的压缩算法的编码和解码实现，包括流行的LZW压缩算法（Unix的compress命令用的算法）和DEFLATE压缩算法（GNU gzip命令用的算法）。这些包的API的细节虽然有些差异，但是它们都提供了针对 io.Writer类型输出的压缩接口和提供了针对io.Reader类型输入的解压缩接口。例如：</p>
@@ -168,7 +538,7 @@
 func NewWriter(w io.Writer) io.WriteCloser
 func NewReader(r io.Reader) (io.ReadCloser, error)
 </code></pre>
-<p>bzip2压缩算法，是基于优雅的Burrows-Wheeler变换算法，运行速度比gzip要慢，但是可以提供更高的压缩比。标准库的compress/bzip2包目前还没有提供bzip2压缩算法的实现。完全从头开始实现一个压缩算法是一件繁琐的工作，而且 http://bzip.org 已经有现成的libbzip2的开源实现，不仅文档齐全而且性能又好。</p>
+<p>bzip2压缩算法，是基于优雅的Burrows-Wheeler变换算法，运行速度比gzip要慢，但是可以提供更高的压缩比。标准库的compress/bzip2包目前还没有提供bzip2压缩算法的实现。完全从头开始实现一个压缩算法是一件繁琐的工作，而且 <a href="http://bzip.org">http://bzip.org</a> 已经有现成的libbzip2的开源实现，不仅文档齐全而且性能又好。</p>
 <p>如果是比较小的C语言库，我们完全可以用纯Go语言重新实现一遍。如果我们对性能也没有特殊要求的话，我们还可以用os/exec包的方法将C编写的应用程序作为一个子进程运行。只有当你需要使用复杂而且性能更高的底层C接口时，就是使用cgo的场景了（译注：用os/exec包调用子进程的方法会导致程序运行时依赖那个应用程序）。下面我们将通过一个例子讲述cgo的具体用法。</p>
 <p>译注：本章采用的代码都是最新的。因为之前已经出版的书中包含的代码只能在Go1.5之前使用。从Go1.6开始，Go语言已经明确规定了哪些Go语言指针可以直接传入C语言函数。新代码重点是增加了bz2alloc和bz2free的两个函数，用于bz_stream对象空间的申请和释放操作。下面是新代码中增加的注释，说明这个问题：</p>
 <pre><code class="language-Go">// The version of this program that appeared in the first and second
@@ -190,7 +560,7 @@ func NewReader(r io.Reader) (io.ReadCloser, error)
 </code></pre>
 <p>要使用libbzip2，我们需要先构建一个bz_stream结构体，用于保持输入和输出缓存。然后有三个函数：BZ2_bzCompressInit用于初始化缓存，BZ2_bzCompress用于将输入缓存的数据压缩到输出缓存，BZ2_bzCompressEnd用于释放不需要的缓存。（目前不要担心包的具体结构，这个例子的目的就是演示各个部分如何组合在一起的。）</p>
 <p>我们可以在Go代码中直接调用BZ2_bzCompressInit和BZ2_bzCompressEnd，但是对于BZ2_bzCompress，我们将定义一个C语言的包装函数，用它完成真正的工作。下面是C代码，对应一个独立的文件。</p>
-<p><u><i>gopl.io/ch13/bzip</i></u></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->gopl.io/ch13/bzip<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <pre><code class="language-C">/* This file is gopl.io/ch13/bzip/bzip2.c,         */
 /* a simple wrapper for libbzip2 suitable for cgo. */
 #include &lt;bzlib.h&gt;
@@ -246,7 +616,7 @@ func NewWriter(out io.Writer) io.WriteCloser {
 }
 </code></pre>
 <p>在预处理过程中，cgo工具生成一个临时包用于包含所有在Go语言中访问的C语言的函数或类型。例如C.bz_stream和C.BZ2_bzCompressInit。cgo工具通过以某种特殊的方式调用本地的C编译器来发现在Go源文件导入声明前的注释中包含的C头文件中的内容（译注：<code>import &quot;C&quot;</code>语句前紧挨着的注释是对应cgo的特殊语法，对应必要的构建参数选项和C语言代码）。</p>
-<p>在cgo注释中还可以包含#cgo指令，用于给C语言工具链指定特殊的参数。例如CFLAGS和LDFLAGS分别对应传给C语言编译器的编译参数和链接器参数，使它们可以从特定目录找到bzlib.h头文件和libbz2.a库文件。这个例子假设你已经在/usr目录成功安装了bzip2库。如果bzip2库是安装在不同的位置，你需要更新这些参数（译注：这里有一个从纯C代码生成的cgo绑定，不依赖bzip2静态库和操作系统的具体环境，具体请访问 https://github.com/chai2010/bzip2 ）。</p>
+<p>在cgo注释中还可以包含#cgo指令，用于给C语言工具链指定特殊的参数。例如CFLAGS和LDFLAGS分别对应传给C语言编译器的编译参数和链接器参数，使它们可以从特定目录找到bzlib.h头文件和libbz2.a库文件。这个例子假设你已经在/usr目录成功安装了bzip2库。如果bzip2库是安装在不同的位置，你需要更新这些参数（译注：这里有一个从纯C代码生成的cgo绑定，不依赖bzip2静态库和操作系统的具体环境，具体请访问 <a href="https://github.com/chai2010/bzip2">https://github.com/chai2010/bzip2</a> ）。</p>
 <p>NewWriter函数通过调用C语言的BZ2_bzCompressInit函数来初始化stream中的缓存。在writer结构中还包括了另一个buffer，用于输出缓存。</p>
 <p>下面是Write方法的实现，返回成功压缩数据的大小，主体是一个循环中调用C语言的bz2compress函数实现的。从代码可以看到，Go程序可以访问C语言的bz_stream、char和uint类型，还可以访问bz2compress等函数，甚至可以访问C语言中像BZ_RUN那样的宏定义，全部都是以C.x语法访问。其中C.uint类型和Go语言的uint类型并不相同，即使它们具有相同的大小也是不同的类型。</p>
 <pre><code class="language-Go">func (w *writer) Write(data []byte) (int, error) {
@@ -298,7 +668,7 @@ func (w *writer) Close() error {
 <p>压缩完成后，Close方法用了defer函数确保函数退出前调用C.BZ2_bzCompressEnd和C.bz2free释放相关的C语言运行时资源。此刻w.stream指针将不再有效，我们将它设置为nil以保证安全，然后在每个方法中增加了nil检测，以防止用户在关闭后依然错误使用相关方法。</p>
 <p>上面的实现中，不仅仅写是非并发安全的，甚至并发调用Close和Write方法也可能导致程序的的崩溃。修复这个问题是练习13.3的内容。</p>
 <p>下面的bzipper程序，使用我们自己包实现的bzip2压缩命令。它的行为和许多Unix系统的bzip2命令类似。</p>
-<p><u><i>gopl.io/ch13/bzipper</i></u></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->gopl.io/ch13/bzipper<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <pre><code class="language-Go">// Bzipper reads input, bzip2-compresses it, and writes it out.
 package main
 
@@ -330,37 +700,34 @@ $ ./bzipper &lt; /usr/share/dict/words | wc -c
 $ ./bzipper &lt; /usr/share/dict/words | bunzip2 | sha256sum
 126a4ef38493313edc50b86f90dfdaf7c59ec6c948451eac228f2f3a8ab1a6ed -
 </code></pre>
-<p>我们演示了如何将一个C语言库链接到Go语言程序。相反，将Go编译为静态库然后链接到C程序，或者将Go程序编译为动态库然后在C程序中动态加载也都是可行的（译注：在Go1.5中，Windows系统的Go语言实现并不支持生成C语言动态库或静态库的特性。不过好消息是，目前已经有人在尝试解决这个问题，具体请访问 <a href="https://github.com/golang/go/issues/11058">Issue11058</a> ）。这里我们只展示的cgo很小的一些方面，更多的关于内存管理、指针、回调函数、中断信号处理、字符串、errno处理、终结器，以及goroutines和系统线程的关系等，有很多细节可以讨论。特别是如何将Go语言的指针传入C函数的规则也是异常复杂的（译注：简单来说，要传入C函数的Go指针指向的数据本身不能包含指针或其他引用类型；并且C函数在返回后不能继续持有Go指针；并且在C函数返回之前，Go指针是被锁定的，不能导致对应指针数据被移动或栈的调整），部分的原因在13.2节有讨论到，但是在Go1.5中还没有被明确（译注：Go1.6将会明确cgo中的指针使用规则）。如果要进一步阅读，可以从 https://golang.org/cmd/cgo 开始。</p>
+<p>我们演示了如何将一个C语言库链接到Go语言程序。相反，将Go编译为静态库然后链接到C程序，或者将Go程序编译为动态库然后在C程序中动态加载也都是可行的（译注：在Go1.5中，Windows系统的Go语言实现并不支持生成C语言动态库或静态库的特性。不过好消息是，目前已经有人在尝试解决这个问题，具体请访问 <a href="https://github.com/golang/go/issues/11058">Issue11058</a> ）。这里我们只展示的cgo很小的一些方面，更多的关于内存管理、指针、回调函数、中断信号处理、字符串、errno处理、终结器，以及goroutines和系统线程的关系等，有很多细节可以讨论。特别是如何将Go语言的指针传入C函数的规则也是异常复杂的（译注：简单来说，要传入C函数的Go指针指向的数据本身不能包含指针或其他引用类型；并且C函数在返回后不能继续持有Go指针；并且在C函数返回之前，Go指针是被锁定的，不能导致对应指针数据被移动或栈的调整），部分的原因在13.2节有讨论到，但是在Go1.5中还没有被明确（译注：Go1.6将会明确cgo中的指针使用规则）。如果要进一步阅读，可以从 <a href="https://golang.org/cmd/cgo">https://golang.org/cmd/cgo</a> 开始。</p>
 <p><strong>练习 13.3：</strong> 使用sync.Mutex以保证bzip2.writer在多个goroutines中被并发调用是安全的。</p>
 <p><strong>练习 13.4：</strong> 因为C库依赖的限制。 使用os/exec包启动/bin/bzip2命令作为一个子进程，提供一个纯Go的bzip.NewWriter的替代实现（译注：虽然是纯Go实现，但是运行时将依赖/bin/bzip2命令，其他操作系统可能无法运行）。</p>
 
 
-                        <!-- 公众号 -->
-                        <hr>
-                        <table>
-                            <tr>
-                            <td>
-                            <img width="222px" src="https://chai2010.cn/advanced-go-programming-book/css.png">
-                            </td>
-                            <td>
-                            <img width="222px" src="https://chai2010.cn/advanced-go-programming-book/cch.png">
-                            </td>
-                            </tr>
-                        </table>
+                        <hr><table><tr><td><img width="222px" src="https://chai2010.cn/advanced-go-programming-book/css.png"></td><td><img width="222px" src="https://chai2010.cn/advanced-go-programming-book/cch.png"></td></tr></table>
 
-                        <div id="giscus-container"></div>
-                        <footer class="page-footer">
-                            <span>© 2015-2016 | <a href="https://github.com/gopl-zh"> Go语言圣经中文版</a>, 仅学习交流使用</span>
-                        </footer>
+                        
+                            <div id="giscus-container"></div>
+                        
+
+                        
+                            <footer class="page-footer">
+                                <span>© 2015-2016 | <a href="https://github.com/gopl-zh"> Go语言圣经中文版</a>, 仅学习交流使用</span>
+                            </footer>
+                        
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                                                    <a rel="prev" href="../ch13/ch13-03.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        
+                            <a rel="prev" href="../ch13/ch13-03.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
-                                                    <a rel="next" href="../ch13/ch13-05.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        
+                            <!-- ../ch13/ch13-05.html -->
+                            <a rel="next" href="../ch13/ch13-05.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -370,41 +737,36 @@ $ ./bzipper &lt; /usr/share/dict/words | bunzip2 | sha256sum
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                                    <a rel="prev" href="../ch13/ch13-03.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                
+                    <a rel="prev" href="../ch13/ch13-03.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
-                                    <a rel="next" href="../ch13/ch13-05.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                
+                    <a rel="next" href="../ch13/ch13-05.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                            </nav>
+                
+            </nav>
 
         </div>
 
-        
-        
-        
-                <script type="text/javascript">
+        <script type="text/javascript">
             window.playground_copyable = true;
         </script>
+        <script src="../static/mnbook/mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../static/mnbook/clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../static/mnbook/highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../static/mnbook/book.js" type="text/javascript" charset="utf-8"></script>
         
-        
-                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
-        
-        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
         <script type="text/javascript" charset="utf-8">
-        var pagePath = "ch13/ch13-04.md"
+            var pagePath = "ch13/ch13-04.md"
         </script>
 
-
         <!-- Custom JS scripts -->
-                <script type="text/javascript" src="../js/custom.js"></script>
-                <script type="text/javascript" src="../js/bigPicture.js"></script>
         
+            <script src="../static/mnbook/giscus.js" type="text/javascript" charset="utf-8"></script>
         
+
     </body>
 </html>
