@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="zh" class="sidebar-visible no-js light">
     <head>
-        <!-- Book generated using https://github.com/wa-lang/mnbook -->
+        <!-- Book generated using https://github.com/wa-lang/wabook -->
         <meta charset="UTF-8">
         <title>示例: 并发的非阻塞缓存 - Go语言圣经</title>
         <!-- Custom HTML head -->
@@ -12,17 +12,17 @@
 
         <link rel="icon" href="../favicon.svg">
         <link rel="shortcut icon" href="../favicon.png">
-        <link rel="stylesheet" href="../static/mnbook/css/variables.css">
-        <link rel="stylesheet" href="../static/mnbook/css/general.css">
-        <link rel="stylesheet" href="../static/mnbook/css/chrome.css">
-        <link rel="stylesheet" href="../static/mnbook/css/print.css" media="print">
+        <link rel="stylesheet" href="../static/wabook/css/variables.css">
+        <link rel="stylesheet" href="../static/wabook/css/general.css">
+        <link rel="stylesheet" href="../static/wabook/css/chrome.css">
+        <link rel="stylesheet" href="../static/wabook/css/print.css" media="print">
         <!-- Fonts -->
-        <link rel="stylesheet" href="../static/mnbook/FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="../static/mnbook/fonts/fonts.css">
+        <link rel="stylesheet" href="../static/wabook/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../static/wabook/fonts/fonts.css">
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="../static/mnbook/highlight.css">
-        <link rel="stylesheet" href="../static/mnbook/tomorrow-night.css">
-        <link rel="stylesheet" href="../static/mnbook/ayu-highlight.css">
+        <link rel="stylesheet" href="../static/wabook/highlight.css">
+        <link rel="stylesheet" href="../static/wabook/tomorrow-night.css">
+        <link rel="stylesheet" href="../static/wabook/ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
     </head>
@@ -36,15 +36,15 @@
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script type="text/javascript">
             try {
-                var theme = localStorage.getItem('mnbook-theme');
-                var sidebar = localStorage.getItem('mnbook-sidebar');
+                var theme = localStorage.getItem('wabook-theme');
+                var sidebar = localStorage.getItem('wabook-sidebar');
 
                 if (theme.startsWith('"') && theme.endsWith('"')) {
-                    localStorage.setItem('mnbook-theme', theme.slice(1, theme.length - 1));
+                    localStorage.setItem('wabook-theme', theme.slice(1, theme.length - 1));
                 }
 
                 if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
-                    localStorage.setItem('mnbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                    localStorage.setItem('wabook-sidebar', sidebar.slice(1, sidebar.length - 1));
                 }
             } catch (e) { }
         </script>
@@ -52,7 +52,7 @@
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script type="text/javascript">
             var theme;
-            try { theme = localStorage.getItem('mnbook-theme'); } catch(e) { }
+            try { theme = localStorage.getItem('wabook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
             html.classList.remove('no-js')
@@ -66,7 +66,7 @@
             var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
-                try { sidebar = localStorage.getItem('mnbook-sidebar'); } catch(e) { }
+                try { sidebar = localStorage.getItem('wabook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             }
             html.classList.remove('sidebar-visible');
@@ -528,7 +528,7 @@
                     <div class="sidetoc"><nav class="pagetoc"></nav></div>
 
                     <main>
-                        <ul dir="auto"><li><em>凹语言(Go实现, 面向WASM设计): <a href="https://github.com/wa-lang/wa">https://github.com/wa-lang/wa</a></em></li><li><em>MnBook(Go语言实现的MD电子书构建工具): <a href="https://github.com/wa-lang/mnbook">https://github.com/wa-lang/mnbook</a></em></li></ul><hr>
+                        <ul dir="auto"><li><em>凹语言(Go实现, 面向WASM设计): <a href="https://github.com/wa-lang/wa">https://github.com/wa-lang/wa</a></em></li><li><em>WaBook(Go语言实现的MD电子书构建工具): <a href="https://github.com/wa-lang/wabook">https://github.com/wa-lang/wabook</a></em></li></ul><hr>
 
                         <h2>9.7. 示例: 并发的非阻塞缓存</h2>
 <p>本节中我们会做一个无阻塞的缓存，这种工具可以帮助我们来解决现实世界中并发程序出现但没有现成的库可以解决的问题。这个问题叫作缓存（memoizing）函数（译注：Memoization的定义： memoization 一词是Donald Michie 根据拉丁语memorandum杜撰的一个词。相应的动词、过去分词、ing形式有memoiz、memoized、memoizing），也就是说，我们需要缓存函数的返回结果，这样在对函数进行调用的时候，我们就只需要一次计算，之后只要返回计算的结果就可以了。我们的解决方案会是并发安全且会避免对整个缓存加锁而导致所有操作都去争一个锁的设计。</p>
@@ -866,10 +866,10 @@ func (e *entry) deliver(response chan&lt;- result) {
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
-        <script src="../static/mnbook/mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../static/mnbook/clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../static/mnbook/highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../static/mnbook/book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../static/wabook/mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../static/wabook/clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../static/wabook/highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../static/wabook/book.js" type="text/javascript" charset="utf-8"></script>
         
         <script type="text/javascript" charset="utf-8">
             var pagePath = "ch9/ch9-07.md"
@@ -877,7 +877,7 @@ func (e *entry) deliver(response chan&lt;- result) {
 
         <!-- Custom JS scripts -->
         
-            <script src="../static/mnbook/giscus.js" type="text/javascript" charset="utf-8"></script>
+            <script src="../static/wabook/giscus.js" type="text/javascript" charset="utf-8"></script>
         
 
     </body>

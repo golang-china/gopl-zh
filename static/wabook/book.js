@@ -232,7 +232,7 @@ function playground_text(playground) {
 
     function get_theme() {
         var theme;
-        try { theme = localStorage.getItem('mnbook-theme'); } catch (e) { }
+        try { theme = localStorage.getItem('wabook-theme'); } catch (e) { }
         if (theme === null || theme === undefined) {
             return default_theme;
         } else {
@@ -274,7 +274,7 @@ function playground_text(playground) {
         var previousTheme = get_theme();
 
         if (store) {
-            try { localStorage.setItem('mnbook-theme', theme); } catch (e) { }
+            try { localStorage.setItem('wabook-theme', theme); } catch (e) { }
         }
 
         html.classList.remove(previousTheme);
@@ -313,7 +313,7 @@ function playground_text(playground) {
         }
     });
 
-    // Should not be needed, but it works around an issue on macOS & iOS: https://github.com/rust-lang/mnbook/issues/628
+    // Should not be needed, but it works around an issue on macOS & iOS: https://github.com/rust-lang/wabook/issues/628
     document.addEventListener('click', function(e) {
         if (themePopup.style.display === 'block' && !themeToggleButton.contains(e.target) && !themePopup.contains(e.target)) {
             hideThemes();
@@ -371,7 +371,7 @@ function playground_text(playground) {
         });
         sidebarToggleButton.setAttribute('aria-expanded', true);
         sidebar.setAttribute('aria-hidden', false);
-        try { localStorage.setItem('mnbook-sidebar', 'visible'); } catch (e) { }
+        try { localStorage.setItem('wabook-sidebar', 'visible'); } catch (e) { }
     }
 
 
@@ -393,7 +393,7 @@ function playground_text(playground) {
         });
         sidebarToggleButton.setAttribute('aria-expanded', false);
         sidebar.setAttribute('aria-hidden', true);
-        try { localStorage.setItem('mnbook-sidebar', 'hidden'); } catch (e) { }
+        try { localStorage.setItem('wabook-sidebar', 'hidden'); } catch (e) { }
     }
 
     // Toggle sidebar

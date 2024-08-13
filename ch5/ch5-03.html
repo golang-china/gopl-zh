@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="zh" class="sidebar-visible no-js light">
     <head>
-        <!-- Book generated using https://github.com/wa-lang/mnbook -->
+        <!-- Book generated using https://github.com/wa-lang/wabook -->
         <meta charset="UTF-8">
         <title>多返回值 - Go语言圣经</title>
         <!-- Custom HTML head -->
@@ -12,17 +12,17 @@
 
         <link rel="icon" href="../favicon.svg">
         <link rel="shortcut icon" href="../favicon.png">
-        <link rel="stylesheet" href="../static/mnbook/css/variables.css">
-        <link rel="stylesheet" href="../static/mnbook/css/general.css">
-        <link rel="stylesheet" href="../static/mnbook/css/chrome.css">
-        <link rel="stylesheet" href="../static/mnbook/css/print.css" media="print">
+        <link rel="stylesheet" href="../static/wabook/css/variables.css">
+        <link rel="stylesheet" href="../static/wabook/css/general.css">
+        <link rel="stylesheet" href="../static/wabook/css/chrome.css">
+        <link rel="stylesheet" href="../static/wabook/css/print.css" media="print">
         <!-- Fonts -->
-        <link rel="stylesheet" href="../static/mnbook/FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="../static/mnbook/fonts/fonts.css">
+        <link rel="stylesheet" href="../static/wabook/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../static/wabook/fonts/fonts.css">
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="../static/mnbook/highlight.css">
-        <link rel="stylesheet" href="../static/mnbook/tomorrow-night.css">
-        <link rel="stylesheet" href="../static/mnbook/ayu-highlight.css">
+        <link rel="stylesheet" href="../static/wabook/highlight.css">
+        <link rel="stylesheet" href="../static/wabook/tomorrow-night.css">
+        <link rel="stylesheet" href="../static/wabook/ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
     </head>
@@ -36,15 +36,15 @@
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script type="text/javascript">
             try {
-                var theme = localStorage.getItem('mnbook-theme');
-                var sidebar = localStorage.getItem('mnbook-sidebar');
+                var theme = localStorage.getItem('wabook-theme');
+                var sidebar = localStorage.getItem('wabook-sidebar');
 
                 if (theme.startsWith('"') && theme.endsWith('"')) {
-                    localStorage.setItem('mnbook-theme', theme.slice(1, theme.length - 1));
+                    localStorage.setItem('wabook-theme', theme.slice(1, theme.length - 1));
                 }
 
                 if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
-                    localStorage.setItem('mnbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                    localStorage.setItem('wabook-sidebar', sidebar.slice(1, sidebar.length - 1));
                 }
             } catch (e) { }
         </script>
@@ -52,7 +52,7 @@
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script type="text/javascript">
             var theme;
-            try { theme = localStorage.getItem('mnbook-theme'); } catch(e) { }
+            try { theme = localStorage.getItem('wabook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
             html.classList.remove('no-js')
@@ -66,7 +66,7 @@
             var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
-                try { sidebar = localStorage.getItem('mnbook-sidebar'); } catch(e) { }
+                try { sidebar = localStorage.getItem('wabook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             }
             html.classList.remove('sidebar-visible');
@@ -528,7 +528,7 @@
                     <div class="sidetoc"><nav class="pagetoc"></nav></div>
 
                     <main>
-                        <ul dir="auto"><li><em>凹语言(Go实现, 面向WASM设计): <a href="https://github.com/wa-lang/wa">https://github.com/wa-lang/wa</a></em></li><li><em>MnBook(Go语言实现的MD电子书构建工具): <a href="https://github.com/wa-lang/mnbook">https://github.com/wa-lang/mnbook</a></em></li></ul><hr>
+                        <ul dir="auto"><li><em>凹语言(Go实现, 面向WASM设计): <a href="https://github.com/wa-lang/wa">https://github.com/wa-lang/wa</a></em></li><li><em>WaBook(Go语言实现的MD电子书构建工具): <a href="https://github.com/wa-lang/wabook">https://github.com/wa-lang/wabook</a></em></li></ul><hr>
 
                         <h2>5.3. 多返回值</h2>
 <p>在Go中，一个函数可以返回多个值。我们已经在之前例子中看到，许多标准库中的函数返回2个值，一个是期望得到的返回值，另一个是函数出错时的错误信息。下面的例子会展示如何编写多返回值的函数。</p>
@@ -667,10 +667,10 @@ func countWordsAndImages(n *html.Node) (words, images int) { /* ... */ }
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
-        <script src="../static/mnbook/mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../static/mnbook/clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../static/mnbook/highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../static/mnbook/book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../static/wabook/mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../static/wabook/clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../static/wabook/highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../static/wabook/book.js" type="text/javascript" charset="utf-8"></script>
         
         <script type="text/javascript" charset="utf-8">
             var pagePath = "ch5/ch5-03.md"
@@ -678,7 +678,7 @@ func countWordsAndImages(n *html.Node) (words, images int) { /* ... */ }
 
         <!-- Custom JS scripts -->
         
-            <script src="../static/mnbook/giscus.js" type="text/javascript" charset="utf-8"></script>
+            <script src="../static/wabook/giscus.js" type="text/javascript" charset="utf-8"></script>
         
 
     </body>

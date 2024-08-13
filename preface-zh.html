@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="zh" class="sidebar-visible no-js light">
     <head>
-        <!-- Book generated using https://github.com/wa-lang/mnbook -->
+        <!-- Book generated using https://github.com/wa-lang/wabook -->
         <meta charset="UTF-8">
         <title>译者序 - Go语言圣经</title>
         <!-- Custom HTML head -->
@@ -12,17 +12,17 @@
 
         <link rel="icon" href="./favicon.svg">
         <link rel="shortcut icon" href="./favicon.png">
-        <link rel="stylesheet" href="./static/mnbook/css/variables.css">
-        <link rel="stylesheet" href="./static/mnbook/css/general.css">
-        <link rel="stylesheet" href="./static/mnbook/css/chrome.css">
-        <link rel="stylesheet" href="./static/mnbook/css/print.css" media="print">
+        <link rel="stylesheet" href="./static/wabook/css/variables.css">
+        <link rel="stylesheet" href="./static/wabook/css/general.css">
+        <link rel="stylesheet" href="./static/wabook/css/chrome.css">
+        <link rel="stylesheet" href="./static/wabook/css/print.css" media="print">
         <!-- Fonts -->
-        <link rel="stylesheet" href="./static/mnbook/FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="./static/mnbook/fonts/fonts.css">
+        <link rel="stylesheet" href="./static/wabook/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="./static/wabook/fonts/fonts.css">
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="./static/mnbook/highlight.css">
-        <link rel="stylesheet" href="./static/mnbook/tomorrow-night.css">
-        <link rel="stylesheet" href="./static/mnbook/ayu-highlight.css">
+        <link rel="stylesheet" href="./static/wabook/highlight.css">
+        <link rel="stylesheet" href="./static/wabook/tomorrow-night.css">
+        <link rel="stylesheet" href="./static/wabook/ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
     </head>
@@ -36,15 +36,15 @@
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script type="text/javascript">
             try {
-                var theme = localStorage.getItem('mnbook-theme');
-                var sidebar = localStorage.getItem('mnbook-sidebar');
+                var theme = localStorage.getItem('wabook-theme');
+                var sidebar = localStorage.getItem('wabook-sidebar');
 
                 if (theme.startsWith('"') && theme.endsWith('"')) {
-                    localStorage.setItem('mnbook-theme', theme.slice(1, theme.length - 1));
+                    localStorage.setItem('wabook-theme', theme.slice(1, theme.length - 1));
                 }
 
                 if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
-                    localStorage.setItem('mnbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                    localStorage.setItem('wabook-sidebar', sidebar.slice(1, sidebar.length - 1));
                 }
             } catch (e) { }
         </script>
@@ -52,7 +52,7 @@
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script type="text/javascript">
             var theme;
-            try { theme = localStorage.getItem('mnbook-theme'); } catch(e) { }
+            try { theme = localStorage.getItem('wabook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
             html.classList.remove('no-js')
@@ -66,7 +66,7 @@
             var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
-                try { sidebar = localStorage.getItem('mnbook-sidebar'); } catch(e) { }
+                try { sidebar = localStorage.getItem('wabook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             }
             html.classList.remove('sidebar-visible');
@@ -528,7 +528,7 @@
                     <div class="sidetoc"><nav class="pagetoc"></nav></div>
 
                     <main>
-                        <ul dir="auto"><li><em>凹语言(Go实现, 面向WASM设计): <a href="https://github.com/wa-lang/wa">https://github.com/wa-lang/wa</a></em></li><li><em>MnBook(Go语言实现的MD电子书构建工具): <a href="https://github.com/wa-lang/mnbook">https://github.com/wa-lang/mnbook</a></em></li></ul><hr>
+                        <ul dir="auto"><li><em>凹语言(Go实现, 面向WASM设计): <a href="https://github.com/wa-lang/wa">https://github.com/wa-lang/wa</a></em></li><li><em>WaBook(Go语言实现的MD电子书构建工具): <a href="https://github.com/wa-lang/wabook">https://github.com/wa-lang/wabook</a></em></li></ul><hr>
 
                         <h1>译者序</h1>
 <p>在上个世纪70年代，贝尔实验室的 <a href="http://genius.cat-v.org/ken-thompson/">Ken Thompson</a> 和 <a href="http://genius.cat-v.org/dennis-ritchie/">Dennis M. Ritchie</a> 合作发明了 <a href="http://doc.cat-v.org/unix/">UNIX</a> 操作系统，同时 <a href="http://genius.cat-v.org/dennis-ritchie/">Dennis M. Ritchie</a> 为了解决 <a href="http://doc.cat-v.org/unix/">UNIX</a> 系统的移植性问题而发明了 C 语言，贝尔实验室的 <a href="http://doc.cat-v.org/unix/">UNIX</a> 和 C 语言两大发明奠定了整个现代IT行业最重要的软件基础（目前的三大桌面操作系统的中<a href="http://www.linux.org/">Linux</a>和<a href="http://www.apple.com/cn/osx/">Mac OS X</a>都是源于 <a href="http://doc.cat-v.org/unix/">UNIX</a> 系统，两大移动平台的操作系统 iOS 和 Android 也都是源于 <a href="http://doc.cat-v.org/unix/">UNIX</a> 系统。C 系家族的编程语言占据统治地位达几十年之久）。在 <a href="http://doc.cat-v.org/unix/">UNIX</a> 和 C 语言发明40年之后，目前已经在 Google 工作的 <a href="http://genius.cat-v.org/ken-thompson/">Ken Thompson</a> 和 <a href="http://genius.cat-v.org/rob-pike/">Rob Pike</a>（他们在贝尔实验室时就是同事）、还有<a href="http://research.google.com/pubs/author96.html">Robert Griesemer</a>（设计了 V8 引擎和 HotSpot 虚拟机）一起合作，为了解决在21世纪多核和网络化环境下越来越复杂的编程问题而发明了 Go 语言。从 Go 语言库早期代码库日志可以看出它的演化历程（ Git 用 <code>git log --before={2008-03-03} --reverse</code> 命令查看）：</p>
@@ -591,10 +591,10 @@
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
-        <script src="./static/mnbook/mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="./static/mnbook/clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="./static/mnbook/highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="./static/mnbook/book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="./static/wabook/mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="./static/wabook/clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="./static/wabook/highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="./static/wabook/book.js" type="text/javascript" charset="utf-8"></script>
         
         <script type="text/javascript" charset="utf-8">
             var pagePath = "preface-zh.md"
@@ -602,7 +602,7 @@
 
         <!-- Custom JS scripts -->
         
-            <script src="./static/mnbook/giscus.js" type="text/javascript" charset="utf-8"></script>
+            <script src="./static/wabook/giscus.js" type="text/javascript" charset="utf-8"></script>
         
 
     </body>

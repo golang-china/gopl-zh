@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="zh" class="sidebar-visible no-js light">
     <head>
-        <!-- Book generated using https://github.com/wa-lang/mnbook -->
+        <!-- Book generated using https://github.com/wa-lang/wabook -->
         <meta charset="UTF-8">
         <title>方法值和方法表达式 - Go语言圣经</title>
         <!-- Custom HTML head -->
@@ -12,17 +12,17 @@
 
         <link rel="icon" href="../favicon.svg">
         <link rel="shortcut icon" href="../favicon.png">
-        <link rel="stylesheet" href="../static/mnbook/css/variables.css">
-        <link rel="stylesheet" href="../static/mnbook/css/general.css">
-        <link rel="stylesheet" href="../static/mnbook/css/chrome.css">
-        <link rel="stylesheet" href="../static/mnbook/css/print.css" media="print">
+        <link rel="stylesheet" href="../static/wabook/css/variables.css">
+        <link rel="stylesheet" href="../static/wabook/css/general.css">
+        <link rel="stylesheet" href="../static/wabook/css/chrome.css">
+        <link rel="stylesheet" href="../static/wabook/css/print.css" media="print">
         <!-- Fonts -->
-        <link rel="stylesheet" href="../static/mnbook/FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="../static/mnbook/fonts/fonts.css">
+        <link rel="stylesheet" href="../static/wabook/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../static/wabook/fonts/fonts.css">
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="../static/mnbook/highlight.css">
-        <link rel="stylesheet" href="../static/mnbook/tomorrow-night.css">
-        <link rel="stylesheet" href="../static/mnbook/ayu-highlight.css">
+        <link rel="stylesheet" href="../static/wabook/highlight.css">
+        <link rel="stylesheet" href="../static/wabook/tomorrow-night.css">
+        <link rel="stylesheet" href="../static/wabook/ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
     </head>
@@ -36,15 +36,15 @@
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script type="text/javascript">
             try {
-                var theme = localStorage.getItem('mnbook-theme');
-                var sidebar = localStorage.getItem('mnbook-sidebar');
+                var theme = localStorage.getItem('wabook-theme');
+                var sidebar = localStorage.getItem('wabook-sidebar');
 
                 if (theme.startsWith('"') && theme.endsWith('"')) {
-                    localStorage.setItem('mnbook-theme', theme.slice(1, theme.length - 1));
+                    localStorage.setItem('wabook-theme', theme.slice(1, theme.length - 1));
                 }
 
                 if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
-                    localStorage.setItem('mnbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                    localStorage.setItem('wabook-sidebar', sidebar.slice(1, sidebar.length - 1));
                 }
             } catch (e) { }
         </script>
@@ -52,7 +52,7 @@
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script type="text/javascript">
             var theme;
-            try { theme = localStorage.getItem('mnbook-theme'); } catch(e) { }
+            try { theme = localStorage.getItem('wabook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
             html.classList.remove('no-js')
@@ -66,7 +66,7 @@
             var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
-                try { sidebar = localStorage.getItem('mnbook-sidebar'); } catch(e) { }
+                try { sidebar = localStorage.getItem('wabook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             }
             html.classList.remove('sidebar-visible');
@@ -528,7 +528,7 @@
                     <div class="sidetoc"><nav class="pagetoc"></nav></div>
 
                     <main>
-                        <ul dir="auto"><li><em>凹语言(Go实现, 面向WASM设计): <a href="https://github.com/wa-lang/wa">https://github.com/wa-lang/wa</a></em></li><li><em>MnBook(Go语言实现的MD电子书构建工具): <a href="https://github.com/wa-lang/mnbook">https://github.com/wa-lang/mnbook</a></em></li></ul><hr>
+                        <ul dir="auto"><li><em>凹语言(Go实现, 面向WASM设计): <a href="https://github.com/wa-lang/wa">https://github.com/wa-lang/wa</a></em></li><li><em>WaBook(Go语言实现的MD电子书构建工具): <a href="https://github.com/wa-lang/wabook">https://github.com/wa-lang/wabook</a></em></li></ul><hr>
 
                         <h2>6.4. 方法值和方法表达式</h2>
 <p>我们经常选择一个方法，并且在同一个表达式里执行，比如常见的p.Distance()形式，实际上将其分成两步来执行也是可能的。p.Distance叫作“选择器”，选择器会返回一个方法“值”-&gt;一个将方法（Point.Distance）绑定到特定接收器变量的函数。这个函数可以不通过指定其接收器即可被调用；即调用时不需要指定接收器（译注：因为已经在前文中指定过了），只要传入函数的参数即可：</p>
@@ -646,10 +646,10 @@ func (path Path) TranslateBy(offset Point, add bool) {
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
-        <script src="../static/mnbook/mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../static/mnbook/clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../static/mnbook/highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../static/mnbook/book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../static/wabook/mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../static/wabook/clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../static/wabook/highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../static/wabook/book.js" type="text/javascript" charset="utf-8"></script>
         
         <script type="text/javascript" charset="utf-8">
             var pagePath = "ch6/ch6-04.md"
@@ -657,7 +657,7 @@ func (path Path) TranslateBy(offset Point, add bool) {
 
         <!-- Custom JS scripts -->
         
-            <script src="../static/mnbook/giscus.js" type="text/javascript" charset="utf-8"></script>
+            <script src="../static/wabook/giscus.js" type="text/javascript" charset="utf-8"></script>
         
 
     </body>
