@@ -552,7 +552,7 @@ v--    // 等价方式 v = v - 1；v 变成 1
 
 a[i], a[j] = a[j], a[i]
 </code></pre>
-<p>或者是计算两个整数值的的最大公约数（GCD）（译注：GCD不是那个敏感字，而是greatest common divisor的缩写，欧几里德的GCD是最早的非平凡算法）：</p>
+<p>或者是计算两个整数值的的最大公约数（GCD）（译注：Greatest Common Divisor的缩写，欧几里德的GCD是最早的非平凡算法）：</p>
 <pre><code class="language-Go">func gcd(x, y int) int {
 	for y != 0 {
 		x, y = y, x%y
@@ -569,7 +569,7 @@ a[i], a[j] = a[j], a[i]
 	return x
 }
 </code></pre>
-<p>元组赋值也可以使一系列琐碎赋值更加紧凑（译注: 特别是在for循环的初始化部分），</p>
+<p>元组赋值也可以使一系列琐碎赋值更加紧凑（译注: 特别是在for循环的初始化部分）:</p>
 <pre><code class="language-Go">i, j, k = 2, 3, 5
 </code></pre>
 <p>但如果表达式太复杂的话，应该尽量避免过度使用元组赋值；因为每个变量单独赋值语句的写法可读性会更好。</p>
