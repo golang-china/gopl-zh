@@ -534,7 +534,7 @@
 <h2>Go语言起源</h2>
 <p>编程语言的演化跟生物物种的演化类似，一个成功的编程语言的后代一般都会继承它们祖先的优点；当然有时多种语言杂合也可能会产生令人惊讶的特性；还有一些激进的新特性可能并没有先例。通过观察这些影响，我们可以学到为什么一门语言是这样子的，它已经适应了怎样的环境。</p>
 <p>下图展示了有哪些早期的编程语言对Go语言的设计产生了重要影响。</p>
-<p><img src="../images/ch0-01.png" alt=""></p>
+<p><img src="./images/ch0-01.png" alt=""></p>
 <p>Go语言有时候被描述为“类C语言”，或者是“21世纪的C语言”。Go从C语言继承了相似的表达式语法、控制流结构、基础数据类型、调用参数传值、指针等很多思想，还有C语言一直所看中的编译后机器码的运行效率以及和现有操作系统的无缝适配。</p>
 <p>但是在Go语言的家族树中还有其它的祖先。其中一个有影响力的分支来自<a href="https://en.wikipedia.org/wiki/Niklaus_Wirth">Niklaus Wirth</a>所设计的<code>Pascal</code>语言。然后<code>Modula-2</code>语言激发了包的概念。然后<code>Oberon</code>语言摒弃了模块接口文件和模块实现文件之间的区别。第二代的<code>Oberon-2</code>语言直接影响了包的导入和声明的语法，还有<code>Oberon</code>语言的面向对象特性所提供的方法的声明语法等。</p>
 <p>Go语言的另一支祖先，带来了Go语言区别其他语言的重要特性，灵感来自于贝尔实验室的<a href="https://en.wikipedia.org/wiki/Tony_Hoare">Tony Hoare</a>于1978年发表的鲜为外界所知的关于并发研究的基础文献 <em>顺序通信进程</em> （ <em>communicating sequential processes</em> ，缩写为<code>CSP</code>。在<code>CSP</code>中，程序是一组中间没有共享状态的平行运行的处理过程，它们之间使用管道进行通信和控制同步。不过<a href="https://en.wikipedia.org/wiki/Tony_Hoare">Tony Hoare</a>的<code>CSP</code>只是一个用于描述并发性基本概念的描述语言，并不是一个可以编写可执行程序的通用编程语言。</p>
