@@ -528,7 +528,7 @@
                     <div class="sidetoc"><nav class="pagetoc"></nav></div>
 
                     <main>
-                        <ul dir="auto"><li><em>凹语言(Go实现, 面向WASM设计): <a href="https://github.com/wa-lang/wa">https://github.com/wa-lang/wa</a></em></li><li><em>WaBook(Go语言实现的MD电子书构建工具): <a href="https://github.com/wa-lang/wabook">https://github.com/wa-lang/wabook</a></em></li></ul><hr>
+                        <ul dir="auto"><li><em>凹语言(Go实现, 面向WASM设计): <a href="https://github.com/wa-lang/wa">https://github.com/wa-lang/wa</a></em></li><li><em>《Go语言高级编程》: <a href="https://github.com/chai2010/advanced-go-programming-book">https://github.com/chai2010/advanced-go-programming-book</a></em></li></ul><hr>
 
                         <h2>7.3. 实现接口的条件</h2>
 <p>一个类型如果拥有一个接口需要的所有方法，那么这个类型就实现了这个接口。例如，<code>*os.File</code>类型实现了io.Reader，Writer，Closer，和ReadWriter接口。<code>*bytes.Buffer</code>实现了Reader，Writer，和ReadWriter这些接口，但是它没有实现Closer接口因为它不具有Close方法。Go的程序员经常会简要的把一个具体的类型描述成一个特定的接口类型。举个例子，<code>*bytes.Buffer</code>是io.Writer；<code>*os.Files</code>是io.ReadWriter。</p>

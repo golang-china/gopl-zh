@@ -486,46 +486,12 @@ function addEventListeners() {
 
 /* Initialization */
 
-function addFontStyle() {
-  var el = document.createElement('link');
-  el.rel = 'stylesheet';
-  el.type = 'text/css';
-
-  //el.href =
-  //  '//fonts.googleapis.com/css?family=' +
-  //  'Open+Sans:regular,semibold,italic,italicsemibold|Droid+Sans+Mono';
-  el.href = PERMANENT_URL_PREFIX + 'font.css';
-
-  document.body.appendChild(el);
-}
-
-function addGeneralStyle() {
-  var el = document.createElement('link');
-  el.rel = 'stylesheet';
-  el.type = 'text/css';
-  el.href = PERMANENT_URL_PREFIX + 'styles.css';
-  document.body.appendChild(el);
-
-  var el = document.createElement('meta');
-  el.name = 'viewport';
-  el.content = 'width=device-width,height=device-height,initial-scale=1';
-  document.querySelector('head').appendChild(el);
-
-  var el = document.createElement('meta');
-  el.name = 'apple-mobile-web-app-capable';
-  el.content = 'yes';
-  document.querySelector('head').appendChild(el);
-
-  scaleSmallViewports();
-}
-
 function handleDomLoaded() {
   slideEls = document.querySelectorAll('section.slides > article');
 
   setupFrames();
 
-  addFontStyle();
-  addGeneralStyle();
+  scaleSmallViewports();
   addEventListeners();
 
   updateSlides();
