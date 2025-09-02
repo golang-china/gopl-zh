@@ -613,7 +613,7 @@ func topoSort(m map[string][]string) []string {
 	// ...
 }
 </code></pre>
-<p>在toposort程序的输出如下所示，它的输出顺序是大多人想看到的固定顺序输出，但是这需要我们多花点心思才能做到。哈希表prepreqs的value是遍历顺序固定的切片，而不再试遍历顺序随机的map，所以我们对prereqs的key值进行排序，保证每次运行toposort程序，都以相同的遍历顺序遍历prereqs。</p>
+<p>在toposort程序的输出如下所示，它的输出顺序是大多人想看到的固定顺序输出，但是这需要我们多花点心思才能做到。哈希表prepreqs的value是遍历顺序固定的切片，而不再是遍历顺序随机的map，所以我们对prereqs的key值进行排序，保证每次运行toposort程序，都以相同的遍历顺序遍历prereqs。</p>
 <pre><code>1: intro to programming
 2: discrete math
 3: data structures
