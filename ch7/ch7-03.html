@@ -582,7 +582,7 @@ any = new(bytes.Buffer)
 </code></pre>
 <p>尽管不是很明显，从本书最早的例子中我们就已经在使用空接口类型。它允许像fmt.Println或者5.7章中的errorf函数接受任何类型的参数。</p>
 <p>对于创建的一个interface{}值持有一个boolean，float，string，map，pointer，或者任意其它的类型；我们当然不能直接对它持有的值做操作，因为interface{}没有任何方法。我们会在7.10章中学到一种用类型断言来获取interface{}中值的方法。</p>
-<p>因为接口与实现只依赖于判断两个类型的方法，所以没有必要定义一个具体类型和它实现的接口之间的关系。也就是说，有意地在文档里说明或者程序上断言这种关系偶尔是有用的，但程序上不强制这么做。下面的定义在编译期断言一个<code>*bytes.Buffer</code>的值实现了io.Writer接口类型:</p>
+<p>因为接口与实现只依赖于判断两个类型的方法，所以没有必要定义一个具体类型和它实现的接口之间的关系。也就是说，有意地在文档里说明或者程序上断言这种关系偶尔是有用的，但程序上不强制这么做。这种写法还可用于让编译器在编译期确保某个类型确实满足接口要求，从而提前发现实现遗漏或接口变更导致的不匹配问题。下面的定义在编译期断言一个<code>*bytes.Buffer</code>的值实现了io.Writer接口类型:</p>
 <pre><code class="language-go">// *bytes.Buffer must satisfy io.Writer
 var w io.Writer = new(bytes.Buffer)
 </code></pre>
