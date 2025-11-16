@@ -623,7 +623,7 @@ $ ./outline2 http://gopl.io
 ...
 </code></pre>
 <p><strong>练习 5.7：</strong> 完善startElement和endElement函数，使其成为通用的HTML输出器。要求：输出注释结点，文本结点以及每个元素的属性（&lt; a href='...'&gt;）。使用简略格式输出没有孩子结点的元素（即用<code>&lt;img/&gt;</code>代替<code>&lt;img&gt;&lt;/img&gt;</code>）。编写测试，验证程序输出的格式正确。（详见11章）</p>
-<p><strong>练习 5.8：</strong> 修改pre和post函数，使其返回布尔类型的返回值。返回false时，中止forEachNoded的遍历。使用修改后的代码编写ElementByID函数，根据用户输入的id查找第一个拥有该id元素的HTML元素，查找成功后，停止遍历。</p>
+<p><strong>练习 5.8：</strong> 修改pre和post函数，使其返回布尔类型的返回值。返回false时，中止forEachNode的遍历。使用修改后的代码编写ElementByID函数，根据用户输入的id查找第一个拥有该id元素的HTML元素，查找成功后，停止遍历。</p>
 <pre><code class="language-Go">func ElementByID(doc *html.Node, id string) *html.Node
 </code></pre>
 <p><strong>练习 5.9：</strong> 编写函数expand，将s中的&quot;foo&quot;替换为f(&quot;foo&quot;)的返回值。</p>
